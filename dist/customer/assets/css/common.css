@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+/* ------------------------------------------------------------
+* Name      : common.css
+------------------------------------------------------------ */
+
+body { margin:0; padding:0; font-family:'HelveticaNeue-Light','AppleSDGothicNeo-Light','Malgun Gothic','맑은 고딕',sans-serif; font-size:15px; color:#000000; line-height:1.46; letter-spacing:0; background:#ffffff; -webkit-text-size-adjust:none; }
+fieldset { min-width:100%; }
+h1, h2, h3, h4, h5, h6, form, div, p, em, img, table, tr, td, fieldset, label, dl, dt, dd { padding:0; margin:0; border:0;}
+h1, h2, h3, h4, h5, h6 {font-size:15px; color:#000000; line-height:1.46; font-weight:normal;}
+hr {display: none;}
+label {vertical-align:middle;}
+strong { font-weight:normal; }
+em, i {font-style:normal; }
+ul, ol, li {padding:0; margin:0; list-style:none;}
+.skip, legend, caption, .blindTit {position:absolute; top:0; left:-100px; width:0; height:0; overflow:hidden; visibility:hidden; font-size:0; line-height:0;}
+img {vertical-align:top; border:none 0;}
+table {width:100%;border:0;border-collapse:collapse;border-spacing:0;empty-cells:show;}
+button {cursor:pointer;border:none;}
+
+a { font-size:15px; color:#000000; line-height:1.46; text-decoration:none; }
+/* html.no-touchevents a:link
+, html.no-touchevents a:active
+, html.no-touchevents a:visited {color:#000000; text-decoration:none; } */
+/* a:hover {text-decoration:underline;} */
+.png24 { tmp:expression(setPNG24(this));}
+
+/* input */
+input.text {padding:4px 2px 2px 2px; height:15px; border:1px solid #ccc; font-family:'HelveticaNeue-Light','AppleSDGothicNeo-Light','Malgun Gothic','맑은 고딕',sans-serif; font-size:15px; color:#000000; line-height:1.46; vertical-align:middle;}
+input.radio, input.checkbox { width:13px; height:13px; margin:0 3px -2px 3px; padding:0; }
+textarea {padding:2px; border:1px solid #ccc; background:#fff; font-family:'HelveticaNeue-Light','AppleSDGothicNeo-Light','Malgun Gothic','맑은 고딕',sans-serif; font-size:15px; color:#000000; line-height:1.46; vertical-align:middle;}
+select {height:18px; border:1px solid #ccc; font-family:'HelveticaNeue-Light','AppleSDGothicNeo-Light','Malgun Gothic','맑은 고딕',sans-serif; font-size:15px; color:#000000; line-height:1.46; vertical-align:middle; }
+select {
+  text-overflow: ellipsis;
+  white-space: nowrap;}
+select:focus {outline-color: #c00;}
+input {font-family:'HelveticaNeue-Light','AppleSDGothicNeo-Light','Malgun Gothic','맑은 고딕',sans-serif; font-size:15px; color:#000000; line-height:1.46; }
+
+address{font-family:'HelveticaNeue-Light','AppleSDGothicNeo-Light','Malgun Gothic','맑은 고딕',sans-serif; font-style:normal;}
+
+article,aside,canvas,details,figcaption,figure, footer,header,hgroup,menu,nav,section,summary {display:block;}
+
+.ellipsis {text-overflow:ellipsis; -o-text-overflow: ellipsis;  -moz-binding:url('./ellipsis.xml#ellipsis'); -moz-binding:url('./ellipsis.xml#ellipsis'); white-space: nowrap; overflow: hidden;}
+.img_valign {display:inline-block; margin-top:-1px; overflow:hidden; height:100%; vertical-align:middle;}
+
+/* common */
+.cboth:before, .cboth:after {content:"";display:table;}
+.cboth:after {clear:both;}
+.cboth {zoom:1;}
+* html .cboth {zoom:1;}
+
+a, button { -webkit-tap-highlight-color:rgba(24,24,24,.1); }
+
+/* Skip nav Start */
+#skip { position: relative; }
+#skip a {
+	position: absolute; left:0; top: -35px; display: block; width:140px; color:#ffffff; background: #333333;
+	text-align: center; line-height: 30px; font-size: 12px; z-index: 200;
+}
+#skip a:active
+, #skip a:focus {
+	top:0;
+}
+/* Skip nav End */

@@ -1,0 +1,633 @@
+@charset "utf-8";
+
+
+@media (max-width:319px) {
+	/* Button Style Start */
+	.btngroup ul li { padding-top:10px; display:block; }
+	.btngroup ul li:first-of-type { padding-top:0px; }
+  
+  	.btngroupblock.w195 ul li .btn { min-width:1px; width:100%; }
+	/* Button Style End */
+	
+	/* Form Controller Start */
+	.formcheckbox .formcheckbox-wrap label span { font-size:13px; line-height:17px; }
+	.formradiobox .formradiobox-wrap label span { font-size:13px; line-height:17px; }
+	.formcheckFullbox .formcheckbox-wrap label span { font-size:12px; }
+	.formcheckFullbox .formcheckbox-wrap label em { font-size:12px; }
+	/* Form Controller End */
+	
+	/* List Component Start */
+	.listgroup-authcheck .formcheckbox .formcheckbox-wrap label em { font-size:12px; }
+	.listgroup-authcheck .formradiobox .formradiobox-wrap label em { font-size:12px; }
+	
+	.listgroup-radius .listgroup-radius-list li em { width:75px; font-size:13px; }
+	.listgroup-radius .listgroup-radius-list li span { padding-left:75px; font-size:13px; }
+  
+  /* .listgroup-game .listgroup-item-co .listgroup-item-date span { padding:0; display:block; }
+  .listgroup-game .listgroup-item-co .listgroup-item-date span:before { display:none; } */
+	/* List Component End */
+	
+	/* 상품권 충전소 Start */
+	.btngroup-giftcharge .btngroup ul li { padding-top:0; display:inline-block; }
+	/* 상품권 충전소 End */
+	
+	/* Detail Header Start */
+	.detailapptop-left { width:70px; }
+	.detailapptop-thumbnail
+	, .detailapptop-thumbnail .detailapptop-thumbnail-app { width:55px; height:55px; }
+	.detailapptop-co-payment span { padding-left:0; padding-right:0; display:block; }
+	.detailapptop-co-payment span:before { display:none; }
+  .detailapptop-co-date span { padding-left:0; padding-right:0; display:block; }
+	.detailapptop-co-date span:before { display:none; }
+  
+  /* .reservebenefits-wrap .reservebenefits-cell.reservebenefits-cell-right span { padding:0; display:block; }
+  .reservebenefits-wrap .reservebenefits-cell.reservebenefits-cell-right span:before { display:none; } */
+	/* Detail Header End */
+	
+	/* Detail 평점 및 리뷰 Start */
+	.detailcomment-list ul li .detailcomment-data span { margin-left:0; display:block; }
+	/* Detail 평점 및 리뷰 End */
+	
+	/* Detail 기타 정보 Start */
+	.detaildescription-wrap .detaildescription-co p { max-height:63px; -webkit-line-clamp:3; }
+	/* Detail 기타 정보 End */
+	
+	/* Detail 평점 및 리뷰 Start */
+	.detailcomment-list ul li .detailcomment-desc { max-height:60px; -webkit-line-clamp:3; }
+	/* Detail 평점 및 리뷰 End */
+  
+  /* 랜딩 카드 Start */
+  .landingcard-item .landingcard-cell.landingcard-cell-thumbnail { width:75px; }
+  .landingcard-item .landingcard-cell .landingcard-cell-thumbnail-app { width:55px; height:55px; }
+  
+  .landingcard-item .shopping .landingcard-cell.landingcard-cell-thumbnail { width:105px; }
+  .landingcard-item .shopping .landingcard-cell .landingcard-cell-thumbnail-app { width:85px; height:85px; }
+  
+  .landingcard-item .landingcard-link .landingcard-co-info span { padding:0; display:block; }
+  .landingcard-item .landingcard-link .landingcard-co-info span:before { display:none; }
+  /* 랜딩 카드 End */
+  
+  /* 검색 랜딩 카드 Start */
+  .searchcard-item .searchcard-cell.searchcard-cell-thumbnail { width:75px; }
+  .searchcard-item .searchcard-cell .searchcard-cell-thumbnail-app { width:55px; height:55px; }
+  
+  .searchcard-item .searchcard-link .searchcard-co-info span { padding:0; display:block; }
+  .searchcard-item .searchcard-link .searchcard-co-info span:before { display:none; }
+  /* 검색 랜딩 카드 End */
+  
+  .listgroup-purchaselist .listgroup-item { width:46.77% !important; margin-left:6.42% !important; padding-top:18px !important; }
+  .listgroup-purchaselist .listgroup-item:nth-of-type(2n-1) { margin-left:0 !important; clear: both; }
+  .listgroup-purchaselist .listgroup-item:nth-of-type(1)
+  , .listgroup-purchaselist .listgroup-item:nth-of-type(2) { padding-top:0 !important; }
+	.listgroup-purchaselist .listgroup-item:nth-of-type(3n-2) { clear: none;}
+	
+	/* 배송지 입력 Start */
+	.delivery-landingcard-item .shopping .landingcard-cell.landingcard-cell-thumbnail {width:105px;}
+	.delivery-landingcard-item .shopping .landingcard-cell .landingcard-cell-thumbnail-app {width: 85px; height:85px;}
+	/* 배송지 입력 End */
+	
+	/* 제네럴 뱃지 Start */
+	.landingcard-item .landingcard-cell .landingcard-cell-thumbnail-app .product-badge-icon {font-size:8px; padding:1px 2px;}
+	.landingcard-item .landingcard-cell .landingcard-cell-thumbnail-app .icon-type-adult-18 {width:14px; height:14px; background-position: -550px -450px;}
+	.landingcard-item .landingcard-cell .landingcard-cell-thumbnail-app .icon-type-adult-19 {width:14px; height:14px; background-position: -571px -450px;}
+	.landingcard-link.shopping .landingcard-cell .landingcard-cell-thumbnail-app .product-badge-icon {font-size:10px;padding:3px 6px;}
+	.landingcard-link.shopping .landingcard-cell .landingcard-cell-thumbnail-app .icon-type-adult-18 {width:16px; height:16px; background-position: -500px -450px;}
+	.landingcard-link.shopping .landingcard-cell .landingcard-cell-thumbnail-app .icon-type-adult-19 {width:16px; height:16px; background-position: -523px -450px;}
+	
+	.searchcard-item .searchcard-cell .searchcard-cell-thumbnail-app .product-badge-icon {font-size:8px; padding:1px 2px;}
+	.searchcard-item .searchcard-cell .searchcard-cell-thumbnail-app .icon-type-adult-18 {width:14px; height:14px; background-position: -550px -450px;}
+	.searchcard-item .searchcard-cell .searchcard-cell-thumbnail-app .icon-type-adult-19 {width:14px; height:14px; background-position: -571px -450px;}
+	
+	.detailapptop-thumbnail .detailapptop-thumbnail-app .product-badge-icon {font-size:8px; padding:1px 2px;}
+	.detailapptop-thumbnail .detailapptop-thumbnail-app .icon-type-adult-18 {width:14px; height:14px; background-position: -550px -450px;}
+	.detailapptop-thumbnail .detailapptop-thumbnail-app .icon-type-adult-19 {width:14px; height:14px; background-position: -571px -450px;}
+	/* 제네럴 뱃지 End */
+}
+
+@media (max-width: 768px) {
+	/* 메인 Start */
+	/* section common */
+	.onestore-section-wrap .onestore-section-title-mobile .onestore-title-inner {position: relative;}
+
+	/* section01 */
+	.onestore-section-wrap-01 .onestore-section-inner .section-img-list ul { width:64.714%; height:73.6%; left:17.2%; top:5.4%; }
+
+	/* section02 */
+	.onestore-section-wrap-02 .onestore-section-inner .section-img-list ul { width:64.714%; height:73.8%; left:17%; top:5.4%; }
+
+	/* section03 */
+	.onestore-section-wrap-03 .onestore-section-inner .section-img-list ul { width:64.714%; height:73.6%; left:17.2%; top:5.4%; }
+	.onestore-section-wrap-03 .onestore-section-inner .section-img-list ul li.section-img-03 {width:16.472%; height:9.164%; left:46.4%; top:27.3%;}
+	.onestore-section-wrap-03 .onestore-section-inner .section-img-list ul li.section-img-04 {width:16.472%; height:9.164%; left:11.4%; top:27.3%;}
+
+	/* section032 */
+	.onestore-section-wrap-032 .onestore-section-inner .section-img-list ul { width:65.2%; height:73.6%; left:17.2%; top:5.4%; }
+
+	/* section09 */
+	.onestore-section-wrap-09 .onestore-section-inner .section-img-list ul {
+		width: 64.5%; height: 80%; left: 16.02%; top: 5.90125%;
+		-ms-border-radius: 0 0 8px 8px; -moz-border-radius: 0 0 8px 8px; -webkit-border-radius: 0 0 8px 8px; border-radius: 0 0 8px 8px;
+	}
+	/* 메인 End */
+}
+
+@media (min-width: 767px) {
+	/* Layout Style Start */
+	/* body { background:#e7e7e7 !important; } */
+	body { background:#e7e7e7 url("../images/common/body_bg_basic_01.gif") repeat-y center top; }
+	body { background-color:#e7e7e7 !important; }
+	body.main_cp { background-color: #181427 !important; background: none; }
+	/* #wrap.reserve { background:#312c70; }
+	#wrap.betazone { background:#312c70; }
+	#wrap.launch { background:#312c70; } */
+	/* Layout Style End */
+	
+	/* 법정대리인(부모 등) 동의 신청 Start
+	body.paidpay { background:#ffffff; background-color:#ffffff !important; }
+	body.paidpay.ty2 { background:#fbfbfb; background-color:#fbfbfb !important; }
+	.paidpay.ty2 .payment-bottom-submit { left:50%; max-width: 768px; margin-left:-384px;}
+	법정대리인(부모 등) 동의 신청 End */
+	
+	.webviewheader
+	, .helpheader
+	, .landingheader
+	, .detailheader
+	, .reserveheader
+	, .searchheader
+	, .mwtextheader { left:50%; margin-left:-384px; width:768px; }
+	
+	/* Detail Header 부가 정보 Start */
+	.detailapptop-info .swiper-container { padding-left:0; }
+	.detailapptop-info .swiper-slide { width:19.9%; }
+	/* Detail Header 부가 정보 End */
+	
+	/* Detail 공식 커뮤니티 Start */
+	.detailcommunity-wrap .swiper-container { margin-left:-20px; margin-right:-20px; }
+	.detailcommunity-wrap .swiper-slide { width:16.6%; }
+	.detailcommunity-wrap .swiper-slide a { width:50px; margin:0 auto; }
+	.detailcommunity-wrap .swiper-slide:first-of-type { width:16.6%; }
+	.detailcommunity-wrap .swiper-slide:first-of-type a { width:50px; margin:0 auto; }
+	/* Detail 공식 커뮤니티 End */
+	
+	/* Detail 평점 및 리뷰 Start */
+	.detailcomment-wrap .detailcomment-info .detailcomment-info-list { width:85%; }
+	/* Detail 평점 및 리뷰 End */
+	
+	/* Detail 혜택 Start */
+	.detailbenefits-wrap .swiper-slide { width:70%; }
+	/* Detail 혜택 End */
+	
+	/* Toast Popup Start */
+	.toastgroup-wrap .toastgroup-inner { width:708px; }
+	/* Toast Popup End */
+	
+	/* Poupu Style Start */
+	.popupgroup-box { left:50%; margin-left:-384px; width:768px; }
+	/* Poupu Style Start */
+	
+	/* 기타 Start */
+	.error-notice-wrap {margin:0 100px;}
+	/* 기타 End */
+	
+	/* 베타게임 신청서 Start */
+	.betazone-apply-step ul { width: 70%; margin:0 auto; }
+	/* 베타게임 신청서 End */
+
+	/* 약관 : PC 전용 버튼 Start */
+	.pc-layout-btn-wrap { left: 50%; margin-left: -384px; width: 768px; }
+	/* 약관 : PC 전용 버튼 End */
+
+	/* 법정대리인 유료결제 동의 화면 : 결제 3.0 Start */
+	.layout-payment .webviewheader { width: 100%; left:0; margin-left:0; }
+	/* 법정대리인 유료결제 동의 화면 : 결제 3.0 End */
+}
+
+/* 잠금 비밀번호 키패드 관련 Start */
+@media (max-height:525px) {
+	html.full #container .locknumgroup { height:226px; }
+	.locknumgroup .locknumgroup-co { padding-top:18px; padding-bottom:15px; }
+	.locknumgroup .locknumgroup-summary { margin-bottom:15px; }
+	.locknumgroup .locknumgroup-co ul li
+	, .locknumgroup .locknumgroup-co ul li a span { height:40px; }
+	.locknumgroup .locknumgroup-co ul li.num-1 a span { background-position:0px -8px; }
+	.locknumgroup .locknumgroup-co ul li.num-2 a span { background-position:0px -64px; }
+	.locknumgroup .locknumgroup-co ul li.num-3 a span { background-position:0px -120px; }
+	.locknumgroup .locknumgroup-co ul li.num-4 a span { background-position:0px -176px; }
+	.locknumgroup .locknumgroup-co ul li.num-5 a span { background-position:0px -232px; }
+	.locknumgroup .locknumgroup-co ul li.num-6 a span { background-position:0px -288px; }
+	.locknumgroup .locknumgroup-co ul li.num-7 a span { background-position:0px -344px; }
+	.locknumgroup .locknumgroup-co ul li.num-8 a span { background-position:0px -400px; }
+	.locknumgroup .locknumgroup-co ul li.num-9 a span { background-position:0px -456px; }
+	.locknumgroup .locknumgroup-co ul li.num-0 a span { background-position:0px -512px; }
+	.locknumgroup .locknumgroup-co ul li.num-cancel a span { background-position:0px -568px; }
+	.locknumgroup .locknumgroup-co ul li.num-delete a span { background-position:0px -624px; }
+}
+
+@media (max-height:435px) {
+	html.full #container .locknumgroup { height:171px; }
+	.lockgroup .lockgroup-header { margin-bottom:10px; }
+	.locknumgroup .locknumgroup-co { padding-top:13px; padding-bottom:10px; }
+	.locknumgroup .locknumgroup-summary { margin-bottom:10px; }
+	.locknumgroup .locknumgroup-co ul li
+	, .locknumgroup .locknumgroup-co ul li a span { height:30px; }
+	
+	.locknumgroup .locknumgroup-co ul li a span {
+		margin:0 auto; width:32px; height:30px; background:url(../images/icon/icon_keypad_small_01.png) no-repeat 0px 0px; display:block;
+		-ms-background-size:32px 430px; -moz-background-size:32px 430px; -webkit-background-size:32px 430px; background-size:32px 430px;
+	}
+	
+	.locknumgroup .locknumgroup-co ul li.num-1 a span { background-position:0px -3px; }
+	.locknumgroup .locknumgroup-co ul li.num-2 a span { background-position:0px -39px; }
+	.locknumgroup .locknumgroup-co ul li.num-3 a span { background-position:0px -75px; }
+	.locknumgroup .locknumgroup-co ul li.num-4 a span { background-position:0px -111px; }
+	.locknumgroup .locknumgroup-co ul li.num-5 a span { background-position:0px -147px; }
+	.locknumgroup .locknumgroup-co ul li.num-6 a span { background-position:0px -183px; }
+	.locknumgroup .locknumgroup-co ul li.num-7 a span { background-position:0px -219px; }
+	.locknumgroup .locknumgroup-co ul li.num-8 a span { background-position:0px -255px; }
+	.locknumgroup .locknumgroup-co ul li.num-9 a span { background-position:0px -291px; }
+	.locknumgroup .locknumgroup-co ul li.num-0 a span { background-position:0px -327px; }
+	.locknumgroup .locknumgroup-co ul li.num-cancel a span { background-position:0px -363px; }
+	.locknumgroup .locknumgroup-co ul li.num-delete a span { background-position:0px -399px; }
+}
+/* 잠금 비밀번호 키패드 관련 End */
+
+
+/* 구매혜택 리스트 3단 Start */
+@media (max-width:319px) {
+	.listgroup-purchaselist .listgroup-item { width:46.77% !important; margin-left:6.42% !important; padding-top:18px !important; }
+	.listgroup-purchaselist .listgroup-item:nth-of-type(2n-1) { margin-left:0 !important; clear:both !important;}
+	.listgroup-purchaselist .listgroup-item:nth-of-type(1)
+	, .listgroup-purchaselist .listgroup-item:nth-of-type(2) { padding-top:0 !important; }
+	.listgroup-purchaselist .listgroup-item:nth-of-type(3n-2) { clear: none;}
+}
+
+@media (min-width:600px) and (max-width:766px) {
+	.listgroup-purchaselist .listgroup-item { width:22.57% !important; margin-left:3.214% !important; padding-top:18px !important; }
+	.listgroup-purchaselist .listgroup-item:nth-of-type(4n-3) { margin-left:0 !important; clear:both !important; }
+	.listgroup-purchaselist .listgroup-item:nth-of-type(1)
+	, .listgroup-purchaselist .listgroup-item:nth-of-type(2)
+	, .listgroup-purchaselist .listgroup-item:nth-of-type(3)
+	, .listgroup-purchaselist .listgroup-item:nth-of-type(4) { padding-top:0 !important; }
+	.listgroup-purchaselist .listgroup-item:nth-of-type(3n-2) { clear: none;}
+}
+
+@media (min-width: 767px) {
+  .listgroup-purchaselist .listgroup-item { width:17.98% !important; margin-left:2.472% !important; padding-top:18px !important; }
+  .listgroup-purchaselist .listgroup-item:nth-of-type(5n-4) { margin-left:0 !important; clear: both !important; }
+  .listgroup-purchaselist .listgroup-item:nth-of-type(1)
+  , .listgroup-purchaselist .listgroup-item:nth-of-type(2)
+  , .listgroup-purchaselist .listgroup-item:nth-of-type(3)
+  , .listgroup-purchaselist .listgroup-item:nth-of-type(4)
+  , .listgroup-purchaselist .listgroup-item:nth-of-type(5) { padding-top:0 !important; }
+	.listgroup-purchaselist .listgroup-item:nth-of-type(3n-2) { clear: none;}
+}
+/* 구매혜택 리스트 3단 End */
+
+@media (max-width:768px) {
+	/* 메인 Start */
+	.mainheader .header-co {max-width:100%; padidng:20px 20px;}
+
+	.onestore-intro-wrap .onestore-intro-inner {display:none;}
+	.onestore-intro-wrap .onestore-intro-inner-mobile {display:block;}
+	.onestore-intro-wrap .onestore-intro-inner-mobile .onestore-intro-bg img {width:100%;}
+	.onestore-intro-wrap .onestore-intro-inner-mobile .onestore-intro-text {
+		position:absolute; left:0; top:0; width:100%;height:100%; max-width:none;
+	}
+	.onestore-intro-wrap .onestore-intro-inner-mobile .onestore-intro-text .onestore-intro-text-ta { width:70.83%; table-layout:fixed; display:table; padding: 27.7% 14.58% 0;  }
+	.onestore-intro-wrap .onestore-intro-inner-mobile .onestore-intro-text .onestore-intro-text-cell { width:100%; height:100%; display:table-cell; }
+	.onestore-intro-wrap .onestore-intro-inner-mobile .onestore-intro-text .onestore-intro-text-cell img { width:100%; }
+	.onestore-intro-wrap .onestore-intro-inner-mobile .onestore-intro-text .onestore-intro-text-box { position:relative; }
+	.onestore-intro-wrap .onestore-intro-inner-mobile .onestore-intro-text .onestore-intro-text-box a {position:absolute;left:15%; top:55.1%;width:70%; height:18.5%;text-indent: -99999px;}
+
+	.onestore-app-wrap .onestore-app-inner {display:none;}
+	.onestore-app-wrap .onestore-app-inner-mobile {display:block; margin:0 auto; -ms-box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+	.onestore-app-wrap .onestore-app-inner-mobile img {width: 100%;}
+
+	.onestore-section-wrap .onestore-section-title-mobile {display: block;}
+	.onestore-section-wrap .onestore-section-title-mobile .onestore-title-inner {width:70.83%; display: block; margin:0 auto;	}
+	.onestore-section-wrap .onestore-section-title-mobile .onestore-title-inner img {width:100%;}
+	.onestore-section-wrap .onestore-section-inner {padding:0;}
+	.onestore-section-wrap .onestore-section-inner .onestore-item-num-wrap {display:none;}
+	.onestore-section-wrap .onestore-section-inner .onestore-item-img-wrap {width:61.11%; display: block;margin:0 auto;padding:0;float:none !important;}
+
+	.onestore-btn-wrap .onestore-btn-inner {display: none;}
+	.onestore-btn-wrap .onestore-btn-inner-mobile {display: block; padding:0;}
+	.onestore-btn-wrap .onestore-btn-inner-mobile img {width: 100%;}
+	.onestore-btn-wrap .onestore-btn-inner-mobile a {position:absolute; left:21%; top:0;width:58%; height:50.5%;text-indent: -99999px;}
+
+	/* floating btn */
+	.onestore-bar-wrap {display: none;}
+	.onestore-bar-wrap.onestore-bar-wrap-mobile { display: block; }
+
+	/* footer */
+	.notice-content-wrap .notice-content-inner {padding:25px 25px;}
+	.notice-content-wrap .notice-content-inner dl dt {font-size:12px;}
+	.notice-content-wrap .notice-content-inner dl dd a  {font-size:12px;}
+	.notice-content-wrap .notice-content-inner .notice-more-btn {right:25px;}
+
+	.footer-content-wrap .footer-company-wrap {font-size:10px;  line-height: 16px; padding:0 25px 50px; color:rgba(255,255,255,0.6);}
+	.footer-content-wrap .footer-company-wrap > ul {display:block; max-width: 320px; margin:0 auto;}
+	.footer-content-wrap .footer-company-wrap .footer-company-icon-box {display:none;}
+	.footer-content-wrap .footer-link-wrap ul li {font-size:12px; padding: 0 15px;}
+	.footer-content-wrap .footer-link-wrap ul li:first-of-type {padding-left:15px;}
+	.footer-content-wrap .footer-link-wrap ul li:last-of-type {padding-right:15px;}
+	.footer-content-wrap .footer-link-wrap ul li a {font-size:12px;}
+	.footer-content-wrap .footer-company-wrap > ul > li {display: table; width:100%; padding:0 0 15px 0;}
+	.footer-content-wrap .footer-company-wrap > ul > li:last-child {padding:0;}
+	.footer-content-wrap .footer-company-wrap > ul > li .footer-company-icon-box-mobile {display: table-cell; width:90px; vertical-align: middle; text-align: center;}
+	.footer-content-wrap .footer-company-wrap > ul > li > ul, .footer-content-wrap .footer-company-wrap > ul > li.footer-company-onestore ul {display: table-cell;padding:0 0 0 15px;}
+	.footer-content-wrap .footer-link-wrap .contact-item-wrap li {display: block;} 
+	.footer-content-wrap .footer-company-wrap a {font-size: 10px;}
+
+	.footer-content-wrap .footer-info-wrap p {font-size:11px;}
+	.footer-content-wrap .footer-info-wrap p.footer-logo {font-size:12px;}
+
+	.footer-content-wrap .footer-sns-wrap .footer-sns-inner {display: none;}
+	.footer-content-wrap .footer-sns-wrap .footer-sns-inner-mobile {display: block;}
+	/* 메인 End */
+}
+
+@media (max-width: 389px) {
+	/* 기타 Start */
+	.error-notice-wrap .btngroup ul li { padding-top:10px; display:block; }
+	.error-notice-wrap .btngroup ul li:first-of-type { padding-top:0px; }
+	/* 기타 End */
+}
+
+
+@media (max-width:359px) {
+	/* 혜택 메인 배너 리스트 Start */
+	.benefitlist-wrap .benefitlist-link .benefitlist-banner img
+	, .benefitlist-wrap .benefitalarm-item .benefitlist-banner img {
+		width:100%; height:auto;
+	}
+	.benefitlist-wrap .benefitlist-link .benefitlist-pic img
+	, .benefitlist-wrap .benefitalarm-item .benefitlist-pic img {
+		width:100%; height:auto;
+	}
+	.benefitlist-wrap .benefitlist-link .benefitlist-app-icon { padding:0 5.55%; left:0; top:70%; height:17.6%; }
+	.benefitlist-wrap .benefitlist-link .benefitlist-app-item { margin-right:1.25%; width:6.87%; height:100%; }
+	.benefitlist-wrap .benefitlist-link .benefitlist-app-item:after { margin-right:1.25%; width:6.87%; height:100%; }
+	.benefitlist-wrap .benefitlist-link .benefitlist-app-item.more {border:0;}
+	.benefitmain-bottom-wrap .benefitmain-customer-nav li span {font-size:12px;}
+	.benefitlist-wrap .benefitalarm-item { padding:20px 20px; }
+	/* 혜택 메인 배너 리스트 End */
+	
+	.forminputbox .forminputbox-col input.form-input-control {font-size:13px;}
+	.formselectbox .formselectbox-col .form-select-control span {font-size:13px;}
+	
+	/* 베타게임 신청서 Start */
+	.betazone-apply-step { margin:0 0 15px; }
+	.betazone-apply-step li div { width:52px; height: 52px; margin:0 5px 0 0; }
+	.betazone-apply-step li span { font-size:10px; line-height: 12px;}
+	.betazone-apply-step i { display: none; }
+	/* 베타게임 신청서 End */
+	
+	/* 사업자 정보 Start */
+	.business-info-wrap .business-info-co { width:auto; }
+	.business-notice-wrap .business-notice-co { margin:30px 30px 0; width: auto; }
+	/* 사업자 정보 End */
+
+	.popupgroup-wrap.popupgroup-point-wrap .popupgroup-reserve-icon {
+		height: auto; -ms-border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px
+	}
+	.popupgroup-wrap.popupgroup-point-wrap .popupgroup-reserve-table .popupgroup-reserve-table-cell.cell-01 img { width: 100% !important; }
+	.popupgroup-wrap.popupgroup-point-wrap .popupgroup-reserve-table .popupgroup-reserve-table-cell.cell-02 img { width: 100% !important; }
+	.popupgroup-wrap.popupgroup-point-wrap .popupgroup-reserve-table .popupgroup-reserve-table-cell.cell-03 img { width: 100% !important; }
+	
+	.popupgroup-box .popupgroup-snssharing ul { display: table; width:100%; table-layout: fixed; }
+	.popupgroup-box .popupgroup-snssharing ul li a { max-width: 74px; }
+	/* two items */
+	.popupgroup-box .popupgroup-snssharing ul li:first-child:nth-last-child(2),
+	.popupgroup-box .popupgroup-snssharing ul li:first-child:nth-last-child(2) ~ li {
+	  width: 50%;
+	}
+	/* three items */
+	.popupgroup-box .popupgroup-snssharing ul li:first-child:nth-last-child(3),
+	.popupgroup-box .popupgroup-snssharing ul li:first-child:nth-last-child(3) ~ li {
+	  width: 33.3333%;
+	}
+}
+
+@media (max-width:349px) {
+	/* 원스토어 포인트, 원스토어 캐쉬 Start */
+	.mypagecash-list-wrap-co-n .layout-date-select input.date-input { padding:0 0 0 5px; font-size: 12px; }
+	.mypagecash-list-wrap-co-n .layout-date-select input.date-input[data-placeholder]::before {font-size: 12px; }
+	.mypagecash-list-wrap-co-n .layout-date-select span { width:14px; font-size:13px; }
+	.mypagecash-list-wrap-co-n .layout-date-select .btn-trans { font-size:13px; line-height:21px; width: 43px; }
+	/* 원스토어 포인트, 원스토어 캐쉬 End */
+}
+
+/* 마이 페이지 Style Start */
+@media (max-width:339px) {
+	/* 혜택 메인 배너 리스트 Start */
+	.benefitmain-wrap .benefitmain-customer-swiper .swiper-slide { width: 240px; height: 116px; }
+	/* 혜택 메인 배너 리스트 End */
+	/* 게임 캐쉬, 원스토어 캐쉬 Start */
+	.mypagecash-list-wrap-co .mypagecash-list-wrap-co .mypagecash-list-co .mypagecash-inner dl dd .cash-possible-price {font-size:23px;}
+	.mypagecash-list-wrap-co .mypagecash-list-co .mypagecash-inner dl dd .cash-demise {font-size:10px;}
+	.mypagecash-list-wrap-co .mypagecash-wrap .mypagecash-inner .mypagecash-summary {font-size:12px;}
+	
+	.mypagecash-list-wrap-co .mypagecash-list-wrap .mypagecash-list-inner .mypagecash-list .list-item-area table .table-cell-center {font-size: 11px;}
+	.mypagecash-list-wrap-co .mypagecash-list-wrap .mypagecash-list-inner .mypagecash-list .list-item-area table .table-cell-lg {font-size: 11px;}
+	.mypagecash-list-wrap-co .mypagecash-list-wrap .mypagecash-list-inner .mypagecash-list .list-item-area table .table-cell-sm {font-size: 11px;}
+	
+	.mypagecash-list-wrap-co .mypagecash-list-wrap .mypagecash-list-inner .mypagecash-list .list-item-area table colgroup .table-cell-date-w
+	, .mypagecash-list-wrap-co .mypagecash-list-wrap .mypagecash-list-inner .mypagecash-list .list-item-area table thead .table-cell-date-w { width:80px; }
+	
+	.mypagecash-list-wrap-co .cashtable-sort-wrap .cashtable-sort-inner .layout-list-sort-date p {line-height:18px;font-size:13px; }
+	.mypagecash-list-wrap-co .cashtable-sort-wrap .cashtable-sort-inner .layout-list-sort-date .btn-date {line-height: 32px; font-size:13px;} 
+	.mypagecash-list-wrap-co .cashtable-sort-wrap .cashtable-sort-inner .layout-list-sort-select .formselectbox-col .form-select-control {height:32px;line-height: 32px;}
+	/* 게임 캐쉬, 원스토어 캐쉬 End */
+	
+	/* UI datepicker Start */
+	.cashtable-sort-wrap #datepicker1, .cashtable-sort-wrap #datepicker2 { padding: 0 22px 0 15px;height:32px; line-height:32px; font-size:12px;}
+	.cashtable-sort-wrap .cashtable-sort-inner .layout-list-sort-select .formselectbox-col .icon-select-calendar {right:5px; top:9px;}
+	/* UI datepicker End */
+
+	/* 기본 셀렉트 Start */
+	.cashtable-sort-wrap .cashtable-sort-inner .layout-list-sort-select .formselectbox-col .formselectbox-inner select { font-size: 12px; }
+	.betazone-apply-form-co .layout-list-sort-select .formselectbox-col .formselectbox-inner select { font-size: 12px;  }
+	/* 기본 셀렉트 End */
+
+	/* 광고성 정보 수신 동의 Start */
+	.adagree-push-wrap .adagree-push-inner dl dt .adagree-push-title {font-size:13px;}
+	.adagree-push-wrap .adagree-push-inner dl dd .adagree-push-date {font-size:13px;}
+	.adagree-push-wrap .adagree-push-inner .adagree-push-summary {font-size:12px;}
+	/* 광고성 정보 수신 동의 End */
+	
+	/* 사업자 정보 Start */
+	.business-info-wrap .business-info-co { width:auto; }
+	.business-notice-wrap .business-notice-co { margin:30px 0 0;}
+	/* 사업자 정보 End */
+
+	/* PC 플레이 배너 Start */
+	.detail-banner-item .detail-banner-link .detail-banner-banner img { width:100%; height: auto;}
+	.detail-banner-item .detail-banner-link .detail-banner-pic img { width:100%; height: auto; }
+	/* PC 플레이 배너 End */
+}
+
+@media (max-width:319px) {
+	/* 게임 캐쉬, 원스토어 캐쉬 Start */
+	.mypagecash-list-wrap-co .mypagecash-list-wrap .mypagecash-list-inner .mypagecash-list .list-item-area table colgroup .table-cell-date-w
+	, .mypagecash-list-wrap-co .mypagecash-list-wrap .mypagecash-list-inner .mypagecash-list .list-item-area table thead .table-cell-date-w { width:65px; }
+	
+	.mypagecash-list-wrap-co .mypagecash-list-wrap .mypagecash-list-inner .mypagecash-list .list-item-area table .table-cell { padding-left:0; padding-right:0; }
+	.mypagecash-list-wrap-co .mypagecash-list-wrap .mypagecash-list-inner .mypagecash-list .list-item-area table td:last-of-type .table-cell { padding-left:8px; padding-right:8px; }
+	/* 게임 캐쉬, 원스토어 캐쉬 End */
+
+	/* 환급여부 확인 및 환급신청 Start */
+	.refund-agree-wrap .formcheckbox .formcheckbox-wrap label span {font-size:12px;}
+	.refund-agree-wrap .listgroup-info-list li {font-size:12px;}
+	.refund-agree-wrap .refund-agree-summary {font-size:12px;}
+	/* 환급여부 확인 및 환급신청 End */
+	
+	/* 앱 호출 시나리오 Start */
+	.popupgroup-guide-wrap .btngroup p {font-size:12px}
+	.popupgroup-guide-wrap .btngroup ul li a {font-size: 12px; padding:10px 5px 10px 5px;}
+	.popupgroup-guide-wrap .onestore-guide-download-info-wrap .onestore-guide-download-info-inner .onestore-guide-download-title {font-size:11px;}
+	.popupgroup-guide-wrap .onestore-guide-download-info-wrap .onestore-guide-download-title strong {font-size:11px;}
+	.popupgroup-guide-wrap .popupgroup-box .popupgroup-content {margin-bottom:10px;}
+	.popupgroup-guide-wrap .onestore-guide-download-info-wrap .onestore-guide-download-title {line-height:19px;}
+	.popupgroup-guide-wrap .onestore-guide-download-info-wrap .onestore-guide-download-info-inner {padding:15px 20px;}
+	.popupgroup-guide-wrap .onestore-guide-download-info-wrap .onestore-guide-download-info-inner ol {margin:15px 0 0;}
+	.popupgroup-guide-wrap .onestore-guide-download-info-wrap .onestore-guide-download-info-inner ol li {font-size:10px;}
+	
+	.notusedfixed-pcno .notusedfixed-pcno-btn ul li button {font-size: 14px; padding:10px 5px 10px 5px;}
+	/* 앱 호출 시나리오 End */
+	
+	/* 앱 다운로드 안내 페이지 Start */
+	.onestore-guide-download-step-wrap .onestore-guide-download-title {padding:50px 0 20px 0;}
+	.onestore-guide-download-step-wrap .onestore-guide-download-step .onestore-guide-download-step-inner .onestore-guide-download-step-left strong {font-size:12px;}
+	.onestore-guide-download-step-wrap .onestore-guide-download-step .onestore-guide-download-step-inner .onestore-guide-download-step-left span {font-size:10px;}
+	.onestore-guide-download-step-wrap .onestore-guide-download-step .onestore-guide-download-step-inner .onestore-guide-download-step-right {width:95px;}
+	.onestore-guide-download-step-wrap .onestore-guide-download-step .onestore-guide-download-step-inner .onestore-guide-download-step-right div {width:90px;}
+	/* 앱 다운로드 안내 페이지 End */
+	
+	/* 사전예약 Start */
+	.reservefooterfixed .detaildownload-btn a {font-size:15px; line-height:45px;}
+	/* 사전예약 End */
+	
+	/* 즉시당첨 Start */
+	.instantlyfooterfixed .detaildownload-btn a {font-size:15px; line-height:45px;}
+	/* 즉시당첨 End */
+	
+	/* 공지사항/ FQA Start */
+	.searchheader .header-co .header-co-search .input-search-control {font-size:15px;}
+	/* 공지사항/ FQA End */
+	
+	/* 혜택 메인 Start */
+	.benefitmain-wrap .benefitmain-customer-swiper .swiper-container {
+		/*-ms-border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px;*/
+	}
+	.benefitmain-wrap .benefitmain-customer-swiper .swiper-pagination .swiper-pagination-bullet {width:5px; height:5px;}
+	/* 혜택 메인 End */
+	
+	.forminputbox .forminputbox-col input.form-input-control {font-size:12px;}
+	.formselectbox .formselectbox-col .form-select-control span {font-size:12px;}
+
+	.membership-form-wrap.tmembership .phone-num-wrap .phone-title { font-size: 12px; padding:0 5px 0 0; }
+	.membership-form-wrap.tmembership .phone-num-wrap .phone-num { font-size:12px; }
+}
+
+@media (max-width:299px) {
+	/* 게임 캐쉬, 원스토어 캐쉬 Start */
+	.mypagecash-list-wrap-co-n .date-select-result-wrap a { font-size:14px; }
+	.mypagecash-wrap .mypagecash-inner dl dt .cash-possible-title {position: relative;}
+	.mypagecash-list-wrap-co-n .layout-date-select input.date-input { padding:0 0 0 6px; font-size: 11px; width: auto; background:none; }
+	.mypagecash-list-wrap-co-n .layout-date-select input.date-input[data-placeholder]::before { font-size: 11px; }
+	/* 게임 캐쉬, 원스토어 캐쉬 End */
+	
+	/* UI datepicker Start */
+	.popup-datepicker-wrap #ui-datepicker-div {padding:10px 10px 10px 10px;}
+	.cashtable-sort-wrap #datepicker1, .cashtable-sort-wrap #datepicker2 { padding: 0 10px 0 10px;}
+	.cashtable-sort-wrap .cashtable-sort-inner .layout-list-sort-select .formselectbox-col .icon-select-calendar {display: none;}
+	.popup-datepicker-wrap .popupgroup-box .popupgroup-content {height:302px;}
+	/* UI datepicker End */
+
+	/* 기본 셀렉트 Start */
+	.cashtable-sort-wrap .cashtable-sort-inner .layout-list-sort-select .formselectbox-col .formselectbox-inner select { font-size: 11px; padding: 0 20px 0 12px; }
+	.betazone-apply-form-co .layout-list-sort-select .formselectbox-col .formselectbox-inner select { font-size: 11px; padding: 0 20px 0 12px; }
+	/* 기본 셀렉트 End */
+	
+	/* 광고성 정보 수신 동의 Start */
+	.adagree-push-wrap .adagree-push-inner dl dt .adagree-push-title { position: relative; }
+	.adagree-push-wrap .adagree-push-inner dl dd .adagree-push-date {text-align: left;}
+	/* 광고성 정보 수신 동의 End */
+	
+	/* 약관 Start */
+	.conditions-box-wrap .conditions-box-co .form-default-submit ul li {min-width: 210px;}
+	.conditions-box-wrap .conditions-box-co .form-default-submit ul li .btn-og {font-size:12px; }
+	/* 약관 End */
+	
+	/* 공지사항/ FQA Start */
+	.searchheader .header-co .header-co-search .input-search-control {font-size:13px;}
+	/* 공지사항/ FQA End */
+	
+	/* 혜택 메인 배너 리스트 Start */
+	.benefitmain-bottom-wrap {margin-bottom: 10px;}
+	.benefitmain-bottom-wrap .benefitmain-customer-nav ul {display: block;}
+	.benefitmain-bottom-wrap .benefitmain-customer-nav li {display: block;}
+	.benefitmain-bottom-wrap .benefitmain-customer-nav li a:before {display: none;}
+	.benefitmain-bottom-wrap .benefitmain-customer-nav li span {line-height: 45px;}
+	/* 혜택 메인 배너 리스트 End */
+	
+	/* 혜택 메인 Start */
+	.benefitmain-wrap .benefitmain-nav { padding: 0; }
+	.benefitmain-wrap .benefitmain-nav ul li {display: block; padding:10px;}
+	.benefitmain-wrap .benefitmain-nav ul li:last-child a:before {
+		position:absolute; content:''; left:50%; top:10px; margin-left:-120px; width:240px; height:1px; background:rgba(255,255,255,0.1); display:block;
+	}
+	.benefitmain-wrap .benefitmain-co { padding-top:20px; }
+	/* 혜택 메인 End */
+
+	/* 매거진 Start */
+	.list-move-link a .list-move-inner .item-title { font-size:12px; line-height: 18px; }
+	.list-move-link a .list-move-inner .item-title em { padding-left: 3px; }
+	.list-move-link a .list-move-inner .item-title i { margin-top: 1px; }
+	/* 매거진 End */
+}
+@media (max-width:254px) {
+	/* 게임 캐쉬, 원스토어 캐쉬 Start */
+	.cashtable-sort-wrap .cashtable-sort-inner .layout-list-sort-select .layout-list-sort-select-table .layout-list-sort-select-table { display:block; }
+	.cashtable-sort-wrap .cashtable-sort-inner .layout-list-sort-select .layout-list-sort-select-table .layout-list-sort-select-table .formselectbox-col { width:70%; display:inline-block; }
+	.cashtable-sort-wrap .cashtable-sort-inner .layout-list-sort-select .layout-list-sort-select-table .layout-list-sort-select-table em { display:inline-block; }
+	.cashtable-sort-wrap .cashtable-sort-inner .layout-list-sort-select .layout-list-sort-select-table .layout-list-sort-select-table .formselectbox-col:first-of-type { width:70%; display:block; }
+	/* 게임 캐쉬, 원스토어 캐쉬 End */
+	
+	/* 약관 Start */
+	.terms-date-wrap .terms-date-inner .formselectbox .formselectbox-col .form-select-control span {font-size:12px;}
+	.terms-date-wrap .terms-date-inner .formselectbox .formselectbox-col.selected .form-select-control span {letter-spacing: -1px;}
+	.terms-date-wrap .terms-date-inner {display: block;}
+	.terms-date-wrap .terms-date-inner .formselectbox {display: block; margin:0;}
+	.terms-date-wrap .terms-date-inner .forminputbox-btn {display: block; width:auto; text-align: center; margin:10px 0 0;}
+	.terms-date-wrap .terms-date-inner .forminputbox-btn .btn-ssm {min-width:100%;}
+	/* 약관 End */
+	
+	/* 공지사항/ FQA Start */
+	.searchheader .header-co .header-co-search .input-search-control {font-size:12px;}
+	/* 공지사항/ FQA End */
+}
+/* 마이 페이지 Style End */
+
+
+
+@media screen and (orientation: portrait) and (max-width: 359px) { /* 세로 모드 && 가로 360미만  */
+	.layout-payment {	height: 90%; }
+}
+
+@media screen and (orientation: portrait) and (min-width: 600px) { /* 세로 모드 && 가로 600이상  */
+	.layout-payment { width: 600px; height: 600px; }
+}
+
+@media screen and (orientation: landscape) { /* 가로 모드  */
+	.layout-payment { width: 60%; height: 100%; }
+}
+
+@media screen and (orientation: landscape) and (max-width: 600px) { /* 가로 모드 && 가로 600이하  */
+	.layout-payment { width: 100%; height: 100%; }
+}
+
+@media screen and (orientation: landscape) and (min-width: 1000px) { /* 가로 모드 && 가로 1000이상  */
+	.layout-payment { width: 600px; height: 600px; }
+}

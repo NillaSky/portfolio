@@ -1,0 +1,24 @@
+.container__header{
+  background-color:#f1f1f1;
+  border-radius:5px 5px 0 0;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  padding:10px;
+}
+.container__body{
+  padding:10px;
+}
+
+.container__footer,.inner-container{
+  background-color:#f1f1f1;
+  padding:10px;
+}
+
+@media (max-width:768px){
+  .container__footer{
+    background-color:#f1f1f1;
+  }
+  .inner-container{
+    background-color:blue;
+  }}

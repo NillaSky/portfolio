@@ -1,0 +1,27 @@
+{
+  "name": "kt_mvno",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "mian 브랜치를 기준으로 작업 마다 SR의 넘버링을 기준으로 브랜치를 생성한다. Ex. KMVNO-1234_[DR-2024-63461] 커밋 메시지또한 해당 브랜치명을 기준으로 간략한 작업내용을 알수있게끔 기제한다. 메인으로의 병합은 해당 작업의 배포종료 후 익일 기준으로 정리한다.",
+  "scripts": {
+  "sass": "sass dist/customer/assets/scss/style_new.scss dist/customer/assets/css/style_new.css --no-source-map && sass dist/admin/assets/scss/style_new.scss dist/admin/assets/css/style_new.css --no-source-map",
+  "sass:watch": "sass dist/customer/assets/scss/style_new.scss dist/customer/assets/css/style_new.css --watch --no-source-map",
+  "sass:watch-bo": "sass dist/admin/assets/scss/style_new.scss dist/admin/assets/css/style_new.css --watch --no-source-map",
+  "postcss": "postcss dist/customer/assets/css/style_new.css -o dist/customer/assets/css/style_new.css --no-map && postcss dist/admin/assets/css/style_new.css -o dist/admin/assets/css/style_new.css --no-map",
+  "build": "npm run sass && npm run postcss"
+  },
+  
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.5.1",
+    "postcss-cli": "^11.0.0",
+    "postcss-combine-media-query": "^1.0.1",
+    "sass": "^1.84.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ie > 9"
+  ]
+}

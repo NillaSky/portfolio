@@ -1,0 +1,219 @@
+@charset "UTF-8";
+html,
+body {
+  font-size: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+#header {
+  padding: 20px 25px;
+  background: white;
+  border-bottom: 4px solid #33D3C2;
+}
+#header h1 {
+  display: inline-block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: black;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.content-container {
+  padding: 30px 20px;
+}
+
+#tab .tab {
+  overflow-y: hidden;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+#tab .tab ::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera*/
+}
+#tab .tab .list {
+  min-width: 80px;
+  padding: 0 30px;
+  height: 50px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: rgba(51, 51, 51, 0.3);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+#tab .tab .list.on {
+  background-color: black;
+}
+
+.table-container .content {
+  display: none;
+}
+.table-container .content.on {
+  display: block;
+}
+
+.coding-list {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  text-align: center;
+  table-layout: fixed;
+}
+.coding-list thead tr th {
+  height: 50px;
+  border-bottom: 1px solid #ddd;
+  background: #f6f6f6;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  line-height: normal;
+  vertical-align: middle;
+}
+.coding-list tbody tr {
+  background-color: #fff;
+}
+.coding-list tbody tr.even {
+  background-color: #eee;
+}
+.coding-list tbody tr td {
+  height: 40px;
+  padding: 0 10px;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #333;
+  line-height: normal;
+  vertical-align: middle;
+  text-align: left;
+}
+.coding-list tbody tr td::first-child {
+  border-left: 0;
+}
+.coding-list tbody tr td:last-child {
+  text-align: center;
+}
+.coding-list [rowspan] {
+  text-align: center;
+}
+
+td.tbd {
+  position: relative;
+  background-color: #ddd;
+}
+td.tbd:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+}
+td a {
+  word-break: break-all;
+}
+
+.ok {
+  background-color: #499690 !important;
+  color: #fff !important;
+}
+.ok::before {
+  content: "완료";
+}
+
+.ing {
+  background-color: #636161 !important;
+  color: #fff !important;
+}
+.ing::before {
+  content: "진행중";
+}
+
+.top_btn {
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: fixed;
+  right: 28px;
+  bottom: 10px;
+  width: 50px;
+  height: 50px;
+  color: white;
+  border: none;
+  background: black;
+  cursor: pointer;
+}
+.top_btn.active {
+  opacity: 1;
+}
+
+.rowCounter {
+  padding: 8px 0;
+  border-top: 1px solid #555555;
+  font-size: 16px;
+}
+.rowCounter .counter {
+  font-weight: bold;
+  color: #097581;
+}
+
+@media screen and (max-width: 768px) {
+  #header h1 {
+    font-size: 1.8rem;
+  }
+  #tab .tab .list {
+    max-width: 80px;
+    height: 40px;
+    font-size: 1.4rem;
+    line-height: 40px;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+  }
+  .coding-list tbody tr td {
+    font-size: 1.2rem;
+  }
+  .coding-list tbody tr td:last-child {
+    padding: 0;
+    font-size: 1rem;
+  }
+  .number,
+  .category {
+    display: none !important;
+  }
+  .name {
+    width: 40% !important;
+  }
+  .status {
+    width: 60px !important;
+  }
+}

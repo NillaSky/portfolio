@@ -1,0 +1,17 @@
+<svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="34" cy="34" r="34" fill="#73EBE0" fill-opacity="0.08"/>
+<mask id="mask0_13172_280057" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="18" y="18" width="32" height="32">
+<circle cx="34" cy="34" r="16" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_13172_280057)">
+<path d="M17 34H51" stroke="black" stroke-width="1.5" stroke-miterlimit="10"/>
+<path d="M18 26H50" stroke="black" stroke-width="1.5" stroke-miterlimit="10"/>
+<path d="M18 42H50" stroke="black" stroke-width="1.5" stroke-miterlimit="10"/>
+</g>
+<path d="M34 18L34 50" stroke="black" stroke-width="1.5" stroke-miterlimit="10"/>
+<circle cx="34" cy="34" r="16" stroke="black" stroke-width="1.5"/>
+<ellipse cx="34" cy="34" rx="8" ry="16" stroke="black" stroke-width="1.5"/>
+<path d="M20.5 49.9987C39.1344 39.0381 48.6906 26.742 48.5833 21.5" stroke="#F4FDFD" stroke-width="5" stroke-linecap="round"/>
+<path d="M44.5 18.9983C54.5 17.5 46 34.9998 20.5 49.9987" stroke="#499690" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M20.5441 47.0001L19.3248 50.71L23.1937 51.2403" stroke="#499690" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

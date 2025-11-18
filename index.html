@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <!-- KT guide -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Cache-Control" content="no-cache"/>
+  <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
+  <meta name="Author-Date(Date)" content=""/>
+  <meta name="Description" content=""/>
+  <meta name="Keyword" content=""/>
+  <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+  <!-- <link rel="apple-touch-icon-precomposed" href="/icon-normal.png"> -->
+  <link rel="shortcut icon" href="./dist/customer/assets/images/favicon.ico" />
+  <!-- //KT guide -->
+  <link rel="stylesheet" href="./codingList/codingList.css">
+  <script src="./codingList/data/data_customer.js"></script>
+  <script src="./codingList/data/data_app.js"></script>
+  <script src="./codingList/data/data_pubGuide_fo.js"></script>
+  <script src="./codingList/data/data_pubGuide_bo.js"></script>
+  <script src="./codingList/data/data_adminBusiness.js"></script>
+  <script src="./codingList/data/data_adminSuper.js"></script>
+  <script src="./codingList/codingList.js"></script>
+  <title>포탈 | KT 마이알뜰폰</title>
+</head>
+<body>
+  <div id="wrap">
+    <header id="header">
+      <div class="header-container">
+        <div class="header-box">
+          <h1>KT 마이 알뜰폰 - 1차, 1.5차, 2차, 운영(2023~)</h1>
+        </div>
+      </div>
+    </header>
+
+    <section id="content">
+      <div class="content-container">
+        <div class="content-box">
+          <div id="tab">
+            <ul class="tab">
+
+            </ul>
+          </div>
+          <div class="table-container">
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <button type="button" class="top_btn">UP</button>
+</body>
+</html>
+
+<!--
+  개발기와 퍼블자원 현행화 : 2024.11.11 기준
+  작업범위 : 사업자(BO), 관리자(BO)
+
+  [E] : 개발 - 퍼블 현행화 한 페이지(하늘색)
+  [A] : 신규로 추가된 페이지(주황색)
+
+  ** 작업된 페이지 확인을 위한 안내 script로 불 필요시 아래 script 삭제
+-->
+<script type="text/javascript" src="./dist/admin/assets/js/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+    // $('[data-tab]').eq(4).trigger('click');
+    $('td').each(function(){
+      var findText = $(this).text();
+      if (findText.includes('[E]')) {
+        $(this).css('background','#75e6f0')
+      } else if (findText.includes('[A]')) {
+        $(this).css('background','#fca979')
+      }
+    })
+  })
+</script>

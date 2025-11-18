@@ -1,0 +1,1285 @@
+<!doctype html>
+<html lang="ko" data-schema="guide">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>KT My 알뜰폰 – 공통 가이드</title>
+		<!-- 기존 SCSS를 컴파일한 산출물 -->
+		<link rel="stylesheet" href="../../assets/default/font.css" />
+		<link rel="stylesheet" href="../../assets/default/reset.css" />
+		<link rel="stylesheet" href="../../assets/default/swiper.min.css" />
+		<!-- swiper CSS -->
+		<link rel="stylesheet" href="../../assets/css/style.css" />
+		<!-- Script -->
+		<script type="text/javascript" src="../../assets/js/jquery-3.6.0.min.js"></script>
+		<script type="text/javascript" src="../../assets/js/bootstrap-datepicker.js"></script>
+		<script type="text/javascript" src="../../assets/js/locales/bootstrap-datepicker.ko.js"></script>
+		<script type="text/javascript" src="../../assets/js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../assets/js/masonry.pkgd.min.js"></script>
+		<!-- masonry JS -->
+		<!-- <script type="text/javascript" src="../../assets/js/bundle.js"></script> -->
+		<script type="text/javascript" src="../../assets/js/common-ui.js"></script>
+
+		<style>
+			figure img {width: 100%;}
+			:root { --bg:#fff; --ink:#111; --muted:#5b6570; --line:#e6e9ef; --panel:#f7f8fa; --accent:#4b2cf0; }
+			* { box-sizing: border-box; }
+			body { margin:0; color:var(--ink); background:var(--bg); font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif; }
+			header.page-head { position:sticky; top:0; z-index:3; background:#fff; border-bottom:1px solid var(--line); }
+			.head-inner { max-width:1180px; margin:0 auto; padding:16px 20px; display:flex; gap:16px; align-items:center; justify-content:space-between; }
+			.head-title { font-size:20px; font-weight:700; letter-spacing:-.02em; }
+			nav.head-nav { display:flex; gap:8px; flex-wrap:wrap; }
+			nav.head-nav a { padding:8px 12px; border:1px solid var(--line); border-radius:999px; text-decoration:none; color:var(--ink); font-size:14px; }
+			nav.head-nav a:hover { border-color:var(--accent); color:var(--accent); }
+			.wrap, .left { overflow: visible; }
+			.panel {
+				position: sticky;
+				top: 76px;          
+				align-self: start;  
+			}
+			[data-scope="fixed_bottom"] {position: relative}
+			.panel-wrap { position: sticky; top: 76px; }
+			.wrap { max-width:1480px; margin:0 auto; padding:20px; display:grid; grid-template-columns: minmax(0,1fr) 500px; gap:20px; }
+			@media (max-width: 1024px){ .wrap{ grid-template-columns: 1fr; } }
+
+			/* 좌측: 미리보기 섹션 카드 */
+			.demo-section { background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px; margin-bottom: 30px;}
+			.demo-head { display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px solid var(--line); padding-bottom:12px; }
+			.demo-title { font-size:18px; font-weight:700; letter-spacing:-.02em; }
+			.demo-actions { display:flex; gap:8px; }
+			.btn { height:36px; padding:0 12px; border:1px solid var(--line); background:#fff; border-radius:8px; font-size:16px; cursor:pointer; }
+			.btn:hover { border-color:var(--accent); color:var(--accent); }
+			.btn.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+			.btn.icon { display:inline-flex; align-items:center; gap:6px; }
+
+			.demo-body { padding-top:16px; display:grid; gap:16px; }
+			.demo-note { color:var(--muted); font-size:16px; }
+
+			/* 우측: 마크업 패널 */
+			.panel { position:sticky; top:76px; align-self:start; border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden; }
+			.panel-head { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--line); background:#fff; }
+			.panel-title { font-weight:700; letter-spacing:-.02em; }
+			.panel-tabs { display:flex; gap:8px; }
+			.tab { height:32px; padding:0 10px; font-size:16px; border:1px solid var(--line); border-radius:6px; background:#fff; cursor:pointer; }
+			.tab[aria-selected="true"] { background:var(--accent); color:#fff; border-color:var(--accent); }
+			.panel-body { max-height: calc(100vh - 160px); overflow:auto; }
+			.panel-section { padding:12px 16px; border-bottom:1px solid var(--line); background:#fff; }
+			.panel-section h4 { margin:0 0 8px; font-size:16px; color:var(--muted); letter-spacing:-.02em; }
+			.tree { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:12px; line-height:1.5; white-space:pre; background:#fff; border:1px dashed var(--line); border-radius:8px; padding:12px; overflow:auto; }
+			pre.code { margin:0; background:#0e0f14; color:#e6e6e6; padding:14px; border-radius:10px; overflow:auto; font-size:12px; line-height:1.6; }
+
+			/* 미세 가이드 요소 */
+			.chip { display:inline-block; padding:2px 8px; border:1px solid var(--line); border-radius:999px; font-size:16px; color:var(--muted); }
+			.kbd { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas; background:#eef2ff; color:#4438ca; border:1px solid #dfe3ff; padding:.1em .4em; border-radius:4px; font-size:12px; }
+			.color-section table {
+					width: 100%;
+					border-collapse: collapse;
+					font-size: 14px;
+					margin-bottom: 20px;
+				}
+
+				.color-section th,
+				.color-section td {
+					text-align: left;
+					padding: 6px 8px;
+					border: 1px solid #e6e9ef;
+				}
+
+				.color-section thead tr {
+					background: #f7f8fa;
+				}
+
+				.color-grid {
+					display: grid;
+					grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+					gap: 12px;
+					margin-bottom: 20px;
+				}
+
+				.color-item {
+					border: 1px solid #e6e9ef;
+					border-radius: 8px;
+					padding: 8px;
+				}
+
+				.color-swatch {
+					height: 40px;
+					border-radius: 6px;
+				}
+
+				.color-label {
+					margin: 6px 0 0;
+					font-size: 13px;
+				}
+
+				.color-section h3 {
+					font-size: 16px;
+					margin: 20px 0 10px;
+					font-weight: 600;
+				}
+		</style>
+	</head>
+	<body>
+		<!-- 고정 헤더 -->
+		<header class="page-head" role="banner">
+			<div class="head-inner">
+				<div class="head-title">공통 UI 가이드</div>
+				<nav class="head-nav" aria-label="바로가기">
+					<a href="#sec-buttons">버튼</a>
+					<a href="#sec-inputs">입력</a>
+					<a href="#sec-cards">상품 카드</a>
+					<a href="#sec-fixed">하단 고정</a>
+					<a href="#sec-fn">data-fn</a>
+				</nav>
+			</div>
+		</header>
+
+		<div class="wrap" role="main">
+			<!-- 좌측: 미리보기들 -->
+			<div class="left">
+				<!-- 색상 가이드 -->
+				<section id="sec-colors" class="demo-section color-section" aria-labelledby="h-colors">
+					<div class="demo-head">
+						<h2 id="h-colors" class="demo-title">00. 컬러 & 브레이크포인트</h2>
+					</div>
+					<div class="demo-body">
+						<h3>Breakpoints</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>변수</th>
+									<th>값</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>$breakpoint-1200</td>
+									<td>1200px</td>
+									<td>데스크탑 기준</td>
+								</tr>
+								<tr><td>$breakpoint-tablet</td><td>1024px</td><td>태블릿 기준</td></tr>
+								<tr><td>$breakpoint-max_mobile</td><td>717px</td><td>모바일 최대</td></tr>
+								<tr><td>$breakpoint-fold</td><td>690px</td><td>폴더블 대응</td></tr>
+								<tr><td>$breakpoint-min_mobile</td><td>320px</td><td>모바일 최소</td></tr>
+							</tbody>
+						</table>
+
+						<h3>Guide Colors</h3>
+						<div class="color-grid">
+							<div class="color-item">
+								<div class="color-swatch" style="background:#6B3BE9;"></div>
+								<p class="color-label">$guideColor-primary<br><code>#6B3BE9</code></p>
+							</div>
+							<div class="color-item">
+								<div class="color-swatch" style="background:#FD8553;"></div>
+								<p class="color-label">$guideColor-edge<br><code>#FD8553</code></p>
+							</div>
+							<div class="color-item">
+								<div class="color-swatch" style="background:linear-gradient(92deg,#9F38FF 0%,#5C69F0 100%);"></div>
+								<p class="color-label">$guideColor-gradient<br><code>linear-gradient</code></p>
+							</div>
+							<div class="color-item">
+								<div class="color-swatch" style="background:#000;"></div>
+								<p class="color-label">$guideColor-textBasic<br><code>#000000</code></p>
+							</div>
+							<div class="color-item">
+								<div class="color-swatch" style="background:#333;"></div>
+								<p class="color-label">$guideColor-textBody<br><code>#333333</code></p>
+							</div>
+							<!-- 나머지 색상들도 같은 패턴으로 추가 -->
+						</div>
+
+						<h3>Main Colors</h3>
+						<div class="color-grid">
+							<div class="color-item">
+								<div class="color-swatch" style="background:#07BFE0;"></div>
+								<p class="color-label">$mainColor-primary01<br><code>#07BFE0</code></p>
+							</div>
+							<div class="color-item">
+								<div class="color-swatch" style="background:#6B3BE9;"></div>
+								<p class="color-label">$mainColor-primary02<br><code>#6B3BE9</code></p>
+							</div>
+							<div class="color-item">
+								<div class="color-swatch" style="background:#4553FF;"></div>
+								<p class="color-label">$mainColor-primaryText01<br><code>#4553FF</code></p>
+							</div>
+							<div class="color-item">
+								<div class="color-swatch" style="background:#8345FF;"></div>
+								<p class="color-label">$mainColor-primaryText02<br><code>#8345FF</code></p>
+							</div>
+							<!-- 추가 색상도 같은 패턴 -->
+						</div>
+
+					</div>
+				</section>
+
+				<section id="sec-buttons" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+					<div class="demo-head">
+						<h2 id="h-buttons" class="demo-title">01. 버튼</h2>
+						<div class="demo-actions">
+							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+						</div>
+					</div>
+					<div class="demo-body">
+						<p class="demo-note">
+							<span class="chip">[data-module="btn_wrap"]</span>
+							규칙에 맞춘 버튼 샘플입니다.
+						</p>
+						<div data-module="btn_wrap" aria-label="버튼 그룹">
+							<a href="#" class="btn_grey">기본 버튼</a>
+							<a href="#" class="btn_grey_white">회색/화이트</a>
+							<a href="#" class="btn_white">화이트</a>
+							<button type="button">활성</button>
+							<button type="button" class="disabled" aria-disabled="true">비활성</button>
+						</div>
+						<div data-module="btn_wrap" class="flex_direction_column" style="margin-top:12px">
+							<a href="#">세로 버튼 A</a>
+							<a href="#">세로 버튼 B</a>
+						</div>
+						<p class="demo-note">
+							<span class="chip">[data-module="btn_linked"]</span>
+							규칙에 맞춘 버튼 샘플입니다.
+						</p>
+						<a href="" data-module="btn_linked">전체보기</a>
+					</div>
+				</section>
+
+				<section id="sec-inputs" class="demo-section" data-demo="inputs" aria-labelledby="h-inputs">
+					<div class="demo-head">
+						<h2 id="h-inputs" class="demo-title">data-module="input_list"</h2>
+						<h2 id="h-inputs" class="demo-title"> data-module="input_wrap"</h2>
+						<div class="demo-actions">
+							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+						</div>
+					</div>
+					<div class="demo-body">
+						<div data-module="input_list" class="list_flex" role="group" aria-labelledby="payType">
+							<strong class="input_name" id="payType">납부 유형</strong>
+							<div data-scope="input_set" class="mobile_column">
+								<div data-module="input_wrap">
+									<input type="radio" name="pay" id="pay_auto" checked aria-describedby="payHint" />
+									<label for="pay_auto" class="radioLabel">자동이체</label>
+								</div>
+								<div data-module="input_wrap">
+									<input type="radio" name="pay" id="pay_card" />
+									<label for="pay_card" class="radioLabel">신용/체크카드</label>
+								</div>
+							</div>
+							<p id="payHint" data-module="input_alert">선택한 납부 유형에 따라 추가 입력 항목이 달라질 수 있습니다.</p>
+						</div>
+
+						<div data-module="input_list" class="list_flex" style="margin-top:12px">
+							<strong class="input_name" id="inpSet1">기본 입력</strong>
+							<div data-scope="input_set" aria-labelledby="inpSet1">
+								<div data-module="input_wrap">
+									<input type="text" inputmode="text" placeholder="이름" aria-label="이름 입력" />
+								</div>
+								<div data-module="input_wrap">
+									<input type="password" placeholder="비밀번호" aria-label="비밀번호 입력" />
+								</div>
+								<div data-module="input_wrap">
+									<div class="dropdown_area" data-fn="dropdown">
+										<button type="button" class="dropdown_btn" data-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="ddList1">
+											통신사 선택
+										</button>
+										<div class="dropdown_list" id="ddList1" role="listbox" hidden>
+											<button role="option" data-value="ktm">KT M모바일</button>
+											<button role="option" data-value="kct">KCT</button>
+											<button role="option" data-value="lg">U+</button>
+										</div>
+									</div>
+									<p data-module="input_alert" aria-live="polite" style="display:none"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- data-module="product_card_inner" -->
+				<section id="sec-cards" class="demo-section" data-demo="cards" aria-labelledby="h-cards">
+					<div class="demo-head">
+						<h2 id="h-cards" class="demo-title">data-module="product_card_inner"</h2>
+						<h2 id="h-cards" class="demo-title">data-module="product_card"</h2>
+						<div class="demo-actions">
+							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+						</div>
+					</div>
+					<div class="demo-body">
+						<div data-module="product_card_inner">
+							<div class="filter_product_flag">요금제 추천</div>
+							<ul class="product_card_list" role="list">
+								<li data-module="product_card" class="completed" role="listitem">
+									<div class="product_data">
+										<div class="img"><img src="../../assets/images/common/brand/brand_Ktmmobile.png" alt="KT M mobile"></div>
+										<h3 class="product_title">5G 모두다 맘껏 200GB+</h3>
+										<div class="product_info" aria-label="제공 내용">
+											<dl class="icon_data"><dt>데이터</dt><dd>200GB + 일 5GB + 5Mbps</dd></dl>
+											<dl class="icon_call"><dt>통화</dt><dd>무제한</dd></dl>
+											<dl class="icon_sms"><dt>문자</dt><dd>무제한</dd></dl>
+										</div>
+									</div>
+									<div class="product_bottom">
+										<div class="price_box">
+											<span class="base_price">월 55,000원</span>
+											<span class="discount_price">월 <strong>43,000</strong>원</span>
+										</div>
+										<a href="#" aria-label="요금제 상세 보기">자세히</a>
+									</div>
+								</li>
+								<li data-module="product_card" role="listitem">
+									<div class="product_data">
+										<div class="img"><img src="../../assets/images/common/brand/brand_Ktmmobile.png" alt="KT M mobile"></div>
+										<h3 class="product_title">LTE 실속 10GB</h3>
+										<div class="product_info" aria-label="제공 내용">
+											<dl class="icon_data"><dt>데이터</dt><dd>10GB + 일 2GB</dd></dl>
+											<dl class="icon_call"><dt>통화</dt><dd>300분</dd></dl>
+											<dl class="icon_sms"><dt>문자</dt><dd>기본제공</dd></dl>
+										</div>
+									</div>
+									<div class="product_bottom">
+										<div class="price_box">
+											<span class="discount_price">월 <strong>16,900</strong>원</span>
+										</div>
+										<a href="#" aria-label="요금제 상세 보기">자세히</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!--data-scope="product_view_wrap  -->
+				<section id="sec-cards" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+					<div class="demo-head">
+						<h2 id="h-buttons" class="demo-title">[data-scope="product_view_wrap"]</h2>
+						<div class="demo-actions">
+							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+						</div>
+					</div>
+					<div class="demo-body">
+						<!-- 복사용 영역 -->
+						<ul data-scope="product_view_wrap" class="view_list">
+							<li class="view_box">
+								<div class="view_info" data-trigger="">
+									<div class="img"><img src="../../assets/images/common/brand/brand_Ktmmobile.png" alt="KT M mobile"></div>
+									<div class="info_title">
+										<strong>5G 모두다 맘껏 200GB+(지니뮤직 FREE)</strong>
+									</div>
+									<div class="info_box">
+										<dl class="data">
+											<dt class="icon_data">데이터</dt>
+											<dd>15GB + 일 3GB + 최대 5Mbps</dd>
+										</dl>
+										<dl class="call">
+											<dt class="icon_call">음성통화</dt>
+											<dd>무제한</dd>
+										</dl>
+										<dl class="sms">
+											<dt class="icon_sms">메세지</dt>
+											<dd>무제한</dd>
+										</dl>
+									</div>
+									<div class="info_price">
+										<p class="info"><span class="price">월 <strong>50,400원</strong></span><span class="desc">7개월 이후 79,000원</span></p>
+									</div>
+								</div>
+								<div class="info_benefit" data-fn="accordion" data-acc="single">
+									<button class="benefit_summary" data-acc-trigger="" data-acc-item="">
+										<span class="icon logo_naverpay" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+										<span class="icon logo_millie" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+										<span class="icon logo_ktmvno" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+										제휴 혜택 최대 3개
+									</button>
+									<ul class="benefit_panel" data-acc-panel="">
+										<li>
+											<span class="icon logo_naverpay" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+											네이버페이 5000P 제공!
+										</li>
+										<li>
+											<span class="icon logo_millie" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+											밀리의 서재 전자책 구독권 무료 제공
+										</li>
+										<li>
+											<span class="icon logo_ktmvno" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+											마이알뜰폰 이벤트 데이터 쿠폰 10GB
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="view_box">
+								<div class="view_info" data-trigger="">
+									<div class="img"><img src="../../assets/images/common/brand/brand_Ktmmobile.png" alt="KT M mobile"></div>
+									<div class="info_title">
+										<strong>5G 모두다 맘껏 200GB+(지니뮤직 FREE)</strong>
+									</div>
+									<div class="info_box">
+										<dl class="data">
+											<dt class="icon_data">데이터</dt>
+											<dd>15GB + 일 3GB + 최대 5Mbps</dd>
+										</dl>
+										<dl class="call">
+											<dt class="icon_call">음성통화</dt>
+											<dd>무제한</dd>
+										</dl>
+										<dl class="sms">
+											<dt class="icon_sms">메세지</dt>
+											<dd>무제한</dd>
+										</dl>
+									</div>
+									<div class="info_price">
+										<p class="info"><span class="price">월 <strong>50,400원</strong></span><span class="desc">7개월 이후 79,000원</span></p>
+									</div>
+								</div>
+								<div class="info_benefit" data-fn="accordion" data-acc="single">
+									<button class="benefit_summary" data-acc-trigger="" data-acc-item="">
+										<span class="icon logo_naverpay" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+										<span class="icon logo_millie" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+										<span class="icon logo_ktmvno" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+										제휴 혜택 최대 3개
+									</button>
+									<ul class="benefit_panel" data-acc-panel="">
+										<li>
+											<span class="icon logo_naverpay" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+											네이버페이 5000P 제공!
+										</li>
+										<li>
+											<span class="icon logo_millie" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+											밀리의 서재 전자책 구독권 무료 제공
+										</li>
+										<li>
+											<span class="icon logo_ktmvno" role="img" aria-label="네이버페이 로고" aria-hidden="false"></span>
+											마이알뜰폰 이벤트 데이터 쿠폰 10GB
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+						<!-- //복사용 영역 -->
+					</div>
+				</section>
+
+				<!-- data-scope=components + data-module="product_swiper" -->
+				<section id="sec-cards" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+					<div class="demo-head">
+						<h2 id="h-buttons" class="demo-title">[data-scope=components] + [data-module="product_swiper"]</h2>
+						<div class="demo-actions">
+							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+						</div>
+					</div>
+					<div class="demo-body">
+						<!-- 복사용 영역 -->
+						<article data-module="container_inner">
+						<div data-module="flex_between">
+							<h2 data-module="section_title">추천 요금제</h2>
+							<a href="" data-module="btn_linked">전체보기</a>
+						</div>
+						
+						<div class="self_product_contents" data-scope="components">
+							<ul data-module="product_swiper" class="swiper-wrapper" role="list">
+								<li class="swiper-slide product_card">
+									<div class="data_group">
+										<input type="hidden" id="" value="모두 충분 15GB+">
+										<input type="hidden" id="" value="스카이라이프">
+										<input type="hidden" id="" value="">
+										<div class="img">
+											<img src="../../assets/images/main/bizlogo/img_skylife_logo.svg" alt="스카이라이프 로고">
+										</div>
+										<p class="card_title">모두 충분 15GB+모두 충분 15GB+모두 충분 15GB+</p>
+										<div class="card_info">
+											<dl class="icon_data">
+												<dt>데이터</dt>
+												<dd>15GB + 최대 10Mbps</dd>
+											</dl>
+											<dl class="icon_call">
+												<dt>음성통화</dt>
+												<dd>무제한</dd>
+											</dl>
+											<dl class="icon_sms">
+												<dt>메세지</dt>
+												<dd>무제한</dd>
+											</dl>
+										</div>
+										<ul class="card_event">
+											<li class="event_naverpay">
+												<span class="icon" role="img" aria-label="네이버페이 로고"></span>
+												네이버페이 5000P 제공!
+											</li>
+											<li class="event_millie">
+												<span class="icon" role="img" aria-label="밀리의서재 로고"></span>
+												밀리의 서재 전자책 구독권 무료 제공
+											</li>
+											<li class="event_ktmvno">
+												<span class="icon" role="img" aria-label="마이알뜰폰 로고"></span>
+												마이알뜰폰 이벤트 데이터 쿠폰 10GB
+											</li>
+										</ul>
+										<div class="card_price">
+											<del class="base_price" aria-label="정가">월 44,000원</del>
+											<p class="discounte_price" aria-label="할인 후 요금제 가격">
+												월<strong class="price">1,900원</strong>
+											</p>
+										</div>
+									</div>
+									<div class="card_btn_box">
+										<a class="btn_view" href="#">상세보기</a>
+										<a class="btn_join" href="#">가입하기</a>
+									</div>
+								</li>
+								<li class="swiper-slide product_card">
+									<div class="data_group">
+										<input type="hidden" id="" value="모두 충분 15GB+">
+										<input type="hidden" id="" value="스카이라이프">
+										<input type="hidden" id="" value="">
+										<div class="img">
+											<img src="../../assets/images/main/bizlogo/img_skylife_logo.svg" alt="스카이라이프 로고">
+										</div>
+										<p class="card_title">모두 충분 15GB+</p>
+										<div class="card_info">
+											<dl class="icon_data">
+												<dt>데이터</dt>
+												<dd>15GB + 최대 10Mbps</dd>
+											</dl>
+											<dl class="icon_call">
+												<dt>음성통화</dt>
+												<dd>무제한</dd>
+											</dl>
+											<dl class="icon_sms">
+												<dt>메세지</dt>
+												<dd>무제한</dd>
+											</dl>
+										</div>
+										<ul class="card_event">
+											<li class="event_naverpay">
+												<span class="icon" role="img" aria-label="네이버페이 로고"></span>
+												네이버페이 5000P 제공!
+											</li>
+											<li class="event_millie">
+												<span class="icon" role="img" aria-label="밀리의서재 로고"></span>
+												밀리의 서재 전자책 구독권 무료 제공
+											</li>
+											<li class="event_ktmvno">
+												<span class="icon" role="img" aria-label="마이알뜰폰 로고"></span>
+												마이알뜰폰 이벤트 데이터 쿠폰 10GB
+											</li>
+										</ul>
+										<div class="card_price">
+											<del class="base_price" aria-label="정가">월 44,000원</del>
+											<p class="discounte_price" aria-label="할인 후 요금제 가격">
+												월<strong class="price">1,900원</strong>
+											</p>
+										</div>
+									</div>
+									<div class="card_btn_box">
+										<a class="btn_view" href="#">상세보기</a>
+										<a class="btn_join" href="#">가입하기</a>
+									</div>
+								</li>
+								<li class="swiper-slide product_card">
+									<div class="data_group">
+										<input type="hidden" id="" value="모두 충분 15GB+">
+										<input type="hidden" id="" value="스카이라이프">
+										<input type="hidden" id="" value="">
+										<div class="img">
+											<img src="../../assets/images/main/bizlogo/img_skylife_logo.svg" alt="스카이라이프 로고">
+										</div>
+										<p class="card_title">모두 충분 15GB+</p>
+										<div class="card_info">
+											<dl class="icon_data">
+												<dt>데이터</dt>
+												<dd>15GB + 최대 10Mbps</dd>
+											</dl>
+											<dl class="icon_call">
+												<dt>음성통화</dt>
+												<dd>무제한</dd>
+											</dl>
+											<dl class="icon_sms">
+												<dt>메세지</dt>
+												<dd>무제한</dd>
+											</dl>
+										</div>
+										<ul class="card_event">
+											<li class="event_naverpay">
+												<span class="icon" role="img" aria-label="네이버페이 로고"></span>
+												네이버페이 5000P 제공!
+											</li>
+											<li class="event_millie">
+												<span class="icon" role="img" aria-label="밀리의서재 로고"></span>
+												밀리의 서재 전자책 구독권 무료 제공
+											</li>
+											<li class="event_ktmvno">
+												<span class="icon" role="img" aria-label="마이알뜰폰 로고"></span>
+												마이알뜰폰 이벤트 데이터 쿠폰 10GB
+											</li>
+										</ul>
+										<div class="card_price">
+											<del class="base_price" aria-label="정가">월 44,000원</del>
+											<p class="discounte_price" aria-label="할인 후 요금제 가격">
+												월<strong class="price">1,900원</strong>
+											</p>
+										</div>
+									</div>
+									<div class="card_btn_box">
+										<a class="btn_view" href="#">상세보기</a>
+										<a class="btn_join" href="#">가입하기</a>
+									</div>
+								</li>
+								<li class="swiper-slide product_card">
+									<div class="data_group">
+										<input type="hidden" id="" value="모두 충분 15GB+">
+										<input type="hidden" id="" value="스카이라이프">
+										<input type="hidden" id="" value="">
+										<div class="img">
+											<img src="../../assets/images/main/bizlogo/img_skylife_logo.svg" alt="스카이라이프 로고">
+										</div>
+										<p class="card_title">모두 충분 15GB+</p>
+										<div class="card_info">
+											<dl class="icon_data">
+												<dt>데이터</dt>
+												<dd>15GB + 최대 10Mbps</dd>
+											</dl>
+											<dl class="icon_call">
+												<dt>음성통화</dt>
+												<dd>무제한</dd>
+											</dl>
+											<dl class="icon_sms">
+												<dt>메세지</dt>
+												<dd>무제한</dd>
+											</dl>
+										</div>
+										<ul class="card_event">
+											<li class="event_naverpay">
+												<span class="icon" role="img" aria-label="네이버페이 로고"></span>
+												네이버페이 5000P 제공!
+											</li>
+											<li class="event_millie">
+												<span class="icon" role="img" aria-label="밀리의서재 로고"></span>
+												밀리의 서재 전자책 구독권 무료 제공
+											</li>
+											<li class="event_ktmvno">
+												<span class="icon" role="img" aria-label="마이알뜰폰 로고"></span>
+												마이알뜰폰 이벤트 데이터 쿠폰 10GB
+											</li>
+										</ul>
+										<div class="card_price">
+											<del class="base_price" aria-label="정가">월 44,000원</del>
+											<p class="discounte_price" aria-label="할인 후 요금제 가격">
+												월<strong class="price">1,900원</strong>
+											</p>
+										</div>
+									</div>
+									<div class="card_btn_box">
+										<a class="btn_view" href="#">상세보기</a>
+										<a class="btn_join" href="#">가입하기</a>
+									</div>
+								</li>
+							</ul>
+							<!-- Add Pagination -->
+							<div data-module="swiper_pagination" class="product_swiper_pagination" aria-label="셀프개통 가능 요금제 네비게이션"></div>
+						</div>
+									
+					</article>
+						<!-- //복사용 영역 -->
+					</div>
+				</section>
+
+				<!-- data-module="list_dotted" -->
+				<section id="sec-list" class="demo-section" data-demo="list" aria-labelledby="h-fixed">
+					<div class="demo-head">
+						<h2 id="h-fixed" class="demo-title">data-module="list_dotted"</h2>
+						<div class="demo-actions">
+							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+						</div>
+					</div>
+					<div class="demo-body">
+						<ul data-module="list_dotted">
+							<li>셀프개통에 문제가 있는 경우 각 알뜰폰 사업자 고객센터를 통해 개통을 진행할 수 있습니다.</li>
+							<li>셀프개통 중 전 통신사 해지로 모바일 데이터가 끊길 수 있으므로 Wi-Fi 환경에서 개통하는 것을 권장합니다.</li>
+							<li>미성년자는 셀프개통 대상에서 제외됩니다.</li>
+							<li>데이터 쉐어링 요금제는 셀프개통을 통한 가입이 불가하니, 각 알뜰폰 사업자 고객센터를 통해 가입해 주시기 바랍니다</li>
+							<li>단기간 다수의 회선을 개통하는 경우 셀프개통 제한이 될 수 있습니다.</li>
+							<li>eSIM 개통이 어려우신가요?
+								<a href="#">
+									<em class="color_primary" data-module="under_line_linked">eSIM 셀프개통 안내사항</em>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- data-scope="fixed_bottom" -->
+				<section id="sec-fixed" class="demo-section" data-demo="fixed" aria-labelledby="h-fixed">
+					<div class="demo-head">
+						<h2 id="h-fixed" class="demo-title">data-scope="fixed_bottom"</h2>
+						<div class="demo-actions">
+							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+						</div>
+					</div>
+					<div class="demo-body">
+						<p class="demo-note">실제 페이지에선 화면 하단에 고정되며, 여기선 구조만 예시로 보여줍니다. fixed로 수정시 확인 가능</p>
+						<section data-scope="fixed_bottom" style="position: relative;">
+							<div class="fixed_container" >
+								<button type="button" class="fixed_btn" aria-label="하단 고정 영역 열기/닫기">
+									<svg width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="2"/></svg>
+								</button>
+								<div class="desc_area">
+									<div class="img"><img src="../../assets/images/common/brand/brand_Ktmmobile.png" alt="KT M mobile"></div>
+									<div class="left">
+										<p class="title">선택한 요금제</p>
+										<div class="desc" aria-hidden="true">
+											<span>데이터 200GB</span><span>통화 무제한</span><span>문자 무제한</span>
+										</div>
+									</div>
+									<div class="right">
+										<p class="total_price">월 <span class="price_area">43,000원</span></p>
+										<p class="detail_price"><span class="main_price">기본료</span> 55,000원 / 할인 -12,000원</p>
+									</div>
+								</div>
+								<div data-module="btn_wrap">
+									<a href="#" class="btn_white">장바구니</a>
+									<a href="#" class="btn_grey_white">신청하기</a>
+								</div>
+							</div>
+						</section>
+					</div>
+				</section>
+
+				<!-- data-fn -->
+				<section id="sec-fn" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+						<div class="demo-head">
+							<h2 id="h-buttons" class="demo-title">[data-fn="scroll_nav"]</h2>
+							<div class="demo-actions">
+								<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+								<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+							</div>
+						</div>
+						<div class="demo-body">
+							<p class="demo-note">
+								<span class="chip">[data-fn="scroll_nav"]</span>
+								<span class="chip">data-fn="scroll_nav"</span>"로 감싼 영역안의 <br>
+								<span class="chip">data-trigger="tab"</span>으로 설정 부분들을 클릭시
+								해당 탭으로 자연스럽게 이동하여 초점 이동
+							</p>
+							<!-- 복사용 영역  data-bound="true" 제외-->
+							<ol class="step_list" data-fn="scroll_nav">
+									<li data-trigger="tab">
+										<span class="step">01</span>
+									</li>
+									<li data-trigger="tab">
+										<span class="step">02</span>
+									</li>
+									<li data-trigger="tab">
+										<span class="step">03</span>
+									</li>
+									<li data-trigger="tab">
+										<span class="step">04</span>
+									</li>
+									<li data-trigger="tab">
+										<span class="step">05</span>
+									</li>
+									<li data-trigger="tab">
+										<span class="step">06</span>
+									</li>
+								</ol>
+								<!-- //복사용 영역 -->
+						</div>
+				</section>
+
+				<section id="sec-fn" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+					<div class="demo-head">
+						<h2 id="h-buttons" class="demo-title">[data-fn="accordion"]  + (data-acc="single // "multiple")</h2>
+						<div class="demo-actions">
+							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+						</div>
+					</div>
+					<div class="demo-body self_faq">
+						<p class="demo-note">
+							<span class="chip">data-fn="accordion"</span>"로 감싼 영역안의 <br>
+							<span class="chip">"data-acc-trigger"</span>으로 설정 부분들을 클릭시
+							<span class="chip">"data-acc-panel"</span> 로 설정된 영역을 작동시킴.
+						</p>
+						<!-- 복사용 영역 -->
+						<ul class="faq_list" data-fn="accordion" data-acc="single">
+							<li class="faq_item" data-acc-item>
+								<button type="button" class="faq_question" data-acc-trigger>
+									<em>Q</em>
+									<p>질문</p>
+								</button>
+								<div class="faq_answer" data-acc-panel>
+									<p>
+										답변
+									</p>
+								</div>
+							</li>
+
+							<li class="faq_item" data-acc-item>
+								<button type="button" class="faq_question" data-acc-trigger>
+									<em>Q</em>
+									<p>다른 질문</p>
+								</button>
+								<div class="faq_answer" data-acc-panel>
+									<p>두 번째 답변</p>
+								</div>
+							</li>
+						</ul>
+						<!-- //복사용 영역 -->
+					</div>
+				</section>
+
+				<section id="sec-fn" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+					<div class="demo-head">
+						<h2 id="h-buttons" class="demo-title">[data-fn="dropdown"]</h2>
+						<div class="demo-actions">
+							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+						</div>
+					</div>
+					<div class="demo-body">
+						<p class="demo-note">
+							<span class="chip">data-fn="dropdown"</span>"로 감싼 영역안의 <br>
+							<span class="chip">"data-trigger"</span>으로 설정 부분들을 클릭시
+							<span class="chip">"data-panel"</span> 로 설정된 영역을 작동시킴. <br>
+							<span class="chip">data-duration</span>	100	열고 닫는 애니메이션 시간(ms) <br>
+							<span class="chip">data-close-others</span>	true	다른 드롭다운 자동으로 닫기 <br>
+							<span class="chip">data-disabled</span>	—	래퍼에 있으면 동작 막음(읽기 전용처럼) <br>
+						</p>
+						<!-- 복사용 영역 -->
+						<div data-fn="dropdown">
+							<button type="button" data-trigger>
+								드롭다운 버튼
+							</button>
+							<div role="listbox" data-panel>
+								<button role="option" data-value="ktm">KT M모바일</button>
+								<button role="option" data-value="kct">KCT</button>
+								<button role="option" data-value="lg">U+</button>
+							</div>
+						</div>
+						<!-- //복사용 영역 -->
+					</div>
+				</section>
+
+				<section id="sec-fn" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+					<div class="demo-head">
+						<h2 id="h-buttons" class="demo-title">[data-fn="class_toggle"] + [data-mode="multiple"] + [data-target=""]</h2>
+						<div class="demo-actions">
+							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+						</div>
+					</div>
+					<div class="demo-body">
+						<p class="demo-note">
+							<span class="chip">data-fn="class_toggle"</span>"로 감싼 영역안의 <br>
+							<span class="chip">"data-trigger"</span>으로 설정 부분들을 클릭시 active class를 토글시킴 <br>
+							<span class="chip">"data-mode" 미설정 시 기본은 싱글, multiple로 설정시 중복 설정</span> <br>
+							<span class="chip">"data-trigger" + "data-target" 조합으로 셀렉터를 통한 클래스 부여 가능</span>
+							
+						</p>
+						<!-- 복사용 영역 -->
+						<div data-fn="class_toggle">
+							<button type="button" data-trigger>
+								클래스 토글 버튼
+							</button>
+						</div>
+						<!-- //복사용 영역 -->
+					</div>
+				</section>
+
+				<section id="sec-fn" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+					<div class="demo-head">
+						<h2 id="h-buttons" class="demo-title">[tab_switch"] + [data-trigger=""] + [data-tab-panel=""]</h2>
+						<h2 id="h-buttons" class="demo-title">[data-fn="id_masking] 주민 번호 <br> [data-fn="numeric_input] 넘버 입력 폼</h2>
+						<div class="demo-actions">
+							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
+							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
+						</div>
+					</div>
+					<div class="demo-body">
+						<p class="demo-note">
+							<span class="chip">"tab_switch"</span>로 감싼 영역안의 <br>
+							<span class="chip">"data-trigger=""</span>으로 설정 부분들을 클릭시 <br>
+							<span class="chip">"data-tab-panel=""</span>의 트리거와 같은 영역을 토글시킴 <br>
+							
+						</p>
+						<p class="demo-note">
+							<span class="chip">"data-fn="id_masking"</span> 주민번호 입력용 폼 13자리 입력시 뒷자리 7자리 마스킹처리 <br>
+							<span class="chip">"data-fn="numeric_input"</span>으로 설정시 아래 속성들을 통해 기능 작동 <br>
+							<span class="chip">"data-maxlength" + "data-hyphen" or "data-hyphen-every"</span> <br>
+							조합으로 최대 길이와 하이픈이 들어갈 자리 지정 가능 이때 input 속성은 text사용
+						</p>
+						<!-- 복사용 영역 -->
+						<div data-module="content_box" class="box_lined" data-fn="tab_switch">
+							<fieldset data-module="input_list">
+								<legend class="input_name">인증수단</legend>
+
+								<div data-scope="input_set" class="tab_wrap" role="radiogroup" aria-label="인증수단">
+									<div data-module="input_wrap" data-trigger="tab1">
+										<input type="radio" id="certify_id_card" name="certify_type" value="id_card" checked
+													aria-controls="section-id_card section-dr_license" aria-expanded="true">
+										<label for="certify_id_card" class="radioLabel"><span class="icon"></span>주민등록증</label>
+									</div>
+									<div data-module="input_wrap" data-trigger="tab2">
+										<input type="radio" id="certify_dr_license" name="certify_type" value="dr_license"
+													aria-controls="section-id_card section-dr_license" aria-expanded="false">
+										<label for="certify_dr_license" class="radioLabel"><span class="icon"></span>운전면허증</label>
+									</div>
+								</div>
+							</fieldset>
+
+
+							<!-- case:1 주민등록증 -->
+							<fieldset id="section-id_card" data-tab-panel="tab1" aria-labelledby="legend-id_card">
+								<legend id="legend-id_card" class="visually_hidden">주민등록증 인증 정보</legend>
+
+								<figure>
+									<img src="../../assets/images/common/img_idCard.png" alt="주민등록증 이미지">
+								</figure>
+
+								
+								<div data-module="input_list" class="list_flex">
+									<div data-module="input_wrap">
+										<label class="input_name" for="name">이름</label>
+										<input type="text" id="name" name="name" placeholder="홍길동"
+													autocomplete="name" required>
+									</div>
+									<div data-module="input_wrap">
+										<label class="input_name" for="resident_number_mask">주민등록번호</label>
+										<input type="text" id="resident_number_mask" name="resident_number_mask" data-fn="id_masking"
+											placeholder="‘-’ 제외한 숫자만 입력해 주세요" inputmode="numeric" data-maxlength="13" autocomplete="off" required >
+										<!-- 실제 서버 전송용 -->
+										<input type="hidden" name="resident_number">
+									</div>
+									<div data-module="input_wrap">
+										<label class="input_name" for="hp_number">연락 가능 전화번호</label>
+										<input type="tel" id="hp_number" name="hp_number" data-fn="numeric_input"
+													inputmode="numeric" placeholder="휴대폰 번호 ‘-’없이 입력해주세요"
+													required data-maxlength="11" data-hyphen="3,4,4">
+									</div>
+								</div>
+
+								<div data-module="input_list">
+									<div data-module="input_wrap">
+										<label class="input_name" for="card_date">발급 일자</label>
+										<input type="text" id="card_date" name="card_date" data-fn="numeric_input"
+													inputmode="numeric" data-maxlength="8" placeholder="주민등록증 발급 일자 숫자만 입력(예 19990626)"
+													required>
+									</div>
+									<div data-scope="field_form" class="checkbox">
+										<div class="input_inner">
+											<input type="checkbox" id="CheckBox_01">
+											<label for="CheckBox_01"><span class="icon_check"></span><span>[필수] 본인 조회에 동의합니다.</span></label>
+										</div>
+									</div>
+								</div>
+								
+								<div data-module="input_list">
+									<div data-module="input_wrap">
+										<label class="input_name" for="address">주소</label>
+										<div class="input_box">
+											<input type="text" id="address01" name="address" placeholder="주소를 검색해 주세요"
+														required>
+											<button type="button" title="새창열림"><span>주소 찾기</span></button>
+										</div>
+										<input type="text" id="address" name="address" placeholder="상세 주소를 입력해 주세요">
+									</div>
+								</div>
+
+								<div data-module="input_list">
+									<div data-module="input_wrap">
+										<label class="input_name" for="email">이메일</label>
+										<input type="email" id="email" name="email" placeholder="이메일을 입력해 주세요" required>
+									</div>
+								</div>
+							</fieldset>
+							<!-- //case:1 주민등록증 -->
+
+							<!-- case:2 운전면허증 -->
+							<fieldset id="section-dr_license" data-tab-panel="tab2" aria-labelledby="legend-dr_license">
+								<legend id="legend-dr_license" class="visually_hidden">주민등록증 인증 정보</legend>
+
+								<figure>
+									<img src="../../assets/images/common/img_drCard.png" alt="주민등록증 이미지">
+								</figure>
+
+								<div data-module="input_list" class="list_flex">
+									<div data-module="input_wrap">
+										<label class="input_name" for="name">이름</label>
+										<input type="text" id="name" name="name" placeholder="홍길동"
+													autocomplete="name" required>
+									</div>
+
+									<div data-module="input_wrap">
+										<label class="input_name" for="hp_number">연락 가능 전화번호</label>
+										<input type="tel" id="hp_number" name="hp_number" data-fn="numeric_input"
+													inputmode="numeric" placeholder="휴대폰 번호 ‘-’없이 입력해주세요"
+													required data-maxlength="11" data-hyphen="3,4,4">
+									</div>
+								</div>
+
+								<div data-module="input_list">
+									<div data-module="input_wrap">
+										<label class="input_name" for="card_date">발급 일자</label>
+										<input type="text" id="card_date" name="card_date" data-fn="numeric_input"
+													inputmode="numeric" data-maxlength="8" placeholder="주민등록증 발급 일자 숫자만 입력(예 19990626)"
+													required>
+									</div>
+								</div>
+
+								<div data-module="input_list" class="license_number">
+									<div data-module="input_wrap">
+										<p class="input_name">면허 번호</p>
+										<div class="dropdown_area" data-fn="dropdown" data-close-others="false">
+											<div class="dropdown_title">
+												<button type="button" class="dropdown_btn" data-trigger aria-expanded="false" aria-controls="area_number_list">
+													<span data-label>지역 선택</span>
+												</button>
+											</div>
+											<ul class="dropdown_list" id="area_number_list" data-panel aria-label="지역 번호" aria-hidden="true" hidden>
+												<li><button type="button" data-option data-value="area_number1">지역 번호1</button></li>
+												<li><button type="button" data-option data-value="area_number2">지역 번호2</button></li>
+												<li><button type="button" data-option data-value="area_number3">지역 번호3</button></li>
+												<li><button type="button" data-option data-value="area_number4">지역 번호4</button></li>
+											</ul>
+										</div>
+										<input type="number" id="area_number_list" name="area_number_list" placeholder="뒤 10자리 숫자만 입력해주세요" data-fn="numeric_input" data-maxlength="10">
+										<input type="hidden" name="area_number" id="area_number_value" required>
+									</div>
+									<div data-scope="field_form" class="checkbox">
+										<div class="input_inner">
+											<input type="checkbox" id="CheckBox_01">
+											<label for="CheckBox_01"><span class="icon_check"></span><span>[필수] 본인 조회에 동의합니다.</span></label>
+										</div>
+									</div>
+								</div>
+								
+								<div data-module="input_list">
+									<div data-module="input_wrap">
+										<label class="input_name" for="address">주소</label>
+										<div class="input_box">
+											<input type="text" id="address" name="address" placeholder="주소를 검색해 주세요"
+														required>
+											<button type="button" title="새창열림"><span>주소 찾기</span></button>
+										</div>
+										<input type="text" id="address" name="address" placeholder="상세 주소를 입력해 주세요">
+									</div>
+								</div>
+
+								<div data-module="input_list">
+									<div data-module="input_wrap">
+										<label class="input_name" for="email">이메일</label>
+										<input type="email" id="email" name="email" placeholder="이메일을 입력해 주세요" required>
+									</div>
+								</div>
+							</fieldset>
+							<!-- //case:2 운전면허증 -->
+						</div>
+						<!-- //복사용 영역 -->
+					</div>
+				</section>
+			</div>
+
+			<!-- 우측: 마크업 패널 -->
+			<aside id="panel" class="panel" aria-label="마크업 패널">
+				<div class="panel-head">
+					<div class="panel-title">마크업 구조</div>
+					<div class="panel-tabs" role="tablist" aria-label="보기 전환">
+						<button class="tab" role="tab" aria-selected="true" data-tab="tree">트리</button>
+						<button class="tab" role="tab" aria-selected="false" data-tab="code">코드</button>
+					</div>
+				</div>
+				<div class="panel-body">
+					<section class="panel-section" data-view="tree">
+						<h4>요약 트리</h4>
+						<div class="tree" id="treeView">좌측 섹션에서 <span class="kbd">마크업 트리</span>를 눌러보세요.</div>
+					</section>
+					<section class="panel-section" data-view="code" hidden>
+						<h4>전체 코드</h4>
+						<pre class="code" id="codeView"><code><!-- 코드가 여기에 표시됩니다 --></code></pre>
+					</section>
+				</div>
+			</aside>
+		</div>
+
+			<!-- 최소 기능 JS: 드롭다운/토글 + 마크업 패널 생성기 -->
+			<script>
+				// ===== 드롭다운 (데모용) =====
+				document.querySelectorAll('.dropdown_area[data-fn="dropdown"]').forEach(area => {
+					const btn = area.querySelector('[data-trigger]');
+					const list = area.querySelector('.dropdown_list');
+					const alertP = area.closest('[data-module="input_wrap"]').querySelector('[data-module="input_alert"]');
+
+					const open = () => { area.classList.add('active'); btn.setAttribute('aria-expanded','true'); list.hidden=false; };
+					const close= () => { area.classList.remove('active'); btn.setAttribute('aria-expanded','false'); list.hidden=true; };
+
+					btn.addEventListener('click', () => (btn.getAttribute('aria-expanded')==='true')? close() : open());
+					list.querySelectorAll('button[role="option"]').forEach(opt => {
+						opt.addEventListener('click', () => {
+							btn.textContent = opt.textContent; btn.dataset.value = opt.dataset.value || '';
+							if (alertP) { alertP.style.display='block'; alertP.textContent = `선택됨: ${opt.textContent}`; }
+							close(); btn.focus();
+						});
+					});
+					document.addEventListener('click', (e)=>{ if(!area.contains(e.target)) close(); });
+				});
+
+				// ===== 패널 탭 전환 =====
+				const tabs = document.querySelectorAll('.tab');
+				const views = {
+					tree: document.querySelector('[data-view="tree"]'),
+					code: document.querySelector('[data-view="code"]')
+				};
+				tabs.forEach(t => {
+					t.addEventListener('click', () => {
+						tabs.forEach(x => x.setAttribute('aria-selected', String(x===t)));
+						views.tree.hidden = t.dataset.tab !== 'tree';
+						views.code.hidden = t.dataset.tab !== 'code';
+					});
+				});
+
+				// ===== 유틸: HTML 이스케이프 & 들여쓰기 =====
+				const escapeHTML = (s) => s
+					.replace(/&/g,'&amp;')
+					.replace(/</g,'&lt;')
+					.replace(/>/g,'&gt;');
+
+				function prettyOuterHTML(el){
+					const div = document.createElement('div');
+					div.appendChild(el.cloneNode(true));
+					// 자신만 보여주고 내부 공백 다듬기
+					let html = div.innerHTML
+						.replace(/\s+class=""/g,'')        // 빈 클래스 정리
+						.replace(/\s+style=""/g,'');       // 빈 스타일 정리
+					// 간단한 pretty print
+					const tab = '  ';
+					let result = '';
+					let indent = 0;
+					html.split(/>\s*</g).forEach((segment, i, arr) => {
+						if (segment.match(/^\/\w/)) indent--;                 // 닫는 태그
+						result += (tab.repeat(indent) + '<' + segment + '>\n');
+						if (segment.match(/^(\w+)(?!.*\/$).*(?!<\/)\w+.*$/)) indent++; // 여는 태그 (self-close 제외)
+					});
+					// 처음/끝 <> 보정
+					result = result.trim();
+					if (!result.startsWith('<')) result = '<' + result;
+					if (!result.endsWith('>')) result = result + '>';
+					return escapeHTML(result);
+				}
+
+				// ===== 유틸: 트리 문자열 만들기 =====
+				function getClassString(el) {
+				// 가장 안전: classList → 토큰 join
+				if (el.classList && el.classList.length) {
+					return Array.from(el.classList).join(' ');
+				}
+				// SVG 등에서 className이 SVGAnimatedString일 수 있으므로 getAttribute로 강제 문자열화
+				const raw = el.getAttribute && el.getAttribute('class');
+				return (raw || '').trim();
+			}
+
+			// 추천 요금제 스와이퍼 - 시작
+			var product_swiper = new Swiper('.self_product_contents', { 
+				slidesPerView: 2.6,
+				spaceBetween: 24,
+				speed: 1000,
+				observer: true,
+				observeParents: true,
+				pagination: {
+					el: '.product_swiper_pagination',
+					clickable: true
+				},
+				breakpoints: {
+					717: { slidesPerView: 1, spaceBetween: 10, slidesPerGroup: 1 },
+					1024: { slidesPerView: 2.5 }
+				},
+				on: {
+					slideChange: function() { if (typeof enabledShowingFocus === 'function') enabledShowingFocus(product_swiper); },
+					resize: function() { if (typeof enabledShowingFocus === 'function') enabledShowingFocus(product_swiper); }
+				}
+			});
+			if (typeof enabledShowingFocus === 'function') enabledShowingFocus(product_swiper);
+			// 추천 요금제 스와이퍼 - 끝
+
+			// 트리 문자열 만들기 (안전 버전)
+			function buildTree(node, depth = 0) {
+				// Element 노드만 처리 (텍스트/주석/문자 등은 건너뜀)
+				if (!(node instanceof Element)) return '';
+
+				const pad = '  '.repeat(depth);
+				const name = (node.tagName || 'node').toLowerCase();
+
+				// data-* 들은 getAttribute로 읽기 (없으면 빈 문자열)
+				const dm = node.getAttribute && node.getAttribute('data-module');
+				const ds = node.getAttribute && node.getAttribute('data-scope');
+
+				const cls = getClassString(node);
+				const clsSuffix = cls ? ('.' + cls.split(/\s+/).join('.')) : '';
+				const dmSuffix  = dm ? `[data-module="${dm}"]` : '';
+				const dsSuffix  = ds ? `[data-scope="${ds}"]` : '';
+
+				let line = `${pad}• ${name}${dmSuffix}${dsSuffix}${clsSuffix}\n`;
+
+				// 자식은 Element만 순회
+				Array.from(node.children || []).forEach(ch => {
+					line += buildTree(ch, depth + 1);
+				});
+
+				return line;
+			}
+
+			// ===== 사이드 패널 연동 =====
+			const treeView = document.getElementById('treeView');
+			const codeView = document.getElementById('codeView');
+			let lastCode = '';
+
+			function updatePanelFromSection(sectionEl){
+				const wrapper = document.createElement('div');
+				const body = sectionEl.querySelector('.demo-body');
+				if (body) {
+					wrapper.appendChild(body.cloneNode(true));
+				}
+
+				// 트리
+				treeView.textContent = buildTree(wrapper);
+
+				// 코드
+				const html = prettyOuterHTML(wrapper);
+				codeView.innerHTML = html;
+				lastCode = html.replace(/&lt;/g,'<')
+											.replace(/&gt;/g,'>')
+											.replace(/&amp;/g,'&');
+			}
+
+				// 각 섹션의 버튼 연결
+				document.querySelectorAll('.demo-section').forEach(sec => {
+					const btnTree = sec.querySelector('.js-show-tree');
+					const btnCode = sec.querySelector('.js-show-code');
+					const load = () => updatePanelFromSection(sec);
+
+					btnTree?.addEventListener('click', () => {
+						load();
+						document.querySelector('.tab[data-tab="tree"]').click();
+					});
+					btnCode?.addEventListener('click', () => {
+						load();
+						document.querySelector('.tab[data-tab="code"]').click();
+					});
+				});
+
+				// 하단 고정 영역 토글 (데모)
+				(function () {
+					const container = document.querySelector('[data-scope="fixed_bottom"] .fixed_container');
+					const btn = container?.querySelector('.fixed_btn');
+					btn?.addEventListener('click', () => {
+						container.classList.toggle('active');
+					});
+				})();
+			</script>
+	</body>
+</html>

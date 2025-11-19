@@ -2295,14 +2295,33 @@ function loadHTML(selector, url) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // 현재 페이지 경로를 기준으로 상대 경로 계산
+    const currentPath = window.location.pathname;
+
+    // html 폴더를 찾아서 깊이 계산
+    // 예: /dist/customer/html/home/main.html -> depth = 1 (home)
+    // 예: /html/home/main.html -> depth = 1 (home)
+    // 예: C:/Users/.../html/home/main.html -> depth = 1 (home)
+
+    let relativePath = '../';  // 기본값: 한 단계 위 (대부분의 페이지가 html/[module]/ 구조)
+
+    // 경로에서 'html' 이후 부분 추출
+    const htmlMatch = currentPath.match(/\/html\/(.+)/);
+    if (htmlMatch) {
+        const afterHtml = htmlMatch[1];
+        const slashCount = (afterHtml.match(/\//g) || []).length;
+
+        // html/home/main.html -> slashCount = 1 -> ../
+        // html/usim/subfolder/page.html -> slashCount = 2 -> ../../
+        relativePath = slashCount > 0 ? '../'.repeat(slashCount) : '../';
+    }
+
     const elementsToLoad = {
-        "#header": "/dist/customer/html/common/header.html",
-        "#footer": "/dist/customer/html/common/footer.html",
+        "#header": `${relativePath}common/header.html`,
+        "#footer": `${relativePath}common/footer.html`,
     };
 
     Object.entries(elementsToLoad).forEach(([selector, url]) => loadHTML(selector, url));
-  loadHTML("#header", "/dist/customer/html/common/header.html");
-  loadHTML("#footer", "/dist/customer/html/common/footer.html");
 });
 
 /* header pageTitleContainer position 동적 처리 */

@@ -90,8 +90,8 @@ export const skillGroups = [
     items: [
       { name: 'JavaScript', level: 80 },
       { name: 'jQuery', level: 85 },
-      { name: 'React', level: 60 },
-      { name: 'Vue 3', level: 55 },
+      { name: 'React', level: 30 },
+      { name: 'Vue 3', level: 30 },
     ],
   },
   {

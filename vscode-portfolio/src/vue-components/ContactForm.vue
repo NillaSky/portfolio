@@ -43,92 +43,60 @@
 
       <br />
 
-      <!-- 메시지 폼 -->
-      <section class="form-section">
-        <p class="comment">/** 메시지 보내기 */</p>
+      <!-- 퍼블리싱 작업물 미리보기 -->
+      <section class="preview-section">
+        <p class="comment">/** 퍼블리싱 작업물 미리보기 */</p>
         <br />
 
-        <form @submit.prevent="handleSubmit" class="form" novalidate>
-          <div class="field">
-            <label for="contact-name" class="label">
-              <span class="property">name</span>
-              <span class="punct">:</span>
-            </label>
-            <input
-              id="contact-name"
-              v-model="form.name"
-              type="text"
-              class="input"
-              placeholder="이름을 입력하세요"
-              required
-              aria-required="true"
-            />
-          </div>
+        <div class="preview-tabs" role="tablist" aria-label="페이지 미리보기 선택">
+          <button
+            type="button"
+            class="preview-tab"
+            :class="{ active: activeTab === 'guide' }"
+            role="tab"
+            :aria-selected="activeTab === 'guide'"
+            @click="activeTab = 'guide'"
+          >
+            <span class="punct">01 </span>
+            <span class="string">공통 UI 가이드</span>
+          </button>
+          <button
+            type="button"
+            class="preview-tab"
+            :class="{ active: activeTab === 'main' }"
+            role="tab"
+            :aria-selected="activeTab === 'main'"
+            @click="activeTab = 'main'"
+          >
+            <span class="punct">02 </span>
+            <span class="string">메인 페이지</span>
+          </button>
+        </div>
 
-          <div class="field">
-            <label for="contact-email" class="label">
-              <span class="property">email</span>
-              <span class="punct">:</span>
-            </label>
-            <input
-              id="contact-email"
-              v-model="form.email"
-              type="email"
-              class="input"
-              placeholder="이메일 주소"
-              required
-              aria-required="true"
-            />
-          </div>
-
-          <div class="field">
-            <label for="contact-msg" class="label">
-              <span class="property">message</span>
-              <span class="punct">:</span>
-            </label>
-            <textarea
-              id="contact-msg"
-              v-model="form.message"
-              class="textarea"
-              placeholder="메시지를 입력하세요..."
-              rows="5"
-              required
-              aria-required="true"
-            />
-          </div>
-
-          <div class="btn-row">
-            <button type="submit" class="btn-submit" :disabled="submitted">
-              <span v-if="!submitted">
-                <span class="keyword">send</span>
-                <span class="punct">()</span>
-              </span>
-              <span v-else class="success">✓ 전송 완료</span>
-            </button>
-            <p v-if="submitted" class="comment success-msg">
-              // 메시지가 전송되었습니다! 빠른 시일 내에 연락드리겠습니다.
-            </p>
-          </div>
-        </form>
+        <div class="preview-frame-wrap">
+          <iframe
+            :key="activeTab"
+            :src="activeTab === 'guide' ? guideUrl : mainUrl"
+            class="preview-frame"
+            :title="activeTab === 'guide' ? '공통 UI 가이드 미리보기' : '메인 페이지 미리보기'"
+            sandbox="allow-scripts allow-same-origin allow-forms"
+          />
+        </div>
       </section>
     </div>
   </article>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 import { profile } from '../data/resume.js'
 
-const form = reactive({ name: '', email: '', message: '' })
-const submitted = ref(false)
+const activeTab = ref('guide')
 
-function handleSubmit() {
-  if (!form.name || !form.email || !form.message) return
-  // 실제 서비스에서는 이메일 API 연동
-  const mailto = `mailto:${profile.email}?subject=포트폴리오 문의 from ${form.name}&body=${encodeURIComponent(form.message)}`
-  window.open(mailto)
-  submitted.value = true
-}
+// 개발 서버의 /customer-preview 미들웨어를 통해 서빙
+// (vite.config.js의 serve-customer-preview 플러그인 참고)
+const guideUrl = '/customer-preview/html/pubGuide/common_guide.html'
+const mainUrl = '/customer-preview/html/home/main.html'
 </script>
 
 <style scoped>
@@ -166,78 +134,59 @@ function handleSubmit() {
   border-bottom-color: var(--text-string);
 }
 
-.form-section {
-  max-width: 560px;
+/* 미리보기 섹션 */
+.preview-section {
+  margin-top: 8px;
 }
 
-.form {
+.preview-tabs {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.label {
-  font-size: 13px;
-}
-
-.input,
-.textarea {
-  background: var(--bg-input);
+.preview-tab {
+  background: transparent;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  color: var(--text-primary);
+  color: var(--text-secondary);
   font-family: var(--font-mono);
-  font-size: 13px;
-  padding: 8px 10px;
-  outline: none;
-  transition: border-color 0.15s;
-  resize: vertical;
-}
-
-.input:focus,
-.textarea:focus {
-  border-color: var(--accent-blue);
-}
-
-.input::placeholder,
-.textarea::placeholder {
-  color: var(--text-muted);
-}
-
-.btn-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.btn-submit {
-  background: var(--accent-blue);
-  border: none;
-  border-radius: var(--radius-sm);
-  color: #fff;
-  padding: 8px 20px;
-  font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12px;
+  padding: 5px 12px;
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
-.btn-submit:hover:not(:disabled) {
-  opacity: 0.85;
+.preview-tab:hover {
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
 }
 
-.btn-submit:disabled {
-  opacity: 0.6;
-  cursor: default;
+.preview-tab.active {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: #fff;
 }
 
-.success { color: var(--accent-teal); }
-.success-msg { font-size: 12px; }
+.preview-tab.active .string {
+  color: #fff;
+}
+
+.preview-tab.active .punct {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.preview-frame-wrap {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #fff;
+}
+
+.preview-frame {
+  width: 100%;
+  height: 600px;
+  border: none;
+  display: block;
+}
 </style>

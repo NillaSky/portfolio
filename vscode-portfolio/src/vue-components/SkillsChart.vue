@@ -92,10 +92,13 @@ function toCamel(str) {
 .skills-wrapper {
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 24px 32px;
   font-family: var(--font-mono);
   font-size: 13px;
   color: var(--text-primary);
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .comment { color: var(--text-comment); }

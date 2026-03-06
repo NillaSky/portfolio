@@ -26,9 +26,13 @@
 
 .content {
   flex: 1;
+  min-width: 0;
   padding: 16px 24px;
   overflow-y: auto;
+  overflow-x: hidden;
   color: var(--text-primary);
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .block {
@@ -109,8 +113,14 @@
     display: none;
   }
 
+  .wrapper {
+    overflow-x: hidden;
+  }
+
   .content {
     padding: 16px;
+    overflow-x: hidden;
+    word-break: break-all;
   }
 
   .profileCard {

@@ -1,9 +1,12 @@
 .wrapper {
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 24px 32px;
   font-family: var(--font-mono);
   font-size: 13px;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .header {
@@ -136,6 +139,8 @@
 @media (max-width: 768px) {
   .wrapper {
     padding: 16px;
+    overflow-x: hidden;
+    word-break: break-all;
   }
 
   .cardHeader {

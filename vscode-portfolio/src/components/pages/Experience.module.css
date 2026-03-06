@@ -132,6 +132,22 @@
   font-family: var(--font-mono);
 }
 
+/* ── 모바일 ── */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 16px;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .period {
+    white-space: normal;
+  }
+}
+
 /* Syntax colors */
 .keyword { color: var(--text-keyword); }
 .variable { color: var(--accent-teal); }

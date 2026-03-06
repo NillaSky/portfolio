@@ -189,4 +189,15 @@ const mainUrl = '/customer-preview/html/home/main.html'
   border: none;
   display: block;
 }
+
+/* ── 모바일 ── */
+@media (max-width: 768px) {
+  .contact-wrapper {
+    padding: 16px;
+  }
+
+  .preview-frame {
+    height: 400px;
+  }
+}
 </style>

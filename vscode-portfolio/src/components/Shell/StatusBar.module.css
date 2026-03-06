@@ -47,3 +47,10 @@
 .themeBtn:hover {
   background: rgba(255, 255, 255, 0.15);
 }
+
+/* ── 모바일 ── */
+@media (max-width: 768px) {
+  .hideOnMobile {
+    display: none;
+  }
+}

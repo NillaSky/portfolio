@@ -103,6 +103,21 @@
   text-decoration: underline;
 }
 
+/* ── 모바일 ── */
+@media (max-width: 768px) {
+  .lineNumbers {
+    display: none;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .profileCard {
+    flex-wrap: wrap;
+  }
+}
+
 /* Syntax colors */
 .comment { color: var(--text-comment); }
 .keyword { color: var(--text-keyword); }

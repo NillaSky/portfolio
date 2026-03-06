@@ -5,39 +5,39 @@
       <!-- ───────────── 목차 ───────────── -->
       <nav class="toc">
         <p class="toc-title">목차</p>
-        <a href="#s0">0. 이 문서 사용법</a>
-        <a href="#s1">1. 프로젝트 구조</a>
-        <a href="#s1-1" class="h2">파일 트리</a>
-        <a href="#s1-2" class="h2">데이터 흐름</a>
-        <a href="#s2">2. JS 기초 필수 개념</a>
-        <a href="#s2-1" class="h2">const / let / var</a>
-        <a href="#s2-2" class="h2">화살표 함수</a>
-        <a href="#s2-3" class="h2">구조분해할당</a>
-        <a href="#s2-4" class="h2">스프레드 연산자</a>
-        <a href="#s2-5" class="h2">템플릿 리터럴</a>
-        <a href="#s2-6" class="h2">옵셔널 체이닝</a>
-        <a href="#s2-7" class="h2">배열 메서드</a>
-        <a href="#s2-8" class="h2">import / export</a>
-        <a href="#s3">3. React 핵심 개념</a>
-        <a href="#s3-1" class="h2">컴포넌트란?</a>
-        <a href="#s3-2" class="h2">useState</a>
-        <a href="#s3-3" class="h2">props</a>
-        <a href="#s3-4" class="h2">useEffect</a>
-        <a href="#s3-5" class="h2">useCallback</a>
-        <a href="#s3-6" class="h2">useRef</a>
-        <a href="#s3-7" class="h2">커스텀 훅</a>
-        <a href="#s3-8" class="h2">lazy / Suspense</a>
-        <a href="#s4">4. React Router</a>
-        <a href="#s5">5. Vue 3 핵심 개념</a>
-        <a href="#s5-1" class="h2">ref / reactive</a>
-        <a href="#s5-2" class="h2">template 문법</a>
-        <a href="#s5-3" class="h2">onMounted</a>
-        <a href="#s6">6. React + Vue 통합</a>
-        <a href="#s7">7. CSS Modules</a>
-        <a href="#s8">8. CSS Variables (테마)</a>
-        <a href="#s9">9. 컴포넌트별 역할</a>
-        <a href="#s10">10. 수정 가이드</a>
-        <a href="#s11">11. React vs Vue 비교표</a>
+        <a href="#" @click.prevent="scrollTo('s0')">0. 이 문서 사용법</a>
+        <a href="#" @click.prevent="scrollTo('s1')">1. 프로젝트 구조</a>
+        <a href="#" @click.prevent="scrollTo('s1-1')" class="h2">파일 트리</a>
+        <a href="#" @click.prevent="scrollTo('s1-2')" class="h2">데이터 흐름</a>
+        <a href="#" @click.prevent="scrollTo('s2')">2. JS 기초 필수 개념</a>
+        <a href="#" @click.prevent="scrollTo('s2-1')" class="h2">const / let / var</a>
+        <a href="#" @click.prevent="scrollTo('s2-2')" class="h2">화살표 함수</a>
+        <a href="#" @click.prevent="scrollTo('s2-3')" class="h2">구조분해할당</a>
+        <a href="#" @click.prevent="scrollTo('s2-4')" class="h2">스프레드 연산자</a>
+        <a href="#" @click.prevent="scrollTo('s2-5')" class="h2">템플릿 리터럴</a>
+        <a href="#" @click.prevent="scrollTo('s2-6')" class="h2">옵셔널 체이닝</a>
+        <a href="#" @click.prevent="scrollTo('s2-7')" class="h2">배열 메서드</a>
+        <a href="#" @click.prevent="scrollTo('s2-8')" class="h2">import / export</a>
+        <a href="#" @click.prevent="scrollTo('s3')">3. React 핵심 개념</a>
+        <a href="#" @click.prevent="scrollTo('s3-1')" class="h2">컴포넌트란?</a>
+        <a href="#" @click.prevent="scrollTo('s3-2')" class="h2">useState</a>
+        <a href="#" @click.prevent="scrollTo('s3-3')" class="h2">props</a>
+        <a href="#" @click.prevent="scrollTo('s3-4')" class="h2">useEffect</a>
+        <a href="#" @click.prevent="scrollTo('s3-5')" class="h2">useCallback</a>
+        <a href="#" @click.prevent="scrollTo('s3-6')" class="h2">useRef</a>
+        <a href="#" @click.prevent="scrollTo('s3-7')" class="h2">커스텀 훅</a>
+        <a href="#" @click.prevent="scrollTo('s3-8')" class="h2">lazy / Suspense</a>
+        <a href="#" @click.prevent="scrollTo('s4')">4. React Router</a>
+        <a href="#" @click.prevent="scrollTo('s5')">5. Vue 3 핵심 개념</a>
+        <a href="#" @click.prevent="scrollTo('s5-1')" class="h2">ref / reactive</a>
+        <a href="#" @click.prevent="scrollTo('s5-2')" class="h2">template 문법</a>
+        <a href="#" @click.prevent="scrollTo('s5-3')" class="h2">onMounted</a>
+        <a href="#" @click.prevent="scrollTo('s6')">6. React + Vue 통합</a>
+        <a href="#" @click.prevent="scrollTo('s7')">7. CSS Modules</a>
+        <a href="#" @click.prevent="scrollTo('s8')">8. CSS Variables (테마)</a>
+        <a href="#" @click.prevent="scrollTo('s9')">9. 컴포넌트별 역할</a>
+        <a href="#" @click.prevent="scrollTo('s10')">10. 수정 가이드</a>
+        <a href="#" @click.prevent="scrollTo('s11')">11. React vs Vue 비교표</a>
       </nav>
 
       <!-- ───────────── 본문 ───────────── -->
@@ -1156,49 +1156,173 @@ export default defineConfig({
              7. CSS Modules
         ════════════════════════════════════════ -->
         <h2 id="s7">7. CSS Modules — 클래스명 충돌 방지</h2>
+
         <p>
-          일반 CSS는 클래스명이 전역이라 <strong>다른 파일과 충돌</strong>할 수 있습니다.
-          CSS Modules는 클래스명을 자동으로 고유하게 만들어 충돌을 방지합니다.
+          <strong>한 줄 요약:</strong> CSS 클래스명을 파일마다 따로 격리해서
+          이름이 겹쳐도 충돌하지 않게 해주는 기술입니다.
         </p>
+
+        <div class="tip">
+          <strong>🟢 퍼블리셔 입장에서 쉽게 이해하기</strong><br>
+          일반 CSS → 전역 스타일시트 (어디서든 같은 이름 쓰면 충돌)<br>
+          CSS Modules → Vue의 <code>&lt;style scoped&gt;</code>와 완전히 같은 개념.<br>
+          <code>&lt;style scoped&gt;</code>를 아는 순간 CSS Modules도 이미 아는 것입니다.
+        </div>
+
+        <h3>① 왜 필요한가? — 충돌 예시</h3>
         <pre v-pre><code>// ─────────────────────────────────
-// 일반 CSS (❌ 충돌 위험)
+// 일반 CSS → 전역이라 충돌 발생
 // ─────────────────────────────────
-// Button.css
-.button { background: blue; }
 
-// Card.css
-.button { background: red; }  // 이름 같음 → 충돌!
+// TabBar.css
+.tab { background: blue; }
 
-// JSX에서 사용
-import './Button.css'
-&lt;button className="button"&gt;  // 어떤 게 적용될지 불확실
+// Sidebar.css
+.tab { background: red; }   // ← 이름 같음!
 
-// ─────────────────────────────────
-// CSS Modules (✅ 자동으로 고유 이름)
-// ─────────────────────────────────
-// TabBar.module.css  (파일명에 .module 포함)
-.tab { background: transparent; }
-.active { border-bottom: 2px solid #007acc; }
+// 둘 다 import하면 나중에 불러온 것이 이김 → 예측 불가</code></pre>
 
-// TabBar.jsx에서 사용
-import styles from './TabBar.module.css'
-&lt;div className={styles.tab}&gt;          // 실제 클래스: TabBar_tab__xK2f3
-&lt;div className={styles.active}&gt;       // 실제 클래스: TabBar_active__yR3k9
+        <h3>② CSS Modules 파일 만드는 법</h3>
+        <p>파일명에 <strong><code>.module.css</code></strong>를 붙이면 끝입니다.</p>
+        <pre v-pre><code>// 파일명 규칙
+TabBar.css        → 일반 CSS  (전역)
+TabBar.module.css → CSS Modules (이 파일 전용)</code></pre>
 
-// ─────────────────────────────────
-// 여러 클래스 조합 (조건부 클래스)
-// ─────────────────────────────────
-// 방법 1: 템플릿 리터럴
+        <h3>③ CSS 파일 작성 — 일반 CSS와 완전히 똑같음</h3>
+        <pre v-pre><code>/* About.module.css */
+/* 그냥 평소 CSS 쓰는 것과 동일하게 작성 */
+
+.wrapper {
+  height: 100%;
+  overflow-y: auto;
+  padding: 24px 32px;
+}
+
+.comment {
+  color: #6a9955;   /* 초록색 주석 */
+}
+
+.keyword {
+  color: #569cd6;   /* 파란색 키워드 */
+}
+
+.block {
+  padding-left: 24px;
+}</code></pre>
+
+        <h3>④ JSX에서 import하고 사용하기</h3>
+        <pre v-pre><code>// ── Step 1: import (CSS 파일을 JS 객체처럼 가져옴)
+import styles from './About.module.css'
+
+// ── Step 2: className에 styles.클래스명 으로 사용
+//   HTML  → class="wrapper"
+//   React → className={styles.wrapper}
+
+function About() {
+  return (
+    &lt;article className={styles.wrapper}&gt;
+      &lt;p className={styles.comment}&gt;/* 주석 텍스트 */&lt;/p&gt;
+      &lt;span className={styles.keyword}&gt;const&lt;/span&gt;
+    &lt;/article&gt;
+  )
+}</code></pre>
+
+        <div class="tip">
+          <strong>🟢 styles.wrapper 가 뭔가요?</strong><br><br>
+          <code>import styles from './About.module.css'</code> 를 하면<br>
+          <code>styles</code>는 이런 모양의 <strong>JS 객체</strong>가 됩니다:<br><br>
+          <code>styles = &#123;<br>
+          &nbsp;&nbsp;wrapper: "About_wrapper__xK2f3",<br>
+          &nbsp;&nbsp;comment: "About_comment__yR3k9",<br>
+          &nbsp;&nbsp;keyword: "About_keyword__zM4p1"<br>
+          &#125;</code><br><br>
+          Vite가 빌드할 때 <strong>파일명 + 클래스명 + 랜덤해시</strong>를 붙여서<br>
+          전 세계에서 유일한 클래스명으로 만들어줍니다.<br>
+          그래서 <code>styles.wrapper</code>는 그냥 <strong>문자열 하나</strong>입니다.
+        </div>
+
+        <h3>⑤ 브라우저에서 실제로 어떻게 보이나</h3>
+        <pre v-pre><code>// 내가 쓴 JSX
+&lt;article className={styles.wrapper}&gt;
+
+// 브라우저에서 실제 렌더링된 HTML
+&lt;article class="About_wrapper__xK2f3"&gt;
+
+// 적용된 CSS
+.About_wrapper__xK2f3 {
+  height: 100%;
+  overflow-y: auto;
+  padding: 24px 32px;
+}</code></pre>
+
+        <h3>⑥ 조건부 클래스 (active 상태 등)</h3>
+        <pre v-pre><code>// isActive가 true면 두 클래스 다 적용, false면 tab만 적용
+
+// 방법 1 — 템플릿 리터럴 (간단한 경우)
 &lt;div className={`${styles.tab} ${isActive ? styles.active : ''}`}&gt;
 
-// 방법 2: 배열 join
-&lt;div className={[styles.tab, isActive && styles.active].filter(Boolean).join(' ')}&gt;
+// 방법 2 — 배열 join (클래스가 많을 때 깔끔)
+&lt;div className={[
+  styles.tab,
+  isActive &amp;&amp; styles.active,
+  isDisabled &amp;&amp; styles.disabled
+].filter(Boolean).join(' ')}&gt;</code></pre>
 
-// ─────────────────────────────────
-// Vue의 scoped style과 같은 개념
-// ─────────────────────────────────
-// Vue: &lt;style scoped&gt; → 이 컴포넌트에만 적용
-// React: xxx.module.css → import한 컴포넌트에서만 사용</code></pre>
+        <h3>⑦ Vue scoped vs React CSS Modules 비교</h3>
+        <pre v-pre><code>// ── Vue: &lt;style scoped&gt; ──────────────────────────
+&lt;template&gt;
+  &lt;div class="wrapper"&gt;   ← 그냥 class 그대로 씀
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+.wrapper { padding: 24px; }  ← 이 컴포넌트에만 적용됨
+&lt;/style&gt;
+
+// ── React: CSS Modules ───────────────────────────
+// About.module.css
+.wrapper { padding: 24px; }  ← 파일 분리
+
+// About.jsx
+import styles from './About.module.css'
+&lt;div className={styles.wrapper}&gt;  ← 이 컴포넌트에만 적용됨
+
+// 결과는 동일 — 둘 다 이 컴포넌트에만 스타일 격리</code></pre>
+
+        <div class="warn">
+          <strong>⚠️ 자주 하는 실수</strong><br>
+          ❌ <code>class="wrapper"</code> → React에서는 <code>class</code> 대신 <code>className</code><br>
+          ❌ <code>className="wrapper"</code> → 문자열로 쓰면 CSS Modules 무효 (전역 CSS 탐색)<br>
+          ✅ <code>className={styles.wrapper}</code> → 이렇게 써야 CSS Modules 적용<br><br>
+          ❌ <code>import styles from './About.css'</code> → 확장자에 .module 없으면 일반 CSS<br>
+          ✅ <code>import styles from './About.module.css'</code> → 파일명에 반드시 .module 포함
+        </div>
+
+        <h3>⑧ 이 프로젝트에서 실제 사용 예시</h3>
+        <pre v-pre><code>// About.jsx — 실제 코드 (간략화)
+import styles from './About.module.css'
+import { profile } from '../../data/resume'
+
+export default function About() {
+  return (
+    &lt;article className={styles.wrapper}&gt;        {/* 전체 래퍼 */}
+      &lt;div className={styles.lineNumbers}&gt;      {/* 좌측 줄번호 */}
+        ...
+      &lt;/div&gt;
+      &lt;div className={styles.content}&gt;          {/* 본문 영역 */}
+        &lt;p className={styles.comment}&gt;...&lt;/p&gt;  {/* 회색 주석 텍스트 */}
+        &lt;span className={styles.keyword}&gt;const&lt;/span&gt;  {/* 파란 키워드 */}
+        &lt;span className={styles.string}&gt;"값"&lt;/span&gt;    {/* 주황 문자열 */}
+      &lt;/div&gt;
+    &lt;/article&gt;
+  )
+}
+
+// → 실제 About.module.css 에서 각 클래스 정의
+// .wrapper { height: 100%; overflow-y: auto; ... }
+// .comment { color: #6a9955; }
+// .keyword { color: #569cd6; }
+// .string  { color: #ce9178; }</code></pre>
 
         <hr>
 
@@ -1550,7 +1674,10 @@ const routeMap = {
 </template>
 
 <script setup>
-// 정적 콘텐츠 가이드 — 반응형 상태 불필요
+function scrollTo(id) {
+  const el = document.getElementById(id)
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
 </script>
 
 <style scoped>
@@ -1773,9 +1900,12 @@ tr:hover td { background: #2a2d2e; }
 hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 
 /* ─── 반응형 ─── */
-@media (max-width: 640px) {
-  .compare { flex-direction: column; }
-  .toc     { display: none; }
-  .content { padding: 24px 20px; }
+@media (max-width: 768px) {
+  .compare     { flex-direction: column; }
+  .toc         { display: none; }
+  .content     { padding: 24px 16px; }
+  h1           { font-size: 22px; }
+  h2           { font-size: 17px; }
+  pre          { font-size: 12px; padding: 12px 14px; }
 }
 </style>

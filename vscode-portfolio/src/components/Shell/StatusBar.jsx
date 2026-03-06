@@ -32,8 +32,8 @@ export default function StatusBar({ activeTab, theme, onToggleTheme }) {
         {activeTab && (
           <>
             <span className={styles.item}>{lang}</span>
-            <span className={styles.item}>UTF-8</span>
-            <span className={styles.item}>Ln 1, Col 1</span>
+            <span className={`${styles.item} ${styles.hideOnMobile}`}>UTF-8</span>
+            <span className={`${styles.item} ${styles.hideOnMobile}`}>Ln 1, Col 1</span>
           </>
         )}
         <button

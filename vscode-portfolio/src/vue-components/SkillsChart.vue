@@ -167,4 +167,11 @@ function toCamel(str) {
   color: var(--text-muted);
   font-family: var(--font-mono);
 }
+
+/* ── 모바일 ── */
+@media (max-width: 768px) {
+  .skills-wrapper {
+    padding: 16px;
+  }
+}
 </style>

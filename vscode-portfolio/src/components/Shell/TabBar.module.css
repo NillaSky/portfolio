@@ -87,3 +87,12 @@
   background: var(--bg-hover);
   color: var(--text-primary);
 }
+
+/* ── 모바일 ── */
+@media (max-width: 768px) {
+  .tab {
+    min-width: 80px;
+    font-size: 12px;
+    padding: 0 6px 0 10px;
+  }
+}

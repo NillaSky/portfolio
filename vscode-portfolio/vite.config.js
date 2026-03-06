@@ -52,4 +52,8 @@ export default defineConfig({
     },
   ],
   base: './',
+  build: {
+    outDir: '../portfolio-app',
+    emptyOutDir: true,
+  },
 })

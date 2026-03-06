@@ -1,0 +1,140 @@
+.wrapper {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.lineNumbers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 16px 12px;
+  color: var(--text-muted);
+  font-size: 13px;
+  user-select: none;
+  min-width: 48px;
+  border-right: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.lineNumbers span {
+  line-height: 1.7;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 16px 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: var(--text-primary);
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.block {
+  padding-left: 2em;
+}
+
+/* 프로필 카드 */
+.profileCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-bottom: 4px;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarInitial {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profileName {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.profileTitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+}
+
+.profileLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.profileLink {
+  font-size: 12px;
+  color: var(--text-link);
+  text-decoration: none;
+  font-family: var(--font-ui);
+}
+
+.profileLink:hover {
+  text-decoration: underline;
+}
+
+/* ── 모바일 ── */
+@media (max-width: 768px) {
+  .lineNumbers {
+    display: none;
+  }
+
+  .wrapper {
+    overflow-x: hidden;
+  }
+
+  .content {
+    padding: 16px;
+    overflow-x: hidden;
+    word-break: break-all;
+  }
+
+  .profileCard {
+    flex-wrap: wrap;
+  }
+}
+
+/* Syntax colors */
+.comment { color: var(--text-comment); }
+.keyword { color: var(--text-keyword); }
+.variable { color: var(--accent-teal); }
+.string { color: var(--text-string); }
+.number { color: var(--text-number); }
+.property { color: var(--accent-teal); }
+.operator { color: var(--text-operator); }
+.punctuation { color: var(--text-secondary); }
+.function { color: var(--text-function); }

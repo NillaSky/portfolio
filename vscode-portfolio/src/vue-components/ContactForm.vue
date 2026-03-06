@@ -93,10 +93,12 @@ import { profile } from '../data/resume.js'
 
 const activeTab = ref('guide')
 
-// 개발 서버의 /customer-preview 미들웨어를 통해 서빙
-// (vite.config.js의 serve-customer-preview 플러그인 참고)
-const guideUrl = '/customer-preview/html/pubGuide/common_guide.html'
-const mainUrl = '/customer-preview/html/home/main.html'
+// 개발: /customer-preview (Vite 미들웨어)
+// 배포: ../dist/customer (GitHub Pages 실제 경로)
+const isDev = import.meta.env.DEV
+const base = isDev ? '/customer-preview' : '../dist/customer'
+const guideUrl = `${base}/html/pubGuide/common_guide.html`
+const mainUrl = `${base}/html/home/main.html`
 </script>
 
 <style scoped>

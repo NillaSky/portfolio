@@ -1,13 +1,38 @@
 import styles from './Projects.module.css'
 import { projects } from '../../data/projects'
 
-export default function Projects() {
+const a11yDemoFile = {
+  id: 'proj-a11y',
+  name: 'a11y_checklist.html',
+  icon: 'html',
+  route: '/projects/a11y',
+}
+
+export default function Projects({ onOpenFile }) {
   return (
     <article className={styles.wrapper}>
       <header className={styles.header}>
         <p className={styles.comment}>{'// Projects – 주요 참여 프로젝트'}</p>
         <br />
       </header>
+
+      {/* 라이브 데모: 직접 제작한 접근성 도구 */}
+      <button
+        type="button"
+        className={styles.demoCard}
+        onClick={() => onOpenFile?.(a11yDemoFile)}
+        aria-label="접근성 체크리스트 도구 라이브 데모 열기"
+      >
+        <span className={styles.demoIcon} aria-hidden="true">🔧</span>
+        <span className={styles.demoText}>
+          <span className={styles.demoBadge}>작업 도구</span>
+          <span className={styles.demoTitle}>접근성 점검 체크 도구</span>
+          <span className={styles.demoDesc}>
+            접근성 결함을 점검·개선하면서, 항목을 한눈에 보고 편하게 작업하려고 직접 만든 도구입니다.
+          </span>
+        </span>
+        <span className={styles.demoCta} aria-hidden="true">▶ 열기</span>
+      </button>
 
       <div className={styles.grid}>
         {projects.map((proj) => (

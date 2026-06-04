@@ -6,7 +6,18 @@ import TabBar from './components/Shell/TabBar'
 import StatusBar from './components/Shell/StatusBar'
 import Welcome from './components/pages/Welcome'
 import { useTabs } from './hooks/useTabs'
+import { fileTree } from './data/fileTree'
 import styles from './App.module.css'
+
+function collectFolderDefaults(nodes, acc = {}) {
+  for (const n of nodes) {
+    if (n.type === 'folder') {
+      acc[n.id] = n.open ?? false
+      if (n.children) collectFolderDefaults(n.children, acc)
+    }
+  }
+  return acc
+}
 
 const About = lazy(() => import('./components/pages/About'))
 const Experience = lazy(() => import('./components/pages/Experience'))
@@ -14,6 +25,7 @@ const Projects = lazy(() => import('./components/pages/Projects'))
 const Skills = lazy(() => import('./components/pages/Skills'))
 const Contact = lazy(() => import('./components/pages/Contact'))
 const Guide = lazy(() => import('./components/pages/Guide'))
+const A11yChecklist = lazy(() => import('./components/pages/A11yChecklist'))
 
 const routeMap = {
   '/about': About,
@@ -22,11 +34,10 @@ const routeMap = {
   '/experience/amore': Experience,
   '/skills': Skills,
   '/projects': Projects,
+  '/projects/a11y': A11yChecklist,
   '/contact': Contact,
   '/guide': Guide,
 }
-
-const defaultTab = { id: 'readme', name: 'README.md', icon: 'markdown', route: '/about' }
 
 export default function App() {
   const navigate = useNavigate()
@@ -34,7 +45,12 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('explorer')
   const [theme, setTheme] = useState('dark')
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const { tabs, activeTab, openTab, closeTab, activateTab } = useTabs([defaultTab])
+  const [openFolders, setOpenFolders] = useState(() => collectFolderDefaults(fileTree))
+  const { tabs, activeTab, openTab, closeTab, activateTab } = useTabs([])
+
+  const toggleFolder = useCallback((id) => {
+    setOpenFolders((f) => ({ ...f, [id]: !f[id] }))
+  }, [])
 
   const handleFileClick = useCallback(
     (file) => {
@@ -42,6 +58,17 @@ export default function App() {
       navigate(file.route)
     },
     [openTab, navigate]
+  )
+
+  // Welcome 화면 단축 카드: 해당 폴더를 펼치고 파일을 탭으로 연다
+  const handleShortcut = useCallback(
+    (shortcut) => {
+      if (shortcut.expand) {
+        setOpenFolders((f) => ({ ...f, [shortcut.expand]: true }))
+      }
+      handleFileClick(shortcut.file)
+    },
+    [handleFileClick]
   )
 
   const handleTabActivate = useCallback(
@@ -133,6 +160,8 @@ export default function App() {
             activeSection={activeSection}
             onFileClick={handleFileClickMobile}
             activeRoute={currentRoute}
+            openFolders={openFolders}
+            onToggleFolder={toggleFolder}
           />
         </div>
 
@@ -145,10 +174,10 @@ export default function App() {
           />
           <div className={styles.editor}>
             {tabs.length === 0 ? (
-              <Welcome />
+              <Welcome onShortcut={handleShortcut} />
             ) : (
               <Suspense fallback={<div className={styles.loading}>로딩 중...</div>}>
-                <CurrentPage />
+                <CurrentPage onOpenFile={handleFileClick} />
               </Suspense>
             )}
           </div>

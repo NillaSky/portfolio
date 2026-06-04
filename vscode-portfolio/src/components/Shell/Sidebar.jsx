@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styles from './Sidebar.module.css'
 import { fileTree, iconColors } from '../../data/fileTree'
 
@@ -44,16 +43,15 @@ function ChevronIcon({ open }) {
   )
 }
 
-function TreeNode({ node, depth = 0, onFileClick, activeRoute }) {
-  const [open, setOpen] = useState(node.open ?? false)
-
+function TreeNode({ node, depth = 0, onFileClick, activeRoute, openFolders, onToggleFolder }) {
   if (node.type === 'folder') {
+    const open = openFolders[node.id] ?? node.open ?? false
     return (
       <div>
         <button
           className={styles.treeItem}
           style={{ paddingLeft: `${depth * 12 + 4}px` }}
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => onToggleFolder(node.id)}
           aria-expanded={open}
         >
           <ChevronIcon open={open} />
@@ -71,6 +69,8 @@ function TreeNode({ node, depth = 0, onFileClick, activeRoute }) {
                 depth={depth + 1}
                 onFileClick={onFileClick}
                 activeRoute={activeRoute}
+                openFolders={openFolders}
+                onToggleFolder={onToggleFolder}
               />
             ))}
           </div>
@@ -93,7 +93,7 @@ function TreeNode({ node, depth = 0, onFileClick, activeRoute }) {
   )
 }
 
-export default function Sidebar({ activeSection, onFileClick, activeRoute }) {
+export default function Sidebar({ activeSection, onFileClick, activeRoute, openFolders, onToggleFolder }) {
   const sectionTitles = {
     explorer: 'EXPLORER',
     skills: 'SKILLS',
@@ -111,6 +111,8 @@ export default function Sidebar({ activeSection, onFileClick, activeRoute }) {
             node={node}
             onFileClick={onFileClick}
             activeRoute={activeRoute}
+            openFolders={openFolders}
+            onToggleFolder={onToggleFolder}
           />
         ))}
       </div>

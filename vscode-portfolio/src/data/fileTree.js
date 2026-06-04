@@ -42,6 +42,7 @@ export const fileTree = [
           { id: 'proj-kt', name: 'KT_portal.html', type: 'file', icon: 'html', route: '/projects' },
           { id: 'proj-skt', name: 'SKT_tworld.html', type: 'file', icon: 'html', route: '/projects' },
           { id: 'proj-amore', name: 'AmoreMall.html', type: 'file', icon: 'html', route: '/projects' },
+          { id: 'proj-a11y', name: 'a11y_checklist.html', type: 'file', icon: 'html', route: '/projects/a11y' },
         ],
       },
       { id: 'contact', name: 'contact.vue', type: 'file', icon: 'vue', route: '/contact' },

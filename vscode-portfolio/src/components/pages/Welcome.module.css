@@ -48,6 +48,11 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
   padding: 10px 14px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);

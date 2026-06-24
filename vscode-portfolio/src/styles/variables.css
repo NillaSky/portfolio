@@ -1,0 +1,97 @@
+:root {
+  /* VSCode Dark+ Theme */
+  --bg-editor: #1e1e1e;
+  --bg-sidebar: #252526;
+  --bg-activity: #333333;
+  --bg-tabbar: #2d2d2d;
+  --bg-tab-active: #1e1e1e;
+  --bg-tab-inactive: #2d2d2d;
+  --bg-statusbar: #007acc;
+  --bg-titlebar: #3c3c3c;
+  --bg-hover: #2a2d2e;
+  --bg-selected: #094771;
+  --bg-input: #3c3c3c;
+  --bg-card: #252526;
+  --bg-card-hover: #2d2d2d;
+
+  --border-color: #3e3e42;
+  --border-active: #007acc;
+
+  --text-primary: #d4d4d4;
+  --text-secondary: #858585;
+  --text-muted: #6e6e6e;
+  --text-link: #4fc1ff;
+  --text-keyword: #569cd6;
+  --text-string: #ce9178;
+  --text-comment: #6a9955;
+  --text-function: #dcdcaa;
+  --text-number: #b5cea8;
+  --text-type: #4ec9b0;
+  --text-operator: #d4d4d4;
+
+  --accent-blue: #007acc;
+  --accent-teal: #4ec9b0;
+  --accent-yellow: #dcdcaa;
+  --accent-orange: #ce9178;
+  --accent-green: #6a9955;
+  --accent-purple: #c586c0;
+
+  --icon-react: #61dafb;
+  --icon-vue: #42b883;
+  --icon-js: #dcdcaa;
+  --icon-html: #e34c26;
+  --icon-json: #f5a623;
+  --icon-md: #519aba;
+  --icon-css: #519aba;
+  --icon-folder: #dcb67a;
+  --icon-folder-open: #dcb67a;
+
+  --scrollbar-thumb: #424242;
+  --scrollbar-track: transparent;
+
+  --font-mono: 'Consolas', 'Courier New', monospace;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  --sidebar-width: 240px;
+  --activity-width: 48px;
+  --tabbar-height: 35px;
+  --statusbar-height: 22px;
+  --titlebar-height: 30px;
+}
+
+[data-theme='light'] {
+  --bg-editor: #ffffff;
+  --bg-sidebar: #f3f3f3;
+  --bg-activity: #2c2c2c;
+  --bg-tabbar: #ececec;
+  --bg-tab-active: #ffffff;
+  --bg-tab-inactive: #ececec;
+  --bg-statusbar: #007acc;
+  --bg-titlebar: #dddddd;
+  --bg-hover: #e8e8e8;
+  --bg-selected: #cce5ff;
+  --bg-input: #f3f3f3;
+  --bg-card: #f8f8f8;
+  --bg-card-hover: #ececec;
+
+  --border-color: #d4d4d4;
+  --border-active: #007acc;
+
+  --text-primary: #1e1e1e;
+  --text-secondary: #6e6e6e;
+  --text-muted: #aaaaaa;
+  --text-link: #0066bf;
+  --text-keyword: #0000ff;
+  --text-string: #a31515;
+  --text-comment: #008000;
+  --text-function: #795e26;
+  --text-number: #098658;
+  --text-type: #267f99;
+  --text-operator: #1e1e1e;
+
+  --scrollbar-thumb: #c0c0c0;
+  --bg-activity: #333333;
+}

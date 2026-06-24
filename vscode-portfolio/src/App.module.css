@@ -1,0 +1,125 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-editor);
+}
+
+.titleBar {
+  height: var(--titlebar-height);
+  background: var(--bg-titlebar);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+  position: relative;
+}
+
+/* 햄버거 버튼 - 모바일에서만 표시 */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  position: absolute;
+  left: 8px;
+}
+
+.hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text-secondary);
+  border-radius: 1px;
+  transition: background 0.15s;
+}
+
+.hamburger:hover span {
+  background: var(--text-primary);
+}
+
+.titleText {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 사이드바 래퍼 */
+.sidebarWrap {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* 모바일 오버레이 (사이드바 뒤 어두운 배경) */
+.overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.editor {
+  flex: 1;
+  overflow: hidden;
+  background: var(--bg-editor);
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* ── 모바일 (768px 이하) ── */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  /* 사이드바: 기본은 화면 밖에 숨김 */
+  .sidebarWrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 20;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+  }
+
+  /* 열린 상태 */
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  /* 오버레이 활성화 */
+  .overlay {
+    display: block;
+  }
+}

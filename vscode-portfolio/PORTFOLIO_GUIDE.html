@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VSCode 포트폴리오 강의 문서</title>
+<style>
+  :root {
+    --bg: #1e1e1e; --bg2: #252526; --bg3: #2d2d2d;
+    --border: #3e3e42; --text: #d4d4d4; --muted: #858585;
+    --blue: #569cd6; --teal: #4ec9b0; --green: #6a9955;
+    --orange: #ce9178; --yellow: #dcdcaa; --number: #b5cea8;
+    --accent: #007acc; --purple: #c586c0;
+    --font-mono: 'Consolas','Courier New',monospace;
+    --font-ui: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-ui); font-size: 15px; line-height: 1.7; }
+
+  /* 레이아웃 */
+  .layout { display: flex; min-height: 100vh; }
+  .toc { width: 260px; background: var(--bg2); border-right: 1px solid var(--border); padding: 24px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; flex-shrink: 0; }
+  .content { flex: 1; max-width: 860px; padding: 40px 48px; overflow-y: auto; }
+
+  /* TOC */
+  .toc-title { padding: 0 20px 12px; font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+  .toc a { display: block; padding: 5px 20px; font-size: 13px; color: var(--muted); text-decoration: none; transition: color .15s, background .15s; border-left: 2px solid transparent; }
+  .toc a:hover { color: var(--text); background: #2a2d2e; }
+  .toc a.h2 { padding-left: 32px; font-size: 12px; }
+
+  /* 타이포 */
+  h1 { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  h2 { font-size: 20px; font-weight: 700; color: var(--text); margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 16px; font-weight: 700; color: var(--teal); margin: 28px 0 10px; }
+  h4 { font-size: 14px; font-weight: 700; color: var(--yellow); margin: 20px 0 8px; }
+  p { margin-bottom: 12px; }
+  li { margin-bottom: 6px; padding-left: 4px; }
+  ul, ol { padding-left: 24px; margin-bottom: 12px; }
+  strong { color: var(--text); }
+  .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
+
+  /* 코드 블록 */
+  pre { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 16px 20px; overflow-x: auto; margin: 12px 0 20px; font-family: var(--font-mono); font-size: 13px; line-height: 1.8; }
+  code { font-family: var(--font-mono); font-size: 13px; background: var(--bg3); padding: 2px 6px; border-radius: 3px; color: var(--orange); }
+  pre code { background: none; padding: 0; color: var(--text); }
+
+  /* 문법 색상 */
+  .kw { color: var(--blue); }
+  .fn { color: var(--yellow); }
+  .str { color: var(--orange); }
+  .cm { color: var(--green); }
+  .num { color: var(--number); }
+  .ty { color: var(--teal); }
+  .pu { color: var(--muted); }
+  .vr { color: var(--teal); }
+  .at { color: var(--purple); }
+
+  /* 카드/박스 */
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 16px 20px; margin: 12px 0; }
+  .card-title { font-size: 13px; font-weight: 700; color: var(--teal); margin-bottom: 8px; }
+  .tip { background: #1a2a1a; border-left: 3px solid var(--green); padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; }
+  .warn { background: #2a2010; border-left: 3px solid #dcdcaa; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+  @media(max-width:640px){ .compare { grid-template-columns: 1fr; } .toc { display:none; } .content { padding: 24px 20px; } }
+  .compare .card-title.react { color: #61dafb; }
+  .compare .card-title.vue { color: #42b883; }
+
+  /* 표 */
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+  th { background: var(--bg3); padding: 8px 12px; text-align: left; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border); }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: #2a2d2e; }
+
+  /* 파일 트리 */
+  .tree { font-family: var(--font-mono); font-size: 13px; background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 16px 20px; line-height: 2; }
+  .tree .folder { color: #dcb67a; }
+  .tree .jsx { color: #61dafb; }
+  .tree .vue { color: #42b883; }
+  .tree .js { color: var(--yellow); }
+  .tree .css { color: #519aba; }
+  .tree .md { color: #519aba; }
+  .tree .note { color: var(--muted); margin-left: 8px; }
+
+  /* 배지 */
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-family: var(--font-mono); margin: 0 3px; }
+  .badge-react { background: #1a3040; color: #61dafb; }
+  .badge-vue { background: #1a2e22; color: #42b883; }
+  .badge-js { background: #2a2810; color: var(--yellow); }
+  .step { display: flex; gap: 12px; align-items: flex-start; margin: 8px 0; }
+  .step-num { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- 목차 -->
+<nav class="toc">
+  <p class="toc-title">목차</p>
+  <a href="#s0">0. 이 문서 사용법</a>
+  <a href="#s1">1. 프로젝트 구조</a>
+  <a href="#s1-1" class="h2">파일 트리</a>
+  <a href="#s1-2" class="h2">데이터 흐름</a>
+  <a href="#s2">2. React 핵심 개념</a>
+  <a href="#s2-1" class="h2">useState</a>
+  <a href="#s2-2" class="h2">props</a>
+  <a href="#s2-3" class="h2">useCallback</a>
+  <a href="#s2-4" class="h2">커스텀 훅</a>
+  <a href="#s2-5" class="h2">lazy / Suspense</a>
+  <a href="#s3">3. React Router</a>
+  <a href="#s4">4. Vue 3 핵심 개념</a>
+  <a href="#s4-1" class="h2">ref / reactive</a>
+  <a href="#s4-2" class="h2">template 문법</a>
+  <a href="#s4-3" class="h2">onMounted</a>
+  <a href="#s5">5. React + Vue 통합</a>
+  <a href="#s6">6. CSS Modules</a>
+  <a href="#s7">7. CSS Variables (테마)</a>
+  <a href="#s8">8. 컴포넌트별 역할</a>
+  <a href="#s9">9. 수정 가이드</a>
+  <a href="#s10">10. React vs Vue 비교표</a>
+</nav>
+
+<!-- 본문 -->
+<main class="content">
+
+<h1>VSCode 포트폴리오 강의 문서</h1>
+<p class="subtitle">React 18 + Vue 3 + Vite | 혼자 읽고 공부할 수 있는 가이드</p>
+
+<hr>
+
+<!-- 0 -->
+<h2 id="s0">0. 이 문서 사용법</h2>
+<p>이 문서는 <strong>포트폴리오 코드를 처음 보는 사람이 혼자 이해할 수 있도록</strong> 작성됐습니다.<br>
+순서대로 읽지 않아도 됩니다. 모르는 개념이 나왔을 때 해당 섹션으로 바로 이동하세요.</p>
+<div class="tip">
+  <strong>🟢 공부 순서 추천</strong><br>
+  처음이라면: <strong>1 → 2-1 → 2-2 → 3 → 4 → 5</strong> 순서로 읽으세요.<br>
+  특정 파일을 고칠 때는: <strong>8 (컴포넌트별 역할)</strong>과 <strong>9 (수정 가이드)</strong>를 보세요.
+</div>
+
+<hr>
+
+<!-- 1 -->
+<h2 id="s1">1. 프로젝트 구조</h2>
+
+<h3 id="s1-1">파일 트리</h3>
+<div class="tree">
+<span class="folder">vscode-portfolio/</span><br>
+├── <span class="folder">src/</span><br>
+│&nbsp;&nbsp; ├── <span class="jsx">App.jsx</span><span class="note">← 앱 전체 조립 (레이아웃 + 라우팅)</span><br>
+│&nbsp;&nbsp; ├── <span class="js">App.module.css</span><span class="note">← 앱 레이아웃 스타일 + 모바일 대응</span><br>
+│&nbsp;&nbsp; ├── <span class="jsx">main.jsx</span><span class="note">← 앱 시작점. BrowserRouter 선언</span><br>
+│&nbsp;&nbsp; ├── <span class="folder">components/Shell/</span><span class="note">← VSCode UI 껍데기</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">ActivityBar.jsx</span><span class="note">← 왼쪽 아이콘 바</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">Sidebar.jsx</span><span class="note">← 파일 탐색기 트리</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">TabBar.jsx</span><span class="note">← 열린 탭 목록</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── <span class="jsx">StatusBar.jsx</span><span class="note">← 하단 상태 바 + 테마 토글</span><br>
+│&nbsp;&nbsp; ├── <span class="folder">components/pages/</span><span class="note">← 에디터에 표시되는 콘텐츠</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">Welcome.jsx</span><span class="note">← 탭 없을 때 초기 화면</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">About.jsx</span><span class="note">← README.md 스타일 자기소개 (React)</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">Experience.jsx</span><span class="note">← 경력 타임라인 (React)</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">Projects.jsx</span><span class="note">← 프로젝트 카드 (React)</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">Skills.jsx</span><span class="note">← Vue 마운트 래퍼 (React)</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── <span class="jsx">Contact.jsx</span><span class="note">← Vue 마운트 래퍼 (React)</span><br>
+│&nbsp;&nbsp; ├── <span class="folder">vue-components/</span><span class="note">← 실제 Vue 컴포넌트</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="vue">SkillsChart.vue</span><span class="note">← 스킬 바 차트 (Vue 3)</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── <span class="vue">ContactForm.vue</span><span class="note">← 연락처 폼 (Vue 3)</span><br>
+│&nbsp;&nbsp; ├── <span class="folder">data/</span><span class="note">← 콘텐츠 데이터 (수정할 일 가장 많음)</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="js">resume.js</span><span class="note">← 이름, 경력, 스킬 데이터</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="js">projects.js</span><span class="note">← 프로젝트 목록 데이터</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── <span class="js">fileTree.js</span><span class="note">← 사이드바 파일 트리 데이터</span><br>
+│&nbsp;&nbsp; ├── <span class="folder">hooks/</span><br>
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── <span class="js">useTabs.js</span><span class="note">← 탭 상태 관리 커스텀 훅</span><br>
+│&nbsp;&nbsp; └── <span class="folder">styles/</span><br>
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── <span class="css">variables.css</span><span class="note">← 다크/라이트 테마 색상 변수</span><br>
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── <span class="css">global.css</span><span class="note">← reset, 스크롤바, 전역 스타일</span><br>
+└── <span class="js">vite.config.js</span><span class="note">← React + Vue 플러그인 동시 등록</span>
+</div>
+
+<h3 id="s1-2">데이터 흐름 (한눈에)</h3>
+<pre><code><span class="cm">// 사용자가 사이드바에서 "README.md" 클릭했을 때</span>
+
+Sidebar  →  onFileClick(file)     <span class="cm">// 파일 객체 전달</span>
+         ↓
+App.jsx  →  openTab(file)         <span class="cm">// 탭 배열에 추가</span>
+         →  navigate(file.route)  <span class="cm">// URL을 /about 으로 변경</span>
+         ↓
+TabBar   →  탭 목록 리렌더링
+Editor   →  routeMap['/about'] = About 컴포넌트 렌더링</code></pre>
+
+<div class="tip">
+  <strong>🟢 핵심 원칙</strong><br>
+  React에서 UI는 "데이터의 결과물"입니다.<br>
+  DOM을 직접 건드리지 않고, <strong>데이터(state)를 바꾸면 화면이 자동으로 업데이트</strong>됩니다.
+</div>
+
+<hr>
+
+<!-- 2 -->
+<h2 id="s2">2. React 핵심 개념</h2>
+
+<h3 id="s2-1">2-1. useState — 컴포넌트의 기억</h3>
+<p>컴포넌트가 기억해야 할 값을 저장합니다. 값이 바뀌면 컴포넌트가 자동으로 다시 그려집니다.</p>
+<pre><code><span class="cm">// 기본 형태</span>
+<span class="kw">const</span> [<span class="vr">값</span>, <span class="vr">값바꾸는함수</span>] = <span class="fn">useState</span>(<span class="str">초기값</span>)
+
+<span class="cm">// 이 포트폴리오에서 사용되는 예</span>
+<span class="kw">const</span> [<span class="vr">theme</span>, <span class="vr">setTheme</span>]           = <span class="fn">useState</span>(<span class="str">'dark'</span>)
+<span class="kw">const</span> [<span class="vr">activeSection</span>, <span class="vr">setActiveSection</span>] = <span class="fn">useState</span>(<span class="str">'explorer'</span>)
+<span class="kw">const</span> [<span class="vr">sidebarOpen</span>, <span class="vr">setSidebarOpen</span>]   = <span class="fn">useState</span>(<span class="kw">false</span>)
+
+<span class="cm">// 값 바꾸기</span>
+<span class="fn">setTheme</span>(<span class="str">'light'</span>)       <span class="cm">// → 화면 자동 업데이트</span>
+<span class="fn">setSidebarOpen</span>(<span class="kw">true</span>)  <span class="cm">// → 사이드바 열림</span></code></pre>
+<div class="warn">
+  <strong>⚠️ jQuery와 차이점</strong><br>
+  jQuery: <code>$('.sidebar').show()</code> → DOM 직접 조작<br>
+  React: <code>setSidebarOpen(true)</code> → 데이터 변경 → React가 DOM 업데이트
+</div>
+
+<h3 id="s2-2">2-2. props — 부모에서 자식으로 데이터 전달</h3>
+<pre><code><span class="cm">// App.jsx (부모) → ActivityBar.jsx (자식)으로 전달</span>
+&lt;<span class="ty">ActivityBar</span>
+  <span class="at">active</span>={<span class="vr">activeSection</span>}       <span class="cm">// 현재 섹션 이름 전달</span>
+  <span class="at">onSelect</span>={<span class="vr">handleSectionSelect</span>} <span class="cm">// 함수 전달 (자식이 호출)</span>
+/&gt;
+
+<span class="cm">// ActivityBar.jsx (자식)에서 받기</span>
+<span class="kw">export default function</span> <span class="fn">ActivityBar</span>({ <span class="vr">active</span>, <span class="vr">onSelect</span> }) {
+  <span class="cm">// active: 'explorer' | 'skills' | 'projects' | 'contact'</span>
+  <span class="cm">// onSelect: 아이콘 클릭 시 호출할 함수</span>
+  <span class="kw">return</span> (
+    &lt;<span class="ty">button</span> <span class="at">onClick</span>={() =&gt; <span class="fn">onSelect</span>(<span class="str">'skills'</span>)}&gt;Skills&lt;/<span class="ty">button</span>&gt;
+  )
+}</code></pre>
+
+<h3 id="s2-3">2-3. useCallback — 함수 캐싱으로 성능 최적화</h3>
+<pre><code><span class="cm">// useCallback 없으면: App이 리렌더될 때마다 함수가 새로 생성됨</span>
+<span class="cm">// useCallback 있으면: 의존성 배열이 바뀔 때만 함수 재생성</span>
+
+<span class="kw">const</span> <span class="vr">handleFileClick</span> = <span class="fn">useCallback</span>(
+  (<span class="vr">file</span>) =&gt; {
+    <span class="fn">openTab</span>(<span class="vr">file</span>)
+    <span class="fn">navigate</span>(<span class="vr">file</span>.<span class="vr">route</span>)
+  },
+  [<span class="vr">openTab</span>, <span class="vr">navigate</span>] <span class="cm">// 이 둘이 바뀔 때만 함수 재생성</span>
+)</code></pre>
+<div class="tip">
+  <strong>🟢 언제 써야 하나?</strong><br>
+  자식 컴포넌트에 함수를 props로 전달할 때 씁니다. 없어도 동작하지만, 있으면 불필요한 리렌더링을 방지합니다.
+</div>
+
+<h3 id="s2-4">2-4. 커스텀 훅 (useTabs) — 로직 분리</h3>
+<p>훅(Hook)은 <code>use</code>로 시작하는 함수입니다. 상태 관련 로직을 컴포넌트 밖으로 뽑아내서 재사용할 수 있게 합니다.</p>
+<pre><code><span class="cm">// src/hooks/useTabs.js</span>
+<span class="kw">export function</span> <span class="fn">useTabs</span>(<span class="vr">initialTabs</span> = []) {
+  <span class="kw">const</span> [<span class="vr">tabs</span>, <span class="vr">setTabs</span>]           = <span class="fn">useState</span>(<span class="vr">initialTabs</span>)
+  <span class="kw">const</span> [<span class="vr">activeTab</span>, <span class="vr">setActiveTab</span>] = <span class="fn">useState</span>(<span class="vr">initialTabs</span>[<span class="num">0</span>]?.<span class="vr">id</span> || <span class="kw">null</span>)
+  <span class="cm">//                                              ↑ 옵셔널 체이닝: undefined 방지</span>
+
+  <span class="kw">const</span> <span class="vr">openTab</span> = <span class="fn">useCallback</span>((<span class="vr">tab</span>) =&gt; {
+    <span class="fn">setTabs</span>((<span class="vr">prev</span>) =&gt; {
+      <span class="kw">if</span> (<span class="vr">prev</span>.<span class="fn">find</span>((<span class="vr">t</span>) =&gt; <span class="vr">t</span>.<span class="vr">id</span> === <span class="vr">tab</span>.<span class="vr">id</span>)) <span class="kw">return</span> <span class="vr">prev</span> <span class="cm">// 이미 열려있으면 무시</span>
+      <span class="kw">return</span> [...<span class="vr">prev</span>, <span class="vr">tab</span>]  <span class="cm">// 기존 배열 복사 + 새 탭 추가</span>
+    })
+    <span class="fn">setActiveTab</span>(<span class="vr">tab</span>.<span class="vr">id</span>)
+  }, [])
+
+  <span class="kw">return</span> { <span class="vr">tabs</span>, <span class="vr">activeTab</span>, <span class="vr">openTab</span>, <span class="vr">closeTab</span>, <span class="vr">activateTab</span> }
+}
+
+<span class="cm">// App.jsx에서 사용</span>
+<span class="kw">const</span> { <span class="vr">tabs</span>, <span class="vr">activeTab</span>, <span class="vr">openTab</span>, <span class="vr">closeTab</span>, <span class="vr">activateTab</span> } = <span class="fn">useTabs</span>([<span class="vr">defaultTab</span>])</code></pre>
+
+<h3 id="s2-5">2-5. lazy / Suspense — 필요할 때만 로드</h3>
+<pre><code><span class="cm">// ❌ 일반 import: 앱 시작 시 모든 페이지 코드를 한꺼번에 다운로드</span>
+<span class="kw">import</span> <span class="ty">About</span> <span class="kw">from</span> <span class="str">'./pages/About'</span>
+
+<span class="cm">// ✅ lazy import: About 탭을 클릭할 때만 코드 다운로드</span>
+<span class="kw">const</span> <span class="ty">About</span> = <span class="fn">lazy</span>(() =&gt; <span class="kw">import</span>(<span class="str">'./components/pages/About'</span>))
+
+<span class="cm">// Suspense: 로딩 중일 때 fallback 표시</span>
+&lt;<span class="ty">Suspense</span> <span class="at">fallback</span>={&lt;<span class="ty">div</span>&gt;로딩 중...&lt;/<span class="ty">div</span>&gt;}&gt;
+  &lt;<span class="ty">About</span> /&gt;
+&lt;/<span class="ty">Suspense</span>&gt;</code></pre>
+
+<hr>
+
+<!-- 3 -->
+<h2 id="s3">3. React Router — URL로 페이지 전환</h2>
+<pre><code><span class="cm">// main.jsx: BrowserRouter로 앱 감싸기 (딱 한 번)</span>
+&lt;<span class="ty">BrowserRouter</span>&gt;
+  &lt;<span class="ty">App</span> /&gt;
+&lt;/<span class="ty">BrowserRouter</span>&gt;
+
+<span class="cm">// App.jsx: URL 읽기 / 변경</span>
+<span class="kw">const</span> <span class="vr">navigate</span> = <span class="fn">useNavigate</span>()   <span class="cm">// URL 이동 함수</span>
+<span class="kw">const</span> <span class="vr">location</span> = <span class="fn">useLocation</span>()   <span class="cm">// 현재 URL 정보</span>
+
+<span class="vr">location</span>.<span class="vr">pathname</span>  <span class="cm">// 예: '/about', '/skills'</span>
+
+<span class="fn">navigate</span>(<span class="str">'/skills'</span>)  <span class="cm">// URL을 /skills로 변경 → Skills 컴포넌트 렌더링</span>
+
+<span class="cm">// URL → 컴포넌트 매핑</span>
+<span class="kw">const</span> <span class="vr">routeMap</span> = {
+  <span class="str">'/about'</span>   : <span class="ty">About</span>,
+  <span class="str">'/skills'</span>  : <span class="ty">Skills</span>,
+  <span class="str">'/projects'</span>: <span class="ty">Projects</span>,
+  <span class="str">'/contact'</span> : <span class="ty">Contact</span>,
+}
+<span class="kw">const</span> <span class="ty">CurrentPage</span> = <span class="vr">routeMap</span>[<span class="vr">location</span>.<span class="vr">pathname</span>] || <span class="ty">About</span>
+<span class="cm">// routeMap에 없는 URL이면 About을 기본값으로 표시</span></code></pre>
+
+<hr>
+
+<!-- 4 -->
+<h2 id="s4">4. Vue 3 핵심 개념</h2>
+
+<h3 id="s4-1">4-1. ref / reactive — Vue의 상태 관리</h3>
+<div class="compare">
+  <div class="card">
+    <p class="card-title react">React</p>
+    <pre style="margin:0"><code><span class="kw">const</span> [<span class="vr">count</span>, <span class="vr">setCount</span>]
+  = <span class="fn">useState</span>(<span class="num">0</span>)
+
+<span class="cm">// 읽기</span>
+<span class="vr">count</span>
+
+<span class="cm">// 쓰기</span>
+<span class="fn">setCount</span>(<span class="num">1</span>)</code></pre>
+  </div>
+  <div class="card">
+    <p class="card-title vue">Vue 3</p>
+    <pre style="margin:0"><code><span class="kw">const</span> <span class="vr">count</span> = <span class="fn">ref</span>(<span class="num">0</span>)
+
+<span class="cm">// 읽기 (script 안)</span>
+<span class="vr">count</span>.<span class="vr">value</span>
+
+<span class="cm">// 쓰기</span>
+<span class="vr">count</span>.<span class="vr">value</span> = <span class="num">1</span>
+<span class="cm">// template 안에선 .value 생략</span></code></pre>
+  </div>
+</div>
+
+<pre><code><span class="cm">// reactive: 객체 전체를 반응형으로 (form 같은 경우에 유용)</span>
+<span class="kw">const</span> <span class="vr">form</span> = <span class="fn">reactive</span>({ <span class="vr">name</span>: <span class="str">''</span>, <span class="vr">email</span>: <span class="str">''</span>, <span class="vr">message</span>: <span class="str">''</span> })
+
+<span class="cm">// .value 없이 바로 접근 가능</span>
+<span class="vr">form</span>.<span class="vr">name</span> = <span class="str">'김석현'</span></code></pre>
+
+<h3 id="s4-2">4-2. template 문법</h3>
+<pre><code>&lt;<span class="ty">template</span>&gt;
+  <span class="cm">&lt;!-- 데이터 출력: {{ }} --&gt;</span>
+  &lt;<span class="ty">p</span>&gt;{{ profile.name }}&lt;/<span class="ty">p</span>&gt;
+
+  <span class="cm">&lt;!-- 속성 바인딩: : (v-bind 축약) --&gt;</span>
+  &lt;<span class="ty">div</span> <span class="at">:style</span>=<span class="str">"{ width: skill.level + '%' }"</span>&gt;&lt;/<span class="ty">div</span>&gt;
+  &lt;<span class="ty">a</span> <span class="at">:href</span>=<span class="str">"`mailto:${profile.email}`"</span>&gt;&lt;/<span class="ty">a</span>&gt;
+
+  <span class="cm">&lt;!-- 이벤트: @ (v-on 축약) --&gt;</span>
+  &lt;<span class="ty">form</span> <span class="at">@submit.prevent</span>=<span class="str">"handleSubmit"</span>&gt;&lt;/<span class="ty">form</span>&gt;
+  <span class="cm">&lt;!-- .prevent = event.preventDefault() 자동 호출 --&gt;</span>
+
+  <span class="cm">&lt;!-- 양방향 바인딩: v-model --&gt;</span>
+  &lt;<span class="ty">input</span> <span class="at">v-model</span>=<span class="str">"form.name"</span> /&gt;
+  <span class="cm">&lt;!-- 입력하면 form.name 자동 업데이트 --&gt;</span>
+
+  <span class="cm">&lt;!-- 조건: v-if / v-else --&gt;</span>
+  &lt;<span class="ty">span</span> <span class="at">v-if</span>=<span class="str">"!submitted"</span>&gt;send()&lt;/<span class="ty">span</span>&gt;
+  &lt;<span class="ty">span</span> <span class="at">v-else</span>&gt;✓ 전송 완료&lt;/<span class="ty">span</span>&gt;
+
+  <span class="cm">&lt;!-- 반복: v-for --&gt;</span>
+  &lt;<span class="ty">li</span> <span class="at">v-for</span>=<span class="str">"skill in group.items"</span> <span class="at">:key</span>=<span class="str">"skill.name"</span>&gt;
+    {{ skill.name }}
+  &lt;/<span class="ty">li</span>&gt;
+&lt;/<span class="ty">template</span>&gt;</code></pre>
+
+<h3 id="s4-3">4-3. onMounted — 컴포넌트가 화면에 붙은 직후 실행</h3>
+<div class="compare">
+  <div class="card">
+    <p class="card-title react">React</p>
+    <pre style="margin:0"><code><span class="fn">useEffect</span>(() =&gt; {
+  <span class="cm">// DOM 조작 또는 초기화</span>
+}, []) <span class="cm">// 빈 배열 = 최초 1회만</span></code></pre>
+  </div>
+  <div class="card">
+    <p class="card-title vue">Vue 3</p>
+    <pre style="margin:0"><code><span class="fn">onMounted</span>(() =&gt; {
+  <span class="cm">// DOM 조작 또는 초기화</span>
+})
+<span class="cm">// 의존성 배열 없음</span></code></pre>
+  </div>
+</div>
+
+<p>SkillsChart.vue에서의 실제 사용:</p>
+<pre><code><span class="fn">onMounted</span>(() =&gt; {
+  <span class="fn">setTimeout</span>(() =&gt; {
+    <span class="cm">// 100ms 후 스킬 바 너비를 실제 값으로 설정 → CSS transition으로 애니메이션</span>
+    <span class="vr">skillGroups</span>.<span class="fn">forEach</span>((<span class="vr">g</span>) =&gt;
+      <span class="vr">g</span>.<span class="vr">items</span>.<span class="fn">forEach</span>((<span class="vr">s</span>) =&gt; {
+        <span class="vr">animatedWidths</span>.<span class="vr">value</span>[<span class="vr">s</span>.<span class="vr">name</span>] = <span class="vr">s</span>.<span class="vr">level</span>  <span class="cm">// 0% → 실제값%</span>
+      })
+    )
+  }, <span class="num">100</span>)
+})</code></pre>
+
+<hr>
+
+<!-- 5 -->
+<h2 id="s5">5. React + Vue 통합 방식</h2>
+<p>이 포트폴리오의 가장 특이한 점입니다. React 컴포넌트 안에 Vue 앱을 마운트합니다.</p>
+
+<pre><code><span class="cm">// src/components/pages/Skills.jsx</span>
+<span class="kw">import</span> { <span class="fn">useEffect</span>, <span class="fn">useRef</span> } <span class="kw">from</span> <span class="str">'react'</span>
+<span class="kw">import</span> { <span class="fn">createApp</span> } <span class="kw">from</span> <span class="str">'vue'</span>
+<span class="kw">import</span> <span class="ty">SkillsChart</span> <span class="kw">from</span> <span class="str">'../../vue-components/SkillsChart.vue'</span>
+
+<span class="kw">export default function</span> <span class="fn">Skills</span>() {
+  <span class="kw">const</span> <span class="vr">mountRef</span> = <span class="fn">useRef</span>(<span class="kw">null</span>)  <span class="cm">// DOM 요소 참조</span>
+  <span class="kw">const</span> <span class="vr">appRef</span>   = <span class="fn">useRef</span>(<span class="kw">null</span>)  <span class="cm">// Vue 앱 인스턴스 저장</span>
+
+  <span class="fn">useEffect</span>(() =&gt; {
+    <span class="cm">// 마운트: mountRef.current (div)에 Vue 앱 올리기</span>
+    <span class="vr">appRef</span>.<span class="vr">current</span> = <span class="fn">createApp</span>(<span class="ty">SkillsChart</span>)
+    <span class="vr">appRef</span>.<span class="vr">current</span>.<span class="fn">mount</span>(<span class="vr">mountRef</span>.<span class="vr">current</span>)
+
+    <span class="cm">// 언마운트: Skills 탭 닫을 때 Vue 앱도 정리</span>
+    <span class="kw">return</span> () =&gt; {
+      <span class="vr">appRef</span>.<span class="vr">current</span>.<span class="fn">unmount</span>()
+      <span class="vr">appRef</span>.<span class="vr">current</span> = <span class="kw">null</span>
+    }
+  }, [])
+
+  <span class="kw">return</span> &lt;<span class="ty">div</span> <span class="at">ref</span>={<span class="vr">mountRef</span>} <span class="at">style</span>={{ <span class="vr">height</span>: <span class="str">'100%'</span> }} /&gt;
+  <span class="cm">// 이 div를 Vue가 점령함</span>
+}</code></pre>
+
+<div class="tip">
+  <strong>🟢 왜 이렇게 하나?</strong><br>
+  Vite에 <code>@vitejs/plugin-react</code>와 <code>@vitejs/plugin-vue</code>를 동시에 설치하면<br>
+  같은 프로젝트에서 <code>.jsx</code>와 <code>.vue</code> 파일을 모두 처리할 수 있습니다.<br>
+  "포트폴리오에서 두 프레임워크를 모두 다룰 줄 안다"를 직접 보여주는 방식입니다.
+</div>
+
+<hr>
+
+<!-- 6 -->
+<h2 id="s6">6. CSS Modules — 클래스명 충돌 방지</h2>
+<pre><code><span class="cm">// ❌ 일반 CSS: 어디서든 .button 클래스가 충돌할 수 있음</span>
+<span class="kw">import</span> <span class="str">'./Button.css'</span>
+&lt;<span class="ty">button</span> <span class="at">className</span>=<span class="str">"button"</span>&gt;
+
+<span class="cm">// ✅ CSS Modules: 파일명을 기반으로 고유한 클래스명 자동 생성</span>
+<span class="kw">import</span> <span class="vr">styles</span> <span class="kw">from</span> <span class="str">'./Button.module.css'</span>
+&lt;<span class="ty">button</span> <span class="at">className</span>={<span class="vr">styles</span>.<span class="vr">button</span>}&gt;
+<span class="cm">// 실제 클래스명: Button_button__xK2f3 (자동 생성)</span>
+
+<span class="cm">// 두 클래스 조합 (활성화 상태 등)</span>
+&lt;<span class="ty">div</span> <span class="at">className</span>={`${<span class="vr">styles</span>.<span class="vr">tab</span>} ${<span class="vr">isActive</span> ? <span class="vr">styles</span>.<span class="vr">active</span> : <span class="str">''</span>}`}&gt;</code></pre>
+
+<hr>
+
+<!-- 7 -->
+<h2 id="s7">7. CSS Variables — 다크/라이트 테마</h2>
+<pre><code><span class="cm">/* styles/variables.css */</span>
+<span class="at">:root</span> {
+  <span class="cm">/* 다크 테마 기본값 */</span>
+  --bg-editor: <span class="num">#1e1e1e</span>;
+  --text-primary: <span class="num">#d4d4d4</span>;
+  --accent-blue: <span class="num">#007acc</span>;
+}
+
+[<span class="at">data-theme</span>=<span class="str">'light'</span>] {
+  <span class="cm">/* 라이트 테마로 덮어씌우기 */</span>
+  --bg-editor: <span class="num">#ffffff</span>;
+  --text-primary: <span class="num">#1e1e1e</span>;
+}</code></pre>
+
+<pre><code><span class="cm">// StatusBar.jsx: 테마 토글 버튼 클릭 시</span>
+<span class="kw">const</span> <span class="vr">toggleTheme</span> = () =&gt; {
+  <span class="kw">const</span> <span class="vr">next</span> = <span class="vr">theme</span> === <span class="str">'dark'</span> ? <span class="str">'light'</span> : <span class="str">'dark'</span>
+
+  <span class="cm">// html 요소에 data-theme 속성 추가/제거</span>
+  <span class="vr">document</span>.<span class="vr">documentElement</span>.<span class="fn">setAttribute</span>(<span class="str">'data-theme'</span>, <span class="vr">next</span>)
+
+  <span class="cm">// → CSS가 자동으로 [data-theme='light'] 규칙 적용</span>
+}</code></pre>
+
+<hr>
+
+<!-- 8 -->
+<h2 id="s8">8. 컴포넌트별 역할 요약</h2>
+<table>
+  <tr><th>파일</th><th>역할</th><th>수정이 필요한 경우</th></tr>
+  <tr><td><code>data/resume.js</code></td><td>이력서 데이터 (이름, 경력, 스킬)</td><td>경력/스킬 내용 바꿀 때</td></tr>
+  <tr><td><code>data/projects.js</code></td><td>프로젝트 목록 데이터</td><td>프로젝트 추가/수정할 때</td></tr>
+  <tr><td><code>data/fileTree.js</code></td><td>사이드바 파일 트리 구조</td><td>사이드바 메뉴 바꿀 때</td></tr>
+  <tr><td><code>styles/variables.css</code></td><td>전체 색상 팔레트</td><td>테마 색상 바꿀 때</td></tr>
+  <tr><td><code>App.jsx</code></td><td>레이아웃 조립, 라우팅, 상태 관리</td><td>새 섹션 추가할 때</td></tr>
+  <tr><td><code>hooks/useTabs.js</code></td><td>탭 열기/닫기/활성화 로직</td><td>탭 동작 바꿀 때</td></tr>
+  <tr><td><code>Shell/ActivityBar.jsx</code></td><td>좌측 아이콘 바</td><td>아이콘/섹션 추가할 때</td></tr>
+  <tr><td><code>Shell/Sidebar.jsx</code></td><td>파일 탐색기 트리 렌더링</td><td>트리 표시 방식 바꿀 때</td></tr>
+  <tr><td><code>pages/About.jsx</code></td><td>README.md 스타일 자기소개</td><td>자기소개 레이아웃 바꿀 때</td></tr>
+  <tr><td><code>vue-components/SkillsChart.vue</code></td><td>스킬 바 차트 (Vue 3)</td><td>스킬 UI 바꿀 때</td></tr>
+  <tr><td><code>vue-components/ContactForm.vue</code></td><td>연락처 폼 (Vue 3)</td><td>폼 항목 바꿀 때</td></tr>
+</table>
+
+<hr>
+
+<!-- 9 -->
+<h2 id="s9">9. 자주 하는 수정 가이드</h2>
+
+<h3>경력 내용 수정하기</h3>
+<pre><code><span class="cm">// src/data/resume.js → experiences 배열 수정</span>
+<span class="kw">export const</span> <span class="vr">experiences</span> = [
+  {
+    <span class="vr">company</span>: <span class="str">'회사명'</span>,
+    <span class="vr">role</span>: <span class="str">'직책'</span>,
+    <span class="vr">period</span>: <span class="str">'2024.01 – 현재'</span>,
+    <span class="vr">highlights</span>: [
+      <span class="str">'주요 성과 1'</span>,
+      <span class="str">'주요 성과 2'</span>,
+    ],
+    <span class="vr">skills</span>: [<span class="str">'HTML5'</span>, <span class="str">'CSS3'</span>],
+  },
+  <span class="cm">// ... 추가</span>
+]</code></pre>
+
+<h3>새 섹션(페이지) 추가하기</h3>
+<div class="step"><div class="step-num">1</div><div><code>src/components/pages/NewPage.jsx</code> 생성</div></div>
+<div class="step"><div class="step-num">2</div><div><code>src/data/fileTree.js</code> 에 파일 항목 추가</div></div>
+<div class="step"><div class="step-num">3</div><div><code>App.jsx</code> 의 <code>routeMap</code> 에 경로 추가</div></div>
+<div class="step"><div class="step-num">4</div><div><code>App.jsx</code> 에 <code>lazy(() =&gt; import(...))</code> 추가</div></div>
+
+<h3>색상 바꾸기</h3>
+<pre><code><span class="cm">/* src/styles/variables.css */</span>
+<span class="at">:root</span> {
+  --accent-blue: <span class="num">#007acc</span>;  <span class="cm">/* 포인트 컬러 (탭 활성 선, 버튼 등) */</span>
+  --bg-statusbar: <span class="num">#007acc</span>; <span class="cm">/* 하단 상태 바 색상 */</span>
+  --accent-teal: <span class="num">#4ec9b0</span>;  <span class="cm">/* 변수명, 타입 색상 */</span>
+}</code></pre>
+
+<hr>
+
+<!-- 10 -->
+<h2 id="s10">10. React vs Vue 핵심 비교표</h2>
+<table>
+  <tr><th>개념</th><th>React</th><th>Vue 3</th></tr>
+  <tr><td>단순 상태</td><td><code>useState(0)</code></td><td><code>ref(0)</code> → <code>val.value</code></td></tr>
+  <tr><td>객체 상태</td><td><code>useState({})</code></td><td><code>reactive({})</code></td></tr>
+  <tr><td>초기화 (mount)</td><td><code>useEffect(fn, [])</code></td><td><code>onMounted(fn)</code></td></tr>
+  <tr><td>함수 캐싱</td><td><code>useCallback(fn, deps)</code></td><td>필요 없음 (자동)</td></tr>
+  <tr><td>props 받기</td><td><code>function Comp({ prop })</code></td><td><code>defineProps(['prop'])</code></td></tr>
+  <tr><td>이벤트</td><td><code>onClick={fn}</code></td><td><code>@click="fn"</code></td></tr>
+  <tr><td>양방향 바인딩</td><td><code>value={v} onChange={fn}</code></td><td><code>v-model="v"</code></td></tr>
+  <tr><td>조건 렌더</td><td><code>{조건 && &lt;El/&gt;}</code></td><td><code>v-if="조건"</code></td></tr>
+  <tr><td>리스트 렌더</td><td><code>{list.map(el =&gt; &lt;El/&gt;)}</code></td><td><code>v-for="el in list"</code></td></tr>
+  <tr><td>CSS 스코프</td><td>CSS Modules (<code>.module.css</code>)</td><td><code>&lt;style scoped&gt;</code></td></tr>
+  <tr><td>템플릿</td><td>JSX (JS 안에 HTML)</td><td><code>&lt;template&gt;</code> 블록</td></tr>
+</table>
+
+<hr>
+<p style="color:var(--muted);font-size:12px;text-align:center;padding:24px 0">
+  김석현 VSCode Portfolio Guide · React 18 + Vue 3 + Vite<br>
+  브라우저에서 이 파일을 열거나 VS Code Live Server로 확인하세요
+</p>
+
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,245 @@
+.wrapper {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px 32px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.header {
+  margin-bottom: 16px;
+}
+
+.comment { color: var(--text-comment); }
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── 라이브 데모 카드 ── */
+.demoCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  text-align: left;
+  background: linear-gradient(135deg, rgba(78, 201, 176, 0.12), rgba(0, 122, 204, 0.08));
+  border: 1px solid var(--accent-teal);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.demoCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(78, 201, 176, 0.18);
+}
+
+.demoIcon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(78, 201, 176, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.demoText {
+  flex: 1;
+  min-width: 0;
+}
+
+.demoBadge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--accent-teal);
+  background: rgba(78, 201, 176, 0.15);
+  border-radius: 99px;
+  padding: 2px 8px;
+  margin-bottom: 6px;
+}
+
+.demoTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.demoDesc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.demoCta {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-teal);
+  white-space: nowrap;
+}
+
+.card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.card:hover {
+  border-color: var(--border-active);
+  transform: translateY(-1px);
+}
+
+.cardAccent {
+  height: 3px;
+  width: 100%;
+}
+
+.cardBody {
+  padding: 20px 24px;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--font-ui);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.period {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.role {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.company {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.desc {
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+}
+
+.achievements {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.achItem {
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.achValue {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+.achLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+}
+
+.achDesc {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-ui);
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.skill {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+
+/* ── 모바일 ── */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 16px;
+  }
+
+  .cardBody {
+    padding: 16px;
+  }
+
+  .cardTop {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .meta {
+    align-items: flex-start;
+  }
+}

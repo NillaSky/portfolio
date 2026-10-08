@@ -1,0 +1,89 @@
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-sidebar);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sectionTitle {
+  padding: 8px 12px 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.treeRoot {
+  flex: 1;
+}
+
+.treeItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 2px 8px;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: var(--font-ui);
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: background 0.1s;
+}
+
+.treeItem:hover {
+  background: var(--bg-hover);
+}
+
+.treeItem.active {
+  background: var(--bg-selected);
+}
+
+.fileItem {
+  padding-left: 32px;
+}
+
+.itemName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileIcon {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  min-width: 20px;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+.folderIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--icon-folder);
+  flex-shrink: 0;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.15s;
+  transform: rotate(0deg);
+}
+
+.chevron.open {
+  transform: rotate(90deg);
+}

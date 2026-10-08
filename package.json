@@ -1,0 +1,10 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "웹 퍼블리셔 김석현 포트폴리오 (vscode-portfolio 소스 → portfolio-app 빌드 결과물)",
+  "scripts": {
+    "dev": "npm --prefix vscode-portfolio run dev",
+    "build": "npm --prefix vscode-portfolio run build"
+  }
+}

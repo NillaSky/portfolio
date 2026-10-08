@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="상태 중심 카드, 디자인 토큰 테마, 접근성 위젯을 보여주는 가상 보안 리포트 UI 데모">
+  <title>Secure Check 리포트 | Demo</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip" href="#report">본문 바로가기</a>
+
+  <!-- 아이콘 스프라이트 (직접 그린 단순 아이콘) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-shield" viewBox="0 0 48 48"><path d="M24 4 8 10v12c0 10 7 18 16 22 9-4 16-12 16-22V10L24 4z" fill="var(--icon-soft)"/><path d="m17 24 5 5 9-10" fill="none" stroke="var(--icon-main)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-message" viewBox="0 0 48 48"><rect x="6" y="9" width="36" height="26" rx="7" fill="var(--icon-soft)"/><path d="M14 35v7l9-7" fill="var(--icon-soft)"/><circle cx="33" cy="31" r="9" fill="var(--icon-main)"/><path d="m29.5 27.5 7 7m0-7-7 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 48 48"><rect x="12" y="4" width="22" height="40" rx="5" fill="var(--icon-soft)"/><rect x="19" y="8" width="8" height="2" rx="1" fill="var(--icon-main)" opacity=".5"/><circle cx="34" cy="32" r="9" fill="var(--icon-main)"/><path d="M28.5 37.5 39.5 26.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="34" cy="32" r="5.5" fill="none" stroke="#fff" stroke-width="2.5"/></symbol>
+      <symbol id="i-key" viewBox="0 0 48 48"><circle cx="17" cy="24" r="10" fill="var(--icon-soft)"/><circle cx="17" cy="24" r="4" fill="var(--icon-main)"/><path d="M26 24h16v6m-6-6v5" fill="none" stroke="var(--icon-main)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 48 48"><path d="M24 6c-7 0-12 5-12 12v9l-4 6h32l-4-6v-9c0-7-5-12-12-12z" fill="var(--icon-soft)"/><path d="M19 37a5 5 0 0 0 10 0" fill="var(--icon-main)"/><circle cx="35" cy="12" r="6" fill="var(--icon-main)"/></symbol>
+      <symbol id="i-card" viewBox="0 0 48 48"><rect x="5" y="11" width="38" height="26" rx="6" fill="var(--icon-soft)"/><rect x="5" y="17" width="38" height="5" fill="var(--icon-main)" opacity=".55"/><rect x="11" y="28" width="12" height="4" rx="2" fill="var(--icon-main)"/></symbol>
+      <symbol id="i-sim" viewBox="0 0 48 48"><path d="M13 5h16l8 8v28a3 3 0 0 1-3 3H13a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z" fill="var(--icon-soft)"/><rect x="16" y="20" width="16" height="14" rx="3" fill="var(--icon-main)"/><path d="M20 20v-3a4 4 0 0 1 8 0v3" fill="none" stroke="var(--icon-main)" stroke-width="3"/></symbol>
+      <symbol id="i-news" viewBox="0 0 48 48"><rect x="6" y="8" width="30" height="32" rx="5" fill="var(--icon-soft)"/><rect x="11" y="14" width="20" height="8" rx="2" fill="var(--icon-main)"/><rect x="11" y="26" width="20" height="3" rx="1.5" fill="var(--icon-main)" opacity=".5"/><rect x="11" y="32" width="14" height="3" rx="1.5" fill="var(--icon-main)" opacity=".5"/><path d="M36 16h4a2 2 0 0 1 2 2v17a5 5 0 0 1-5 5h-1" fill="var(--icon-main)" opacity=".35"/></symbol>
+      <symbol id="i-quiz" viewBox="0 0 48 48"><circle cx="24" cy="24" r="19" fill="var(--icon-soft)"/><path d="M18.5 19a5.5 5.5 0 1 1 8 4.9c-1.7.9-2.5 2-2.5 3.6v1" fill="none" stroke="var(--icon-main)" stroke-width="3.5" stroke-linecap="round"/><circle cx="24" cy="34.5" r="2.3" fill="var(--icon-main)"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 48 48"><rect x="9" y="20" width="30" height="22" rx="6" fill="var(--icon-soft)"/><path d="M16 20v-5a8 8 0 0 1 16 0v5" fill="none" stroke="var(--icon-main)" stroke-width="3.5"/><path d="m18 31 4 4 8-8" fill="none" stroke="var(--icon-main)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-user" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="var(--icon-soft)"/><circle cx="24" cy="19" r="7" fill="var(--icon-main)"/><path d="M11 37c2.5-6 7.5-9 13-9s10.5 3 13 9" fill="var(--icon-main)"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 16 16"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </defs>
+  </svg>
+
+  <main class="report" id="report" tabindex="-1">
+    <div class="band band--gray">
+      <div class="inner">
+        <nav class="crumb" aria-label="현재 위치">
+          <ol>
+            <li>홈</li>
+            <li>보안센터</li>
+            <li aria-current="page">Secure Check 리포트</li>
+          </ol>
+        </nav>
+        <header class="page-head">
+          <p class="page-head__brand"><svg class="page-head__logo" aria-hidden="true"><use href="#i-shield"/></svg>Secure Check</p>
+          <h1 class="page-head__title">내 보안 리포트</h1>
+          <p class="page-head__desc">자동 보호부터 계정 설정, 보안 습관까지 한 번에 점검해요.</p>
+        </header>
+
+        <div class="hero">
+          <!-- 요약 카드: 상태별로 내용이 바뀜 -->
+          <section class="hero__card" id="summary" aria-live="polite" aria-labelledby="summaryTitle"></section>
+
+          <ol class="steps" aria-label="점검 단계">
+            <li class="steps__item">
+              <svg class="steps__icon" aria-hidden="true"><use href="#i-shield"/></svg>
+              <div class="steps__body">
+                <span class="steps__no">STEP 1</span>
+                <strong class="steps__title">기본 보호 서비스</strong>
+                <a class="steps__link" href="#step1">현황 보기<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="steps__item">
+              <svg class="steps__icon" aria-hidden="true"><use href="#i-key"/></svg>
+              <div class="steps__body">
+                <span class="steps__no">STEP 2</span>
+                <strong class="steps__title">계정 보안 설정</strong>
+                <a class="steps__link" href="#step2">설정하러 가기<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+            <li class="steps__item">
+              <svg class="steps__icon" aria-hidden="true"><use href="#i-quiz"/></svg>
+              <div class="steps__body">
+                <span class="steps__no">STEP 3</span>
+                <strong class="steps__title">보안 습관 미션</strong>
+                <a class="steps__link" href="#step3">참여하러 가기<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <section class="band" id="step1" aria-labelledby="protectTitle">
+      <div class="inner">
+        <div class="section-head">
+          <p class="section-head__eyebrow">STEP 1</p>
+          <div class="section-head__row">
+            <h2 id="protectTitle" class="section-head__title">자동으로 지켜주는 기본 보호</h2>
+            <span class="tag">회선 전용</span>
+          </div>
+        </div>
+        <ul class="protect-row" id="protectList"></ul>
+      </div>
+    </section>
+
+    <section class="band band--gray" id="step2" aria-labelledby="accountTitle">
+      <div class="inner">
+        <div class="section-head">
+          <p class="section-head__eyebrow">STEP 2</p>
+          <div class="section-head__row">
+            <h2 id="accountTitle" class="section-head__title">한 번 설정하면 계속 지켜주는 계정 보안</h2>
+          </div>
+        </div>
+        <ul class="mission-row mission-row--4" id="accountList"></ul>
+      </div>
+    </section>
+
+    <section class="band" id="step3" aria-labelledby="habitTitle">
+      <div class="inner">
+        <div class="section-head">
+          <p class="section-head__eyebrow">STEP 3</p>
+          <div class="section-head__row">
+            <h2 id="habitTitle" class="section-head__title">알아두면 피해를 줄이는 보안 습관</h2>
+          </div>
+        </div>
+        <ul class="mission-row mission-row--3" id="habitList"></ul>
+      </div>
+    </section>
+
+    <section class="band band--gray" aria-labelledby="tipTitle">
+      <div class="inner">
+        <div class="section-head section-head--between">
+          <h2 id="tipTitle" class="section-head__title">알아두면 좋은 보안 팁</h2>
+          <div class="pager" id="tipPager">
+            <button type="button" class="pager__btn pager__btn--prev" data-dir="-1" aria-label="이전 팁 보기"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <span class="pager__status" aria-live="polite"><span class="sr-only">팁 페이지 </span><strong data-current>1</strong> / <span data-total>2</span></span>
+            <button type="button" class="pager__btn" data-dir="1" aria-label="다음 팁 보기"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+        <ul class="tips" id="tipList"></ul>
+      </div>
+    </section>
+
+    <section class="band" aria-labelledby="faqTitle">
+      <div class="inner">
+        <div class="section-head">
+          <h2 id="faqTitle" class="section-head__title">자주 묻는 질문</h2>
+        </div>
+        <div class="accordion" id="faq">
+          <h3 class="accordion__heading">
+            <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="faq1" id="faq1Btn"><span class="accordion__q" aria-hidden="true">Q</span>점수는 어떻게 계산되나요?</button>
+          </h3>
+          <div class="accordion__panel" id="faq1" role="region" aria-labelledby="faq1Btn" hidden>
+            <p>내 회선에 적용할 수 있는 항목 중 완료한 항목의 비율로 계산해요. 회선이 없으면 적용할 수 없는 항목은 계산에서 빠져요.</p>
+          </div>
+          <h3 class="accordion__heading">
+            <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="faq2" id="faq2Btn"><span class="accordion__q" aria-hidden="true">Q</span>보호 서비스 정보가 안 보여요.</button>
+          </h3>
+          <div class="accordion__panel" id="faq2" role="region" aria-labelledby="faq2Btn" hidden>
+            <p>일시적으로 정보를 불러오지 못하면 ‘확인 중’으로 표시돼요. 보호 기능은 그대로 동작하니 잠시 후 다시 확인해 주세요.</p>
+          </div>
+          <h3 class="accordion__heading">
+            <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="faq3" id="faq3Btn"><span class="accordion__q" aria-hidden="true">Q</span>회선이 없어도 이용할 수 있나요?</button>
+          </h3>
+          <div class="accordion__panel" id="faq3" role="region" aria-labelledby="faq3Btn" hidden>
+            <p>계정 보안 설정과 보안 습관 미션은 회선 없이도 참여할 수 있어요. 회선 전용 항목에는 ‘회선 필요’가 표시돼요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 데모 컨트롤: 실제 서비스 화면이 아니라 상태를 바꿔보기 위한 떠 있는 패널 -->
+  <div class="demo-dock">
+    <button type="button" class="demo-dock__toggle" id="dockToggle" aria-expanded="true" aria-controls="dockPanel">
+      <span class="demo-dock__dot" aria-hidden="true"></span>데모 컨트롤
+    </button>
+    <aside class="controls" id="dockPanel" aria-labelledby="controlsTitle">
+      <h2 id="controlsTitle" class="controls__title">상태를 바꿔보세요</h2>
+      <p class="controls__desc">가상 서비스예요. 바꾸면 화면이 바로 달라져요.</p>
+
+      <fieldset class="field">
+        <legend class="field__legend">사용자 상태</legend>
+        <label class="radio"><input type="radio" name="user" value="guest"> <span>로그인 전</span></label>
+        <label class="radio"><input type="radio" name="user" value="member" checked> <span>로그인 · 회선 보유</span></label>
+        <label class="radio"><input type="radio" name="user" value="noline"> <span>로그인 · 회선 없음</span></label>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend class="field__legend">예외 상황</legend>
+        <label class="check"><input type="checkbox" name="apiError"> <span>보호 서비스 정보 불러오기 실패</span></label>
+        <label class="check"><input type="checkbox" name="cancelled"> <span>스팸 차단 서비스 해지</span></label>
+      </fieldset>
+
+      <div class="field field--row">
+        <span class="field__legend" id="themeLabel">다크 모드</span>
+        <button type="button" class="switch" id="themeToggle" aria-pressed="false" aria-labelledby="themeLabel">
+          <span class="switch__thumb" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <button type="button" class="controls__reset" id="resetDemo">처음 상태로</button>
+    </aside>
+  </div>
+
+  <!-- 확인 모달 -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal__dim" data-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+      <h2 class="modal__title" id="modalTitle"></h2>
+      <p class="modal__desc" id="modalDesc"></p>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--line" data-close>취소</button>
+        <button type="button" class="btn btn--primary" id="modalConfirm"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -112,6 +112,110 @@
 					font-weight: 600;
 				}
 		</style>
+		<!-- 가이드 페이지 전용 보정: 실제 서비스 페이지 안에서만 스타일이 붙던 요소를 가이드에서도 보이게 정리 -->
+		<style>
+			:root { --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; --soft:#f4f2fe; }
+			[hidden] { display:none !important; }
+			body { font-family: 'Pretendard', system-ui, -apple-system, 'Segoe UI', 'Noto Sans KR', sans-serif; background:#f7f8fa; }
+
+			/* 레이아웃: grid 대신 flex, 헤더와 본문 폭 통일 */
+			.head-inner { max-width:1480px; padding:14px 20px; }
+			.head-title small { margin-left:4px; }
+			nav.head-nav a { font-size:13px; padding:6px 12px; }
+			.wrap { display:flex; align-items:flex-start; gap:20px; padding:20px !important; }
+			.left { flex:1 1 auto; min-width:0; }
+			.panel { flex:0 0 420px; width:420px; top:80px; }
+			@media (max-width: 1100px) {
+				.wrap { flex-direction:column; align-items:stretch; }
+				.panel { position:static; flex-basis:auto; width:auto; }
+			}
+
+			/* 섹션 헤더 */
+			.demo-section { padding:24px; margin-bottom:20px; box-shadow:0 1px 2px rgba(17,17,17,.04); }
+			.demo-head { align-items:flex-start; padding-bottom:14px; }
+			.demo-titles { display:flex; flex-direction:column; gap:4px; min-width:0; }
+			.demo-title { font-size:17px; line-height:1.4; word-break:break-all; }
+			.demo-sub { margin:0; font-family:var(--mono); font-size:13px; color:var(--muted); word-break:break-all; }
+			.demo-actions { flex-shrink:0; }
+			.btn { height:34px; font-size:13px; }
+			.demo-body { display:flex; flex-direction:column; gap:16px; padding-top:20px; }
+			.demo-note { margin:0; font-size:14px; line-height:2; }
+			.chip { margin-right:4px; padding:1px 8px; background:var(--panel); font-size:13px; color:#3b3f46; }
+
+			/* 마크업 패널 */
+			.panel-title { font-size:15px; }
+			.panel-head .tab { height:30px; font-size:13px; }
+			.panel-section h4 { font-size:13px; }
+			.tree { min-height:120px; }
+			pre.code { min-height:120px; }
+
+			/* 컬러 */
+			.color-grid { display:flex; flex-wrap:wrap; }
+			.color-item { flex:1 1 150px; }
+
+			/* 입력: 라벨 폭 고정, 라디오 체크 아이콘 자리 확보, 안내 문구는 아래로 */
+			.demo-body [data-module="input_list"].list_flex { flex-wrap:wrap; align-items:center; row-gap:8px; }
+			.demo-body [data-module="input_list"].list_flex > .input_name { flex:0 0 88px; white-space:nowrap; }
+			.demo-body [data-module="input_list"].list_flex > [data-scope="input_set"] { flex:1 1 0; min-width:0; flex-wrap:wrap; gap:12px; }
+			.demo-body [data-module="input_list"].list_flex > [data-scope="input_set"] > [data-module="input_wrap"] { flex:1 1 180px; }
+			.demo-body [data-module="input_list"].list_flex > [data-module="input_alert"] { flex:1 1 100%; margin:0 0 0 108px; }
+			.demo-body [data-module="input_wrap"] [type="radio"] + label { justify-content:flex-start; padding-right:44px; white-space:nowrap; }
+
+			/* 상품 카드 목록 간격 */
+			.demo-body .product_card_list { display:flex; flex-direction:column; gap:16px; }
+
+			/* 하단 고정 영역: 좁은 카드 안에서도 칩·가격이 꺾이지 않게 */
+			.demo-body [data-scope="fixed_bottom"] .desc_area { gap:16px; }
+			.demo-body [data-scope="fixed_bottom"] .desc_area .left { min-width:0; }
+			.demo-body [data-scope="fixed_bottom"] .desc span,
+			.demo-body [data-scope="fixed_bottom"] .detail_price { white-space:nowrap; }
+			.demo-body [data-scope="fixed_bottom"] .desc { flex-wrap:wrap; gap:6px; }
+			.demo-body [data-scope="fixed_bottom"] .img { flex:0 0 auto; width:auto; overflow:visible; }
+			.demo-body [data-scope="fixed_bottom"] .img img { width:auto; height:20px; }
+
+			/* list_dotted 링크 줄 맞춤 */
+			.demo-body [data-module="list_dotted"] li > a { display:inline-block; margin-left:4px; }
+
+			/* scroll_nav 단계 */
+			.step_list { display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none; }
+			.step_list .step { min-width:56px; height:40px; padding:0 16px; background:#fff; border:1px solid var(--line); border-radius:999px; font:600 15px/1 var(--mono); color:#3b3f46; cursor:pointer; transition:background .15s, border-color .15s, color .15s; }
+			.step_list .step:hover { border-color:var(--accent); color:var(--accent); }
+			.step_list li.active .step, .step_list li[aria-selected="true"] .step, .step_list li[aria-current] .step { background:var(--accent); border-color:var(--accent); color:#fff; }
+
+			/* 아코디언: 서비스 페이지용 하단 여백 제거 */
+			.demo-body.self_faq { padding-bottom:0; }
+			.demo-body.self_faq .faq_list { margin-top:0; }
+
+			/* 범용 드롭다운 */
+			.demo-body > [data-fn="dropdown"] { position:relative; width:260px; }
+			.demo-body > [data-fn="dropdown"] > [data-trigger] { display:flex; justify-content:space-between; align-items:center; width:100%; height:48px; padding:0 16px; background:#fff; border:1px solid var(--line); border-radius:10px; font-size:15px; color:var(--ink); cursor:pointer; }
+			.demo-body > [data-fn="dropdown"] > [data-trigger]::after { content:''; width:8px; height:8px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:translateY(-2px) rotate(45deg); transition:transform .15s; }
+			.demo-body > [data-fn="dropdown"].active > [data-trigger] { border-color:var(--accent); }
+			.demo-body > [data-fn="dropdown"].active > [data-trigger]::after { transform:translateY(2px) rotate(-135deg); }
+			.demo-body > [data-fn="dropdown"] > [data-panel] { position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:2; padding:6px; background:#fff; border:1px solid var(--line); border-radius:10px; box-shadow:0 8px 24px rgba(17,17,17,.08); }
+			.demo-body > [data-fn="dropdown"] > [data-panel] [role="option"] { display:block; width:100%; padding:10px 12px; background:none; border:0; border-radius:6px; text-align:left; font-size:15px; color:var(--ink); cursor:pointer; }
+			.demo-body > [data-fn="dropdown"] > [data-panel] [role="option"]:hover,
+			.demo-body > [data-fn="dropdown"] > [data-panel] [role="option"]:focus-visible { background:var(--soft); color:var(--accent); }
+
+			/* class_toggle 버튼: active 상태가 보이게 */
+			.demo-body > [data-fn="class_toggle"] > [data-trigger] { display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 18px; background:#fff; border:1px solid var(--line); border-radius:999px; font-size:15px; font-weight:600; color:var(--ink); cursor:pointer; }
+			.demo-body > [data-fn="class_toggle"] > [data-trigger]::before { content:'OFF'; padding:2px 8px; background:#eceef2; border-radius:999px; font:700 11px/1.4 var(--mono); color:#5b6570; }
+			.demo-body > [data-fn="class_toggle"] > [data-trigger].active { border-color:var(--accent); color:var(--accent); }
+			.demo-body > [data-fn="class_toggle"] > [data-trigger].active::before { content:'ON'; background:var(--accent); color:#fff; }
+
+			/* 인증 수단 탭 영역 */
+			.demo-body [data-fn="tab_switch"] figure { max-width:360px; margin:8px auto 0; }
+			.demo-body [data-fn="tab_switch"] fieldset { min-width:0; }
+			.demo-body [data-fn="tab_switch"] [data-tab-panel] { display:flex; flex-direction:column; gap:28px; margin-top:24px; }
+			.demo-body [data-fn="tab_switch"] [data-tab-panel] [data-module="input_list"] { margin:0; }
+			.demo-body [data-fn="tab_switch"] [data-scope="field_form"] { margin-top:12px; }
+			.demo-body .input_box { display:flex; gap:8px; margin-bottom:8px; }
+			.demo-body .input_box input { flex:1 1 auto; min-width:0; }
+			.demo-body .input_box > button { flex:0 0 auto; height:5.6rem; padding:0 20px; background:#3b3f46; border:0; border-radius:8px; font-size:15px; font-weight:600; color:#fff; cursor:pointer; }
+			.demo-body .input_box > button:hover { background:#1f2228; }
+
+			:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+		</style>
 	</head>
 	<body>
 		<!-- 고정 헤더 -->
@@ -134,8 +238,10 @@
 				<!-- 색상 가이드 -->
 				<section id="sec-colors" class="demo-section color-section" aria-labelledby="h-colors">
 					<div class="demo-head">
-						<h2 id="h-colors" class="demo-title">00. 컬러 & 브레이크포인트</h2>
-					</div>
+						<div class="demo-titles">
+							<h2 id="h-colors" class="demo-title">00. 컬러 & 브레이크포인트</h2>
+						</div>
+						</div>
 					<div class="demo-body">
 						<h3>Breakpoints</h3>
 						<table>
@@ -210,7 +316,9 @@
 
 				<section id="sec-buttons" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
 					<div class="demo-head">
-						<h2 id="h-buttons" class="demo-title">01. 버튼</h2>
+						<div class="demo-titles">
+							<h2 id="h-buttons" class="demo-title">01. 버튼</h2>
+						</div>
 						<div class="demo-actions">
 							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -242,8 +350,10 @@
 
 				<section id="sec-inputs" class="demo-section" data-demo="inputs" aria-labelledby="h-inputs">
 					<div class="demo-head">
-						<h2 id="h-inputs" class="demo-title">data-module="input_list"</h2>
-						<h2 id="h-inputs" class="demo-title"> data-module="input_wrap"</h2>
+						<div class="demo-titles">
+							<h2 id="h-inputs" class="demo-title">data-module="input_list"</h2>
+							<p class="demo-sub">data-module="input_wrap"</p>
+						</div>
 						<div class="demo-actions">
 							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -295,8 +405,10 @@
 				<!-- data-module="product_card_inner" -->
 				<section id="sec-cards" class="demo-section" data-demo="cards" aria-labelledby="h-cards">
 					<div class="demo-head">
-						<h2 id="h-cards" class="demo-title">data-module="product_card_inner"</h2>
-						<h2 id="h-cards" class="demo-title">data-module="product_card"</h2>
+						<div class="demo-titles">
+							<h2 id="h-cards" class="demo-title">data-module="product_card_inner"</h2>
+							<p class="demo-sub">data-module="product_card"</p>
+						</div>
 						<div class="demo-actions">
 							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -347,9 +459,11 @@
 				</section>
 
 				<!--data-scope="product_view_wrap  -->
-				<section id="sec-cards" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+				<section id="sec-view" class="demo-section" data-demo="buttons" aria-labelledby="h-view">
 					<div class="demo-head">
-						<h2 id="h-buttons" class="demo-title">[data-scope="product_view_wrap"]</h2>
+						<div class="demo-titles">
+							<h2 id="h-view" class="demo-title">[data-scope="product_view_wrap"]</h2>
+						</div>
 						<div class="demo-actions">
 							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -458,9 +572,11 @@
 				</section>
 
 				<!-- data-scope=components + data-module="product_swiper" -->
-				<section id="sec-cards" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+				<section id="sec-swiper" class="demo-section" data-demo="buttons" aria-labelledby="h-swiper">
 					<div class="demo-head">
-						<h2 id="h-buttons" class="demo-title">[data-scope=components] + [data-module="product_swiper"]</h2>
+						<div class="demo-titles">
+							<h2 id="h-swiper" class="demo-title">[data-scope=components] + [data-module="product_swiper"]</h2>
+						</div>
 						<div class="demo-actions">
 							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -683,9 +799,11 @@
 				</section>
 
 				<!-- data-module="list_dotted" -->
-				<section id="sec-list" class="demo-section" data-demo="list" aria-labelledby="h-fixed">
+				<section id="sec-list" class="demo-section" data-demo="list" aria-labelledby="h-list">
 					<div class="demo-head">
-						<h2 id="h-fixed" class="demo-title">data-module="list_dotted"</h2>
+						<div class="demo-titles">
+							<h2 id="h-list" class="demo-title">data-module="list_dotted"</h2>
+						</div>
 						<div class="demo-actions">
 							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -710,7 +828,9 @@
 				<!-- data-scope="fixed_bottom" -->
 				<section id="sec-fixed" class="demo-section" data-demo="fixed" aria-labelledby="h-fixed">
 					<div class="demo-head">
-						<h2 id="h-fixed" class="demo-title">data-scope="fixed_bottom"</h2>
+						<div class="demo-titles">
+							<h2 id="h-fixed" class="demo-title">data-scope="fixed_bottom"</h2>
+						</div>
 						<div class="demo-actions">
 							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -738,7 +858,7 @@
 								</div>
 								<div data-module="btn_wrap">
 									<a href="#" class="btn_white">장바구니</a>
-									<a href="#" class="btn_grey_white">신청하기</a>
+									<a href="#">신청하기</a>
 								</div>
 							</div>
 						</section>
@@ -746,9 +866,11 @@
 				</section>
 
 				<!-- data-fn -->
-				<section id="sec-fn" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+				<section id="sec-fn" class="demo-section" data-demo="buttons" aria-labelledby="h-fn">
 						<div class="demo-head">
-							<h2 id="h-buttons" class="demo-title">[data-fn="scroll_nav"]</h2>
+							<div class="demo-titles">
+								<h2 id="h-fn" class="demo-title">[data-fn="scroll_nav"]</h2>
+							</div>
 							<div class="demo-actions">
 								<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 								<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -763,32 +885,22 @@
 							</p>
 							<!-- 복사용 영역  data-bound="true" 제외-->
 							<ol class="step_list" data-fn="scroll_nav">
-									<li data-trigger="tab">
-										<span class="step">01</span>
-									</li>
-									<li data-trigger="tab">
-										<span class="step">02</span>
-									</li>
-									<li data-trigger="tab">
-										<span class="step">03</span>
-									</li>
-									<li data-trigger="tab">
-										<span class="step">04</span>
-									</li>
-									<li data-trigger="tab">
-										<span class="step">05</span>
-									</li>
-									<li data-trigger="tab">
-										<span class="step">06</span>
-									</li>
+									<li data-trigger="tab"><button type="button" class="step">01</button></li>
+									<li data-trigger="tab"><button type="button" class="step">02</button></li>
+									<li data-trigger="tab"><button type="button" class="step">03</button></li>
+									<li data-trigger="tab"><button type="button" class="step">04</button></li>
+									<li data-trigger="tab"><button type="button" class="step">05</button></li>
+									<li data-trigger="tab"><button type="button" class="step">06</button></li>
 								</ol>
 								<!-- //복사용 영역 -->
 						</div>
 				</section>
 
-				<section id="sec-fn" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+				<section id="sec-accordion" class="demo-section" data-demo="buttons" aria-labelledby="h-accordion">
 					<div class="demo-head">
-						<h2 id="h-buttons" class="demo-title">[data-fn="accordion"]  + (data-acc="single // "multiple")</h2>
+						<div class="demo-titles">
+							<h2 id="h-accordion" class="demo-title">[data-fn="accordion"]  + (data-acc="single // "multiple")</h2>
+						</div>
 						<div class="demo-actions">
 							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -828,9 +940,11 @@
 					</div>
 				</section>
 
-				<section id="sec-fn" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+				<section id="sec-dropdown" class="demo-section" data-demo="buttons" aria-labelledby="h-dropdown">
 					<div class="demo-head">
-						<h2 id="h-buttons" class="demo-title">[data-fn="dropdown"]</h2>
+						<div class="demo-titles">
+							<h2 id="h-dropdown" class="demo-title">[data-fn="dropdown"]</h2>
+						</div>
 						<div class="demo-actions">
 							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -860,9 +974,11 @@
 					</div>
 				</section>
 
-				<section id="sec-fn" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+				<section id="sec-toggle" class="demo-section" data-demo="buttons" aria-labelledby="h-toggle">
 					<div class="demo-head">
-						<h2 id="h-buttons" class="demo-title">[data-fn="class_toggle"] + [data-mode="multiple"] + [data-target=""]</h2>
+						<div class="demo-titles">
+							<h2 id="h-toggle" class="demo-title">[data-fn="class_toggle"] + [data-mode="multiple"] + [data-target=""]</h2>
+						</div>
 						<div class="demo-actions">
 							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -886,10 +1002,12 @@
 					</div>
 				</section>
 
-				<section id="sec-fn" class="demo-section" data-demo="buttons" aria-labelledby="h-buttons">
+				<section id="sec-tab" class="demo-section" data-demo="buttons" aria-labelledby="h-tab">
 					<div class="demo-head">
-						<h2 id="h-buttons" class="demo-title">[tab_switch"] + [data-trigger=""] + [data-tab-panel=""]</h2>
-						<h2 id="h-buttons" class="demo-title">[data-fn="id_masking] 주민 번호 <br> [data-fn="numeric_input] 넘버 입력 폼</h2>
+						<div class="demo-titles">
+							<h2 id="h-tab" class="demo-title">[tab_switch"] + [data-trigger=""] + [data-tab-panel=""]</h2>
+							<p class="demo-sub">[data-fn="id_masking] 주민 번호 <br> [data-fn="numeric_input] 넘버 입력 폼</p>
+						</div>
 						<div class="demo-actions">
 							<button class="btn icon js-show-tree" aria-controls="panel">마크업 트리</button>
 							<button class="btn icon js-show-code" aria-controls="panel">전체 코드</button>
@@ -975,13 +1093,13 @@
 								
 								<div data-module="input_list">
 									<div data-module="input_wrap">
-										<label class="input_name" for="address">주소</label>
+										<label class="input_name" for="address01">주소</label>
 										<div class="input_box">
 											<input type="text" id="address01" name="address" placeholder="주소를 검색해 주세요"
 														required>
 											<button type="button" title="새창열림"><span>주소 찾기</span></button>
 										</div>
-										<input type="text" id="address" name="address" placeholder="상세 주소를 입력해 주세요">
+										<input type="text" id="address" name="address_detail" placeholder="상세 주소를 입력해 주세요" aria-label="상세 주소">
 									</div>
 								</div>
 
@@ -996,7 +1114,7 @@
 
 							<!-- case:2 운전면허증 -->
 							<fieldset id="section-dr_license" data-tab-panel="tab2" aria-labelledby="legend-dr_license">
-								<legend id="legend-dr_license" class="visually_hidden">주민등록증 인증 정보</legend>
+								<legend id="legend-dr_license" class="visually_hidden">운전면허증 인증 정보</legend>
 
 								<figure>
 									<img src="./assets/images/demo/img-license-card.svg" alt="운전면허증 예시 이미지">
@@ -1004,14 +1122,14 @@
 
 								<div data-module="input_list" class="list_flex">
 									<div data-module="input_wrap">
-										<label class="input_name" for="name">이름</label>
-										<input type="text" id="name" name="name" placeholder="홍길동"
+										<label class="input_name" for="name_dr">이름</label>
+										<input type="text" id="name_dr" name="name" placeholder="홍길동"
 													autocomplete="name" required>
 									</div>
 
 									<div data-module="input_wrap">
-										<label class="input_name" for="hp_number">연락 가능 전화번호</label>
-										<input type="tel" id="hp_number" name="hp_number" data-fn="numeric_input"
+										<label class="input_name" for="hp_number_dr">연락 가능 전화번호</label>
+										<input type="tel" id="hp_number_dr" name="hp_number" data-fn="numeric_input"
 													inputmode="numeric" placeholder="휴대폰 번호 ‘-’없이 입력해주세요"
 													required data-maxlength="11" data-hyphen="3,4,4">
 									</div>
@@ -1019,9 +1137,9 @@
 
 								<div data-module="input_list">
 									<div data-module="input_wrap">
-										<label class="input_name" for="card_date">발급 일자</label>
-										<input type="text" id="card_date" name="card_date" data-fn="numeric_input"
-													inputmode="numeric" data-maxlength="8" placeholder="주민등록증 발급 일자 숫자만 입력(예 19990626)"
+										<label class="input_name" for="card_date_dr">발급 일자</label>
+										<input type="text" id="card_date_dr" name="card_date" data-fn="numeric_input"
+													inputmode="numeric" data-maxlength="8" placeholder="운전면허증 발급 일자 숫자만 입력(예 19990626)"
 													required>
 									</div>
 								</div>
@@ -1042,33 +1160,33 @@
 												<li><button type="button" data-option data-value="area_number4">지역 번호4</button></li>
 											</ul>
 										</div>
-										<input type="number" id="area_number_list" name="area_number_list" placeholder="뒤 10자리 숫자만 입력해주세요" data-fn="numeric_input" data-maxlength="10">
+										<input type="text" inputmode="numeric" id="area_number_input" aria-label="면허 번호 뒤 10자리" name="area_number_list" placeholder="뒤 10자리 숫자만 입력해주세요" data-fn="numeric_input" data-maxlength="10">
 										<input type="hidden" name="area_number" id="area_number_value" required>
 									</div>
 									<div data-scope="field_form" class="checkbox">
 										<div class="input_inner">
-											<input type="checkbox" id="CheckBox_01">
-											<label for="CheckBox_01"><span class="icon_check"></span><span>[필수] 본인 조회에 동의합니다.</span></label>
+											<input type="checkbox" id="CheckBox_02">
+											<label for="CheckBox_02"><span class="icon_check"></span><span>[필수] 본인 조회에 동의합니다.</span></label>
 										</div>
 									</div>
 								</div>
 								
 								<div data-module="input_list">
 									<div data-module="input_wrap">
-										<label class="input_name" for="address">주소</label>
+										<label class="input_name" for="address_dr">주소</label>
 										<div class="input_box">
-											<input type="text" id="address" name="address" placeholder="주소를 검색해 주세요"
+											<input type="text" id="address_dr" name="address" placeholder="주소를 검색해 주세요"
 														required>
 											<button type="button" title="새창열림"><span>주소 찾기</span></button>
 										</div>
-										<input type="text" id="address" name="address" placeholder="상세 주소를 입력해 주세요">
+										<input type="text" id="address_dr_detail" name="address_detail" placeholder="상세 주소를 입력해 주세요" aria-label="상세 주소">
 									</div>
 								</div>
 
 								<div data-module="input_list">
 									<div data-module="input_wrap">
-										<label class="input_name" for="email">이메일</label>
-										<input type="email" id="email" name="email" placeholder="이메일을 입력해 주세요" required>
+										<label class="input_name" for="email_dr">이메일</label>
+										<input type="email" id="email_dr" name="email" placeholder="이메일을 입력해 주세요" required>
 									</div>
 								</div>
 							</fieldset>
@@ -1263,6 +1381,14 @@
 					btnCode?.addEventListener('click', () => {
 						load();
 						document.querySelector('.tab[data-tab="code"]').click();
+					});
+				});
+
+				// class_toggle 데모 버튼: 토글된 class를 aria-pressed로도 알려줌
+				document.querySelectorAll('.demo-body > [data-fn="class_toggle"] > [data-trigger]').forEach(function (btn) {
+					btn.setAttribute('aria-pressed', 'false');
+					btn.addEventListener('click', function () {
+						setTimeout(function () { btn.setAttribute('aria-pressed', String(btn.classList.contains('active'))); }, 0);
 					});
 				});
 

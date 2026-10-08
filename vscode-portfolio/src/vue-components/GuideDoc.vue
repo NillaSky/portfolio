@@ -92,18 +92,17 @@
           │&nbsp;&nbsp; │&nbsp;&nbsp; └── <span class="jsx">StatusBar.jsx</span><span class="note">← 하단 상태 바 + 다크/라이트 토글</span><br>
           │&nbsp;&nbsp; ├── <span class="folder">components/pages/</span><span class="note">← 탭 클릭 시 에디터 영역에 보이는 페이지들</span><br>
           │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">About.jsx</span><span class="note">← 자기소개 (React)</span><br>
-          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">Experience.jsx</span><span class="note">← 경력 타임라인 (React)</span><br>
-          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">Projects.jsx</span><span class="note">← 프로젝트 카드 (React)</span><br>
-          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">Skills.jsx</span><span class="note">← Vue 앱을 올려주는 React 래퍼</span><br>
+          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">Experience.jsx</span><span class="note">← 경력 파일별 화면 + 작업 타임라인 (React)</span><br>
+          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">SecureReport.jsx</span><span class="note">← 보안 리포트 데모를 iframe으로 여는 페이지</span><br>
+          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">ComponentGuide.jsx</span><span class="note">← 공통 UI 가이드를 iframe으로 여는 페이지</span><br>
+          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">A11yChecklist.jsx</span><span class="note">← 접근성 결함 관리 도구를 iframe으로 여는 페이지</span><br>
           │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="jsx">Contact.jsx</span><span class="note">← Vue 앱을 올려주는 React 래퍼</span><br>
           │&nbsp;&nbsp; │&nbsp;&nbsp; └── <span class="jsx">Guide.jsx</span><span class="note">← Vue 앱을 올려주는 React 래퍼 (이 문서)</span><br>
           │&nbsp;&nbsp; ├── <span class="folder">vue-components/</span><span class="note">← 실제 Vue 파일들</span><br>
-          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="vue">SkillsChart.vue</span><span class="note">← 스킬 바 애니메이션 (Vue 3)</span><br>
-          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="vue">ContactForm.vue</span><span class="note">← 연락처 폼 (Vue 3)</span><br>
+          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="vue">ContactForm.vue</span><span class="note">← 연락처 (Vue 3)</span><br>
           │&nbsp;&nbsp; │&nbsp;&nbsp; └── <span class="vue">GuideDoc.vue</span><span class="note">← 이 가이드 문서 (Vue 3) ← 지금 보는 파일!</span><br>
           │&nbsp;&nbsp; ├── <span class="folder">data/</span><span class="note">← ★ 내용 수정은 여기서! 가장 자주 편집하는 곳</span><br>
-          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="js">resume.js</span><span class="note">← 이름, 경력, 스킬 데이터</span><br>
-          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="js">projects.js</span><span class="note">← 프로젝트 목록 데이터</span><br>
+          │&nbsp;&nbsp; │&nbsp;&nbsp; ├── <span class="js">resume.js</span><span class="note">← 프로필, 경력, 작업 타임라인, MCP 활용 데이터</span><br>
           │&nbsp;&nbsp; │&nbsp;&nbsp; └── <span class="js">fileTree.js</span><span class="note">← 사이드바에 보이는 파일 목록</span><br>
           │&nbsp;&nbsp; ├── <span class="folder">hooks/</span><br>
           │&nbsp;&nbsp; │&nbsp;&nbsp; └── <span class="js">useTabs.js</span><span class="note">← 탭 열기/닫기/활성화 로직</span><br>
@@ -610,7 +609,7 @@ function App() {
 // 자식 (ActivityBar.jsx)에서 받기
 // ─────────────────────────────────
 function ActivityBar({ active, onSelect }) {
-  // active: 'explorer' | 'skills' | 'projects' | 'contact'
+  // active: 'explorer' | 'projects' | 'contact'
   // onSelect: 아이콘 클릭 시 호출할 함수
 
   return (
@@ -623,10 +622,10 @@ function ActivityBar({ active, onSelect }) {
       &lt;/button&gt;
 
       &lt;button
-        className={active === 'skills' ? 'active' : ''}
-        onClick={() => onSelect('skills')}
+        className={active === 'projects' ? 'active' : ''}
+        onClick={() => onSelect('projects')}
       &gt;
-        💡
+        🖥
       &lt;/button&gt;
     &lt;/div&gt;
   )
@@ -679,11 +678,11 @@ useEffect(() => {
 })
 
 // ─────────────────────────────────
-// 이 프로젝트에서 실제 사용 (Skills.jsx)
+// 이 프로젝트에서 실제 사용 (Contact.jsx)
 // ─────────────────────────────────
 useEffect(() => {
   // 컴포넌트가 DOM에 붙으면 Vue 앱을 마운트
-  appRef.current = createApp(SkillsChart)
+  appRef.current = createApp(ContactForm)
   appRef.current.mount(mountRef.current)
 
   // 컴포넌트가 사라지면 Vue 앱도 정리 (cleanup)
@@ -741,14 +740,14 @@ const handleFileClick = useCallback(
 // ─────────────────────────────────
 // 용도 ①: DOM 요소 참조 (이 프로젝트 핵심!)
 // ─────────────────────────────────
-function Skills() {
+function Contact() {
   const mountRef = useRef(null)  // 처음엔 null
   //                              실제 DOM이 붙으면 자동으로 해당 요소가 됨
 
   useEffect(() => {
     // mountRef.current → 실제 &lt;div&gt; DOM 요소
     // 이 &lt;div&gt;에 Vue 앱을 마운트!
-    createApp(SkillsChart).mount(mountRef.current)
+    createApp(ContactForm).mount(mountRef.current)
   }, [])
 
   return &lt;div ref={mountRef} /&gt;
@@ -821,9 +820,9 @@ const { tabs, activeTab, openTab, closeTab, activateTab } = useTabs([defaultTab]
         <pre v-pre><code>// ─────────────────────────────────
 // 문제: 일반 import
 // ─────────────────────────────────
-import About    from './components/pages/About'
-import Skills   from './components/pages/Skills'
-import Projects from './components/pages/Projects'
+import About        from './components/pages/About'
+import Experience   from './components/pages/Experience'
+import SecureReport from './components/pages/SecureReport'
 // → 앱 시작 시 모든 페이지 코드를 한꺼번에 다운로드
 // → 첫 화면이 뜨기까지 오래 걸림
 
@@ -832,9 +831,9 @@ import Projects from './components/pages/Projects'
 // ─────────────────────────────────
 import { lazy, Suspense } from 'react'
 
-const About    = lazy(() => import('./components/pages/About'))
-const Skills   = lazy(() => import('./components/pages/Skills'))
-const Projects = lazy(() => import('./components/pages/Projects'))
+const About        = lazy(() => import('./components/pages/About'))
+const Experience   = lazy(() => import('./components/pages/Experience'))
+const SecureReport = lazy(() => import('./components/pages/SecureReport'))
 // → 해당 탭을 클릭할 때만 그 페이지 코드를 다운로드
 // → 첫 화면이 빠르게 뜸
 
@@ -860,7 +859,8 @@ const Projects = lazy(() => import('./components/pages/Projects'))
         <pre v-pre><code>// ─────────────────────────────────
 // 설정: main.jsx — 딱 한 번 감싸기
 // ─────────────────────────────────
-import { BrowserRouter } from 'react-router-dom'
+// GitHub Pages는 서버 라우팅이 없어서 HashRouter(#/about 형태)를 씀
+import { HashRouter as BrowserRouter } from 'react-router-dom'
 
 root.render(
   &lt;BrowserRouter&gt;
@@ -877,10 +877,10 @@ const navigate = useNavigate()  // URL 이동 함수
 const location = useLocation()  // 현재 URL 정보
 
 // 현재 URL 경로 읽기
-console.log(location.pathname)  // '/about', '/skills', '/contact' 등
+console.log(location.pathname)  // '/about', '/experience/kt-op', '/contact' 등
 
 // URL 이동 (페이지 새로고침 없이!)
-navigate('/skills')   // URL → /skills, Skills 컴포넌트 표시
+navigate('/projects/secure-report')  // URL → #/projects/secure-report, SecureReport 표시
 navigate('/contact')  // URL → /contact, Contact 컴포넌트 표시
 
 // ─────────────────────────────────
@@ -888,12 +888,15 @@ navigate('/contact')  // URL → /contact, Contact 컴포넌트 표시
 // ─────────────────────────────────
 // 일반적인 React Router 방식이 아닌, 객체 매핑 방식 사용
 const routeMap = {
-  '/about'       : About,
-  '/experience/kt': Experience,
-  '/skills'      : Skills,
-  '/projects'    : Projects,
-  '/contact'     : Contact,
-  '/guide'       : Guide,
+  '/about'                  : About,
+  '/experience'             : Experience,   // _overview.jsx
+  '/experience/kt-op'       : Experience,   // 같은 컴포넌트가 경로를 보고 해당 경력만 그림
+  '/experience/kt'          : Experience,
+  '/projects/secure-report' : SecureReport,
+  '/projects/component-guide': ComponentGuide,
+  '/projects/a11y'          : A11yChecklist,
+  '/contact'                : Contact,
+  '/guide'                  : Guide,
 }
 
 // 현재 URL에 맞는 컴포넌트 찾기
@@ -907,11 +910,11 @@ const CurrentPage  = routeMap[currentRoute] || About
 // ─────────────────────────────────
 // 파일 클릭 → URL 변경 → 컴포넌트 변경 흐름
 // ─────────────────────────────────
-// 1. 사이드바에서 'skills' 파일 클릭
-// 2. handleFileClick({ id:'frontend', route:'/skills' }) 실행
-// 3. navigate('/skills') → URL 변경
-// 4. location.pathname === '/skills'
-// 5. routeMap['/skills'] === Skills → Skills 컴포넌트 렌더링</code></pre>
+// 1. 사이드바에서 'secure_report_demo.html' 파일 클릭
+// 2. handleFileClick({ id:'proj-secure', route:'/projects/secure-report' }) 실행
+// 3. navigate('/projects/secure-report') → URL 변경
+// 4. location.pathname === '/projects/secure-report'
+// 5. routeMap['/projects/secure-report'] === SecureReport → 데모 페이지 렌더링</code></pre>
 
         <hr>
 
@@ -1058,24 +1061,22 @@ onMounted(() => {
 // 의존성 배열 없음, 자동으로 1회만</code></pre>
           </div>
         </div>
-        <p>SkillsChart.vue에서의 실제 사용 — 애니메이션 시작:</p>
-        <pre v-pre><code>// 처음엔 모든 스킬 바 너비를 0%로 설정
+        <p>예시 — 마운트 후 막대 그래프 애니메이션 시작:</p>
+        <pre v-pre><code>// 처음엔 모든 막대 너비를 0%로 설정
 const animatedWidths = ref({})
 
 onMounted(() => {
   // 100ms 후에 실제 너비로 변경
   // → CSS transition이 0% → 실제%로 부드럽게 애니메이션
   setTimeout(() => {
-    skillGroups.forEach((group) => {
-      group.items.forEach((skill) => {
-        animatedWidths.value[skill.name] = skill.level  // 0 → 85 같은 실제값
-      })
+    bars.forEach((bar) => {
+      animatedWidths.value[bar.name] = bar.value  // 0 → 85 같은 실제값
     })
   }, 100)
 })
 
 // template에서 사용
-// &lt;div :style="{ width: animatedWidths[skill.name] + '%' }"&gt;&lt;/div&gt;
+// &lt;div :style="{ width: animatedWidths[bar.name] + '%' }"&gt;&lt;/div&gt;
 // → 숫자가 바뀌면 CSS width가 바뀌고 → transition 애니메이션 발생</code></pre>
 
         <hr>
@@ -1091,17 +1092,19 @@ onMounted(() => {
 // Vue는 특정 div 안에서만 동작
 
 React App (App.jsx)
-  └── Skills 탭 클릭
-        └── Skills.jsx (React 컴포넌트)
+  └── contact.vue 탭 클릭
+        └── Contact.jsx (React 컴포넌트)
               └── &lt;div ref={mountRef}&gt;  ← 이 div 안을
-                    └── SkillsChart.vue   ← Vue가 점령!</code></pre>
+                    └── ContactForm.vue   ← Vue가 점령!
 
-        <h4>Skills.jsx — React 쪽 코드 상세 설명</h4>
+// 같은 방식: PORTFOLIO_GUIDE.html → Guide.jsx → GuideDoc.vue (지금 보는 문서)</code></pre>
+
+        <h4>Contact.jsx — React 쪽 코드 상세 설명</h4>
         <pre v-pre><code>import { useEffect, useRef } from 'react'
 import { createApp } from 'vue'           // Vue 앱 생성 함수
-import SkillsChart from '../../vue-components/SkillsChart.vue'  // Vue 컴포넌트
+import ContactForm from '../../vue-components/ContactForm.vue'  // Vue 컴포넌트
 
-export default function Skills() {
+export default function Contact() {
   // mountRef: Vue를 심을 div를 가리킴
   const mountRef = useRef(null)
 
@@ -1109,13 +1112,13 @@ export default function Skills() {
   const appRef = useRef(null)
 
   useEffect(() => {
-    // ① Vue 앱 생성 (SkillsChart 컴포넌트를 루트로)
-    appRef.current = createApp(SkillsChart)
+    // ① Vue 앱 생성 (ContactForm 컴포넌트를 루트로)
+    appRef.current = createApp(ContactForm)
 
     // ② mountRef.current (div 요소)에 Vue 앱 마운트
     appRef.current.mount(mountRef.current)
 
-    // ③ 정리 함수: Skills 탭을 닫으면 실행됨
+    // ③ 정리 함수: contact.vue 탭을 닫으면 실행됨
     return () => {
       appRef.current.unmount()  // Vue 앱 제거
       appRef.current = null     // 참조 초기화
@@ -1385,13 +1388,8 @@ export default function About() {
           <tr><th>파일</th><th>역할</th><th>수정이 필요한 경우</th></tr>
           <tr>
             <td><code>data/resume.js</code></td>
-            <td>이름·경력·스킬 데이터</td>
-            <td>경력, 스킬 내용 바꿀 때 <strong>← 가장 자주</strong></td>
-          </tr>
-          <tr>
-            <td><code>data/projects.js</code></td>
-            <td>프로젝트 목록 데이터</td>
-            <td>프로젝트 추가/수정할 때</td>
+            <td>프로필·경력·작업 타임라인·MCP 활용 데이터</td>
+            <td>경력, 타임라인 내용 바꿀 때 <strong>← 가장 자주</strong></td>
           </tr>
           <tr>
             <td><code>data/fileTree.js</code></td>
@@ -1440,18 +1438,23 @@ export default function About() {
           </tr>
           <tr>
             <td><code>pages/Experience.jsx</code></td>
-            <td>경력 타임라인 UI</td>
+            <td>경력 파일별 화면 (연표 · 프로젝트 · 작업 타임라인 · 필터)</td>
             <td>경력 레이아웃 바꿀 때</td>
           </tr>
           <tr>
-            <td><code>vue-components/SkillsChart.vue</code></td>
-            <td>스킬 바 애니메이션 (Vue 3)</td>
-            <td>스킬 UI 바꿀 때</td>
+            <td><code>pages/SecureReport.jsx</code> 외 데모 페이지</td>
+            <td><code>public/demo/</code>의 데모 HTML을 iframe으로 열기</td>
+            <td>데모 설명 문구 바꿀 때</td>
+          </tr>
+          <tr>
+            <td><code>public/demo/</code></td>
+            <td>보안 리포트 데모, 공통 UI 가이드 (빌드 시 그대로 복사)</td>
+            <td>데모 화면 자체를 고칠 때</td>
           </tr>
           <tr>
             <td><code>vue-components/ContactForm.vue</code></td>
-            <td>연락처 폼 (Vue 3)</td>
-            <td>폼 항목/디자인 바꿀 때</td>
+            <td>연락처 (Vue 3)</td>
+            <td>연락처 항목/디자인 바꿀 때</td>
           </tr>
         </table>
 
@@ -1477,63 +1480,51 @@ export const profile = {
         <pre v-pre><code>// src/data/resume.js → experiences 배열
 export const experiences = [
   {
-    company:    '엘루오씨앤씨',            // 회사명
-    role:       'Web Publisher / PL',    // 직책
-    period:     '2021.03 – 현재',         // 기간
-    location:   '서울',
-    highlights: [                        // 주요 성과 (배열)
-      'KT MVNO 알뜰폰 서비스 퍼블리싱 담당',
-      '300+ 페이지 HTML/CSS/JS 개발',
-      'SCSS 기반 디자인 시스템 구축',
+    company:    '회사명',
+    dept:       '부서',
+    role:       '직급 / 역할',
+    period:     '2024.11 – 현재',
+    highlights: ['주요 성과 1', '주요 성과 2'],   // 회사 단위 성과
+    skills:     ['HTML5', 'SCSS', 'JavaScript'],
+    projects: [                                // 선택: 회사 안의 프로젝트별 타임라인
+      {
+        id: 'my-project',                      // Experience.jsx의 ENTRIES와 연결되는 키
+        name: '프로젝트명',
+        role: '역할',
+        period: '2026.06 – 현재',
+        summary: '한 줄 요약',
+        timeline: [ /* ③ 참고 */ ],
+      },
     ],
-    skills: ['HTML5', 'CSS3', 'JavaScript', 'SCSS', 'jQuery'],
   },
-  // 회사 추가하려면 위 형식의 객체를 , 로 구분해서 추가
-  {
-    company:    '아모레퍼시픽',
-    role:       'Web Publisher',
-    period:     '2019.06 – 2021.02',
-    highlights: ['아모레몰 웹 퍼블리싱 담당'],
-    skills: ['HTML5', 'CSS3', 'jQuery'],
-  },
-]</code></pre>
+]
 
-        <h3>③ 스킬 추가/수정하기</h3>
-        <pre v-pre><code>// src/data/resume.js → skillGroups 배열
-export const skillGroups = [
-  {
-    group: 'Frontend',    // 그룹 이름
-    items: [
-      { name: 'HTML5',      level: 90 },  // level: 0~100 (%)
-      { name: 'CSS3/SCSS',  level: 85 },
-      { name: 'JavaScript', level: 70 },
-      { name: 'Vue 3',      level: 60 },  // 새 스킬 추가 예시
-    ],
-  },
-  {
-    group: 'Tools',
-    items: [
-      { name: 'Git',     level: 75 },
-      { name: 'Figma',   level: 70 },
-      { name: 'VS Code', level: 95 },
-    ],
-  },
-]</code></pre>
+// 경력 파일(사이드바)과 연결: src/components/pages/Experience.jsx의 ENTRIES에 한 줄 추가
+// { file: { id, name: 'MyProject.jsx', icon: 'react', route: '/experience/my' }, company: '회사명', project: 'my-project' }</code></pre>
 
-        <h3>④ 프로젝트 추가하기</h3>
-        <pre v-pre><code>// src/data/projects.js
-export const projects = [
-  {
-    id:          'my-project',
-    title:       '프로젝트 이름',
-    description: '프로젝트 설명을 적어주세요.',
-    period:      '2024.01 – 2024.06',
-    role:        'Web Publisher',
-    tags:        ['HTML', 'CSS', 'JavaScript'],  // 기술 태그
-    link:        'https://github.com/yourlink',  // 링크 (없으면 null)
-  },
-  // 프로젝트 추가하려면 위 형식 복붙
-]</code></pre>
+        <h3>③ 작업 타임라인 항목 추가하기</h3>
+        <pre v-pre><code>// projects[].timeline 배열에 추가 — 큰 과제 단위로만 쓰는 것을 권장
+{
+  date:   '2026.07 – 09',
+  tags:   ['feature', 'token', 'a11y'],   // timelineTags의 키 (필터에 자동 반영)
+  title:  '과제명',
+  detail: '무엇을 어떻게 해결했고 결과가 어땠는지 2~3문장',
+  mcp:    ['Figma', 'chrome-devtools'],   // 사용한 MCP (칩으로 표시)
+  link:   { label: '데모 보기', file: { id, name, icon: 'html', route } },  // 선택
+}</code></pre>
+
+        <h3>④ 데모 페이지 추가하기</h3>
+        <pre v-pre><code>// 1. 데모 HTML을 public/demo/ 아래에 둔다 (빌드 시 그대로 복사됨)
+//    public/demo/my-demo/index.html
+
+// 2. iframe으로 여는 페이지를 만든다 — SecureReport.jsx를 복사해서 src만 변경
+&lt;iframe src={`${import.meta.env.BASE_URL}demo/my-demo/index.html`} title="데모 이름" /&gt;
+
+// 3. fileTree.js의 projects 폴더에 파일 추가
+{ id: 'proj-my', name: 'my_demo.html', type: 'file', icon: 'html', route: '/projects/my-demo' },
+
+// 4. App.jsx의 routeMap에 경로 등록
+'/projects/my-demo': MyDemo,</code></pre>
 
         <h3>⑤ 새 섹션(페이지) 추가하기 — 단계별 가이드</h3>
         <div class="step">

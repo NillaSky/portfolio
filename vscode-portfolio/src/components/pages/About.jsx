@@ -1,5 +1,5 @@
 import styles from './About.module.css'
-import { profile, education } from '../../data/resume'
+import { profile, education, maskedPhone } from '../../data/resume'
 
 export default function About() {
   return (
@@ -13,7 +13,7 @@ export default function About() {
       <div className={styles.content}>
         <p className={styles.comment}>{`# ${profile.name} | ${profile.title}`}</p>
         <p className={styles.comment}>{`# Web Publisher Portfolio – README.md`}</p>
-        <p className={styles.comment}>{`# Last updated: 2026-03-05`}</p>
+        <p className={styles.comment}>{`# Last updated: ${profile.updated}`}</p>
         <br />
 
         {/* 프로필 카드 */}
@@ -67,7 +67,7 @@ export default function About() {
           <p>
             <span className={styles.property}>phone</span>
             <span className={styles.punctuation}>: </span>
-            <span className={styles.string}>{`"${profile.phone}"`}</span>
+            <span className={styles.string}>{`"${maskedPhone}"`}</span>
             <span className={styles.punctuation}>,</span>
           </p>
           <p>

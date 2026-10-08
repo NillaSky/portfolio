@@ -655,7 +655,7 @@ function classToggle(root) {
 
       var $wrap = $btn.closest('[data-fn="class_toggle"]');
       var className = $btn.attr('data-class') || $wrap.attr('data-class') || 'active';
-      var mode = ($btn.attr('data-mode') || $wrap.attr('data-mode') || 'multiple').toLowerCase(); // multiple | single | radio
+      var mode = ($btn.attr('data-mode') || $wrap.attr('data-mode') || 'single').toLowerCase(); // single(기본) | multiple | radio
 
       var targetSel = $btn.attr('data-target') || $wrap.attr('data-target');
 
@@ -711,6 +711,8 @@ function classToggle(root) {
         return;
       }
 
+      // multiple: 형제와 상관없이 누른 버튼만 토글
+      toggleAndClean($btn);
     });
 }
 

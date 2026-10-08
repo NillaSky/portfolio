@@ -10,43 +10,158 @@
 }
 
 .header {
-  margin-bottom: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 16px;
+  margin-bottom: 24px;
 }
 
-.breadcrumb {
-  font-size: 14px;
+.comment {
+  flex-basis: 100%;
+  color: var(--text-comment);
+  font-size: 13px;
   line-height: 1.7;
 }
 
-.timeline {
-  position: relative;
-  padding-left: 24px;
+.position {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: 0.04em;
 }
 
-.card {
-  position: relative;
-  margin-bottom: 32px;
+.pageTitle {
+  margin-bottom: 16px;
+  font-family: var(--font-ui);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-.dot {
+.pageTitle:focus,
+.company:focus { outline: none; }
+
+/* 경력 연표 (_overview.jsx) */
+.overview {
+  list-style: none;
+  border-left: 2px solid var(--border-color);
+  margin-left: 4px;
+}
+
+.overviewItem {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  padding: 0 0 22px 18px;
+}
+
+.overviewItem::before {
+  content: '';
   position: absolute;
-  left: -28px;
-  top: 8px;
+  left: -6px;
+  top: 5px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: var(--accent-blue);
   border: 2px solid var(--bg-editor);
-  z-index: 1;
 }
 
-.line {
-  position: absolute;
-  left: -24px;
-  top: 18px;
-  width: 2px;
-  bottom: -32px;
-  background: var(--border-color);
+.overviewPeriod {
+  flex-shrink: 0;
+  width: 150px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: nowrap;
+}
+
+.overviewBody { flex: 1; min-width: 0; }
+
+.overviewCompany {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.overviewRole {
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: normal;
+  color: var(--text-type);
+}
+
+.overviewLine {
+  margin-top: 2px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.overviewLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.fileLink {
+  padding: 2px 10px;
+  background: var(--bg-input);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-link);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.fileLink:hover { border-color: var(--accent-blue); }
+
+/* 이전 / 다음 파일 */
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.pagerBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 180px;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  text-align: left;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.pagerBtn:hover { border-color: var(--accent-blue); }
+.pagerNext { margin-left: auto; text-align: right; align-items: flex-end; }
+.pagerDir { color: var(--text-muted); font-size: 11px; }
+.pagerName { color: var(--text-link); font-size: 13px; }
+
+.filterBtn:focus-visible,
+.workLink:focus-visible,
+.fileLink:focus-visible,
+.pagerBtn:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .cardInner {
@@ -55,10 +170,6 @@
   border-radius: var(--radius-md);
   padding: 16px 20px;
   transition: border-color 0.2s;
-}
-
-.cardInner:hover {
-  border-color: var(--accent-blue);
 }
 
 .cardHeader {
@@ -135,6 +246,231 @@
   font-family: var(--font-mono);
 }
 
+/* MCP 활용 요약 */
+.mcpSection {
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.mcpList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mcpItem {
+  flex: 1 1 calc(50% - 4px);
+  min-width: 220px;
+  padding: 8px 10px;
+  background: var(--bg-editor);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+.mcpName {
+  color: var(--accent-teal);
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.mcpUse {
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+  font-family: var(--font-ui);
+}
+
+/* 분류 필터 */
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.filterBtn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.filterBtn:hover {
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
+}
+
+.filterBtn[aria-pressed='true'] {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: #fff;
+}
+
+/* 회사 내 프로젝트 */
+.project {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.projectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.projectName {
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-ui);
+  color: var(--text-primary);
+}
+
+.projectRole {
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: normal;
+  color: var(--text-type);
+}
+
+.projectSummary {
+  margin: 4px 0 10px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-family: var(--font-ui);
+  line-height: 1.5;
+}
+
+/* 작업 타임라인 */
+.workList {
+  list-style: none;
+  border-left: 2px solid var(--border-color);
+  margin-left: 4px;
+}
+
+.workItem {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  padding: 0 0 14px 16px;
+}
+
+.workItem::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg-editor);
+  border: 2px solid var(--accent-teal);
+}
+
+.workDate {
+  flex-shrink: 0;
+  width: 96px;
+  white-space: nowrap;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.workBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.workTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  line-height: 1.6;
+}
+
+.workDetail {
+  margin: 2px 0 6px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-family: var(--font-ui);
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.workMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.tag,
+.mcp {
+  padding: 1px 7px;
+  border-radius: 3px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.tag {
+  border: 1px solid currentColor;
+}
+
+.tag_feature { color: var(--text-keyword); }
+.tag_token { color: var(--accent-purple); }
+.tag_a11y { color: var(--accent-green); }
+.tag_quality { color: var(--accent-yellow); }
+.tag_process { color: var(--accent-orange); }
+.tag_ai { color: var(--accent-teal); }
+
+.mcp {
+  background: var(--bg-input);
+  color: var(--text-type);
+}
+
+.mcp::before {
+  content: 'mcp:';
+  color: var(--text-muted);
+  margin-right: 3px;
+}
+
+.workLink {
+  margin-left: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-link);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.workLink:hover {
+  text-decoration: underline;
+}
+
+.empty {
+  color: var(--text-comment);
+  font-size: 12px;
+  padding: 4px 0 8px;
+}
+
 /* ── 모바일 ── */
 @media (max-width: 768px) {
   .wrapper {
@@ -151,6 +487,19 @@
   .period {
     white-space: normal;
   }
+
+  .projectHeader {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .workItem,
+  .overviewItem {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pagerBtn { min-width: 0; flex: 1; }
 }
 
 /* Syntax colors */

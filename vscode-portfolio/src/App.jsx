@@ -21,20 +21,22 @@ function collectFolderDefaults(nodes, acc = {}) {
 
 const About = lazy(() => import('./components/pages/About'))
 const Experience = lazy(() => import('./components/pages/Experience'))
-const Projects = lazy(() => import('./components/pages/Projects'))
-const Skills = lazy(() => import('./components/pages/Skills'))
 const Contact = lazy(() => import('./components/pages/Contact'))
 const Guide = lazy(() => import('./components/pages/Guide'))
 const A11yChecklist = lazy(() => import('./components/pages/A11yChecklist'))
+const SecureReport = lazy(() => import('./components/pages/SecureReport'))
+const ComponentGuide = lazy(() => import('./components/pages/ComponentGuide'))
 
 const routeMap = {
   '/about': About,
+  '/experience': Experience,
   '/experience/kt': Experience,
+  '/experience/kt-op': Experience,
   '/experience/skt': Experience,
   '/experience/amore': Experience,
-  '/skills': Skills,
-  '/projects': Projects,
   '/projects/a11y': A11yChecklist,
+  '/projects/secure-report': SecureReport,
+  '/projects/component-guide': ComponentGuide,
   '/contact': Contact,
   '/guide': Guide,
 }
@@ -98,8 +100,7 @@ export default function App() {
       setActiveSection(section)
       const sectionFiles = {
         explorer: null,
-        skills: { id: 'frontend', name: 'frontend.js', icon: 'javascript', route: '/skills' },
-        projects: { id: 'proj-kt', name: 'KT_portal.html', icon: 'html', route: '/projects' },
+        projects: { id: 'proj-secure', name: 'secure_report_demo.html', icon: 'html', route: '/projects/secure-report' },
         contact: { id: 'contact', name: 'contact.vue', icon: 'vue', route: '/contact' },
       }
       const file = sectionFiles[section]

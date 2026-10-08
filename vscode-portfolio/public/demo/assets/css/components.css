@@ -1925,10 +1925,6 @@
   -webkit-transform: scale(1.01);
           transform: scale(1.01);
 }
-[data-scope=filter_popup] .mvno-btm-btn-column.primary:not(.disabled):not([aria-disabled=true]):not(:disabled):focus-visible {
-  background: #8359ec !important;
-  border-color: #8359ec !important;
-}
 
 
 
@@ -1971,13 +1967,6 @@ input:is([type=checkbox],[type=radio]):checked:disabled {
 
 .wrap.main {
   max-width: unset;
-}
-@media (min-width:717px) {
-  .mvno-popup-modal.main_product_popup .product_card :focus {
-    border-color: #94949a;
-    -webkit-box-shadow: 0 2px 15px 0 rgba(0,0,0,.1);
-            box-shadow: 0 2px 15px 0 rgba(0,0,0,.1);
-  }
 }
 
 
@@ -3148,10 +3137,6 @@ main.main_container .container_event_banner .event_banner a :focus {
 
 
 @charset "UTF-8";
-
-@media (max-width: 512px) {
-  
-}
 html,
 body {
   font-size: 10px;
@@ -3309,10 +3294,6 @@ button {
 .subMenu .subMenuChild a:focus {
   font-weight: bold;
 }
-
-@media screen and (min-width: 0\0) {
-  
-}
 .infoSummaryBottom .summaryInfoArea .swiper-wrapper {
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
@@ -3435,12 +3416,6 @@ button {
   
   
 }
-@media (max-width: 717px) {
-  
-}
-@media (max-width: 512px) {
-  
-}
 
 .popup.alertPopup .buttonArea .btn:focus-visible {
   background-color: transparent;
@@ -3448,14 +3423,6 @@ button {
 }
 .popup.mobileCarrierSelect .checkboxLine input:focus + .checkboxLabel {
   outline-width: 1px;
-}
-
- 
-
-@media (max-width: 1024px) {
-  
-   
-  
 }
 .fieldDatepicker.large
   .datepicker
@@ -3536,15 +3503,6 @@ button {
 .videoWrap .accordionContainer.borderType .accordionContent:focus-visible {
   outline: 2px solid #000000;
 }
-
-@media (max-width: 1600px) {
-  
-}
-@media (max-width: 1280px) {
-  
-  
-  
-}
 @media (max-width: 1024px) {
   
   
@@ -3556,22 +3514,6 @@ button {
   .searchInput .btnSearch:focus-visible {
     outline: none;
   }
-  
-}
-@media (max-width: 717px) {
-  
-  
-  
-  
-  
-}
-@media (max-width: 512px) {
-  
-  
-  
-}
-@media (max-width: 320px) {
-  
   
 }
 .highTextArea #sidebar-display-toggle:focus {
@@ -3609,10 +3551,6 @@ button {
   color: #499690;
   text-decoration: underline;
 }
-
-@media (max-width: 1280px) {
-  
-}
 @media (max-width: 1024px) {
   
   .verticalSwiper .eventMainPagination .swiper-pagination-current {
@@ -3624,34 +3562,6 @@ button {
   .shareContainer .shareBtn:focus-visible {
     outline: 2px solid #000000;
   }
-}
-@media (max-width: 717px) {
-  
-  
-}
-@media (max-width: 512px) {
-  
-}
-
-@media (max-width: 1280px) {
-  
-}
-@media (max-width: 1024px) {
-  
-}
-@media (max-width: 717px) {
-  
-  
-}
-@media (max-width: 512px) {
-  
-}
-@media (max-width: 320px) {
-  
-}
-
-@media (max-width: 1024px) {
-  
 }
 form {
   display: block;
@@ -4176,17 +4086,6 @@ button:focus-visible {
   
   
 }
-@media (max-width: 512px) {
-  
-  
-  
-  
-}
-@media (max-width: 320px) {
-  
-  
-  
-}
 
 .totalSearchBar [class*="btn"]:focus-visible {
   outline: 2px solid #000000;
@@ -4209,19 +4108,6 @@ button:focus-visible {
 .totalResultContainer .infoMore:focus:after {
   right: -0.5rem;
 }
-
-@media (max-width: 1600px) {
-  
-  
-  
-  
-}
-@media (max-width: 1280px) {
-  
-  
-  
-  
-}
 @media (max-width: 1024px) {
   
   
@@ -4231,24 +4117,6 @@ button:focus-visible {
   .contentSearchBar .btnBack:focus-visible {
     outline: none;
   }
-  
-  
-  
-  
-}
-@media (max-width: 717px) {
-  
-  
-  
-  
-}
-@media (max-width: 512px) {
-  
-  
-  
-  
-}
-@media (max-width: 320px) {
   
   
   
@@ -4278,22 +4146,6 @@ button:focus-visible {
     outline: none;
   }
 
-  
-}
-
-@media (max-width: 717px) {
-  
-  
-  
-  
-  
-  
-}
-@media (max-width: 512px) {
-  
-  
-  
-  
   
 }
 
@@ -4466,24 +4318,6 @@ button:focus-visible {
     padding: 3rem;
   }
 }
-@media (max-width: 1600px) {
-  
-  
-  
-  
-  
-  
-  
-}
-@media (max-width: 1280px) {
-  
-  
-  
-  
-  
-  
-  
-}
 @media (max-width: 1024px) {
   .wrap.main {
     padding-top: 6.1rem;
@@ -4589,16 +4423,6 @@ button:focus-visible {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
   }
-  
-  
-  
-  
-  
-}
-@media (max-width: 320px) {
-  
-  
-  
   
   
   
@@ -4723,28 +4547,6 @@ button:focus-visible {
   padding-right: 2rem;
   background-position: right center;
 }
-
-@media (max-width: 1600px) {
-  
-  
-  
-  
-  
-  
-}
-@media (max-width: 1024px) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-}
 @media (max-width: 717px) {
   
   
@@ -4776,29 +4578,9 @@ button:focus-visible {
   
   
 }
-@media (max-width: 320px) {
-  
-  
-  
-}
 
 .newExtraApplyTabs [class*="freeChargeTabs"] .btnExtraCancel:focus-visible {
   background-color: rgba(0, 0, 0, 0.05);
-}
-
-@media (max-width: 1024px) {
-  
-  
-}
-@media (max-width: 717px) {
-  
-  
-  
-}
-@media (max-width: 320px) {
-  
-  
-  
 }
 .popularSwiper .swiper-wrapper {
   -webkit-box-align: stretch;
@@ -4843,16 +4625,6 @@ button:focus-visible {
 .productPlanList .popularSwiper .swiper-slide {
   height: auto;
 }
-
-@media (max-width: 1600px) {
-  
-  
-  
-}
-@media (max-width: 1280px) {
-  
-  
-}
 @media (max-width: 1024px) {
   .extraContainer .extraTop .title:focus-visible {
     outline: 2px solid #000000;
@@ -4868,36 +4640,6 @@ button:focus-visible {
   
   
 }
-@media (max-width: 717px) {
-  
-  
-  
-  
-  
-  
-}
-@media (max-width: 320px) {
-  
-  
-}
-
-@media (max-width: 1024px) {
-  
-  
-}
-@media (max-width: 717px) {
-  
-  
-  
-  
-}
-@media (max-width: 512px) {
-  
-  
-}
-@media (max-width: 350px) {
-  
-}
 
 .primarySelBox input:focus:checked + .primarySelLabel {
   border-color: #000000;
@@ -4905,34 +4647,6 @@ button:focus-visible {
 
 .orderItem .btnOderCancel:focus {
   background-color: rgba(0, 0, 0, 0.02);
-}
-
-@media (max-width: 1024px) {
-  
-  
-  
-}
-@media (max-width: 717px) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-}
-@media (max-width: 320px) {
-  
-  
-  
-}
-
-@media (max-width: 1024px) {
-  
 }
 
 .extraSwiper .swiper-wrapper {
@@ -4972,57 +4686,9 @@ button:focus-visible {
   outline: 2px solid #000000;
 }
 
-@media (max-width: 1600px) {
-  
-}
-@media (max-width: 1280px) {
-  
-}
-@media (max-width: 1024px) {
-  
-  
-  
-  
-  
-  
-  
-  
-}
-@media (max-width: 717px) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-}
-@media (max-width: 320px) {
-  
-}
-
 .topBannerList [class*="bannerBtn"].swiper-button-disabled {
   opacity: 0.3;
   cursor: default;
-}
-
-@media (max-width: 1600px) {
-  
-}
-@media (max-width: 1024px) {
-  
-}
-@media (max-width: 717px) {
-  
-}
-
-@media (max-width: 1280px) {
-  
-}
-@media (max-width: 717px) {
-  
 }
 
 .popup.new.alertPopup .buttonArea .btn:focus-visible {
@@ -5030,21 +4696,8 @@ button:focus-visible {
   font-weight: bold;
 }
 
-@media (min-width:1024px) {
-  
-}
-@media (max-width:716px) {
-}
-
 .wrap.main {
   max-width: unset;
-}
-@media (min-width:717px) {
-  .mvno-popup-modal.main_product_popup .product_card :focus {
-    border-color: #94949a;
-    -webkit-box-shadow: 0 2px 15px 0 rgba(0,0,0,.1);
-            box-shadow: 0 2px 15px 0 rgba(0,0,0,.1);
-  }
 }
 
 .main .floatingArea {
@@ -7724,19 +7377,9 @@ main.main_container .container_event_banner .event_banner a :focus {
   -webkit-transform: scale(1.01);
           transform: scale(1.01);
 }
-[data-scope=filter_popup] .mvno-btm-btn-column.primary:not(.disabled):not([aria-disabled=true]):not(:disabled):focus-visible {
-  background: #8359ec !important;
-  border-color: #8359ec !important;
-}
 
 .wrap.main {
   max-width: unset;
-}
-@media (min-width: 717px) {
-   .mvno-popup-modal.main_product_popup .product_card :focus {
-    border-color: #94949a;
-    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
-  }
 }
 
 .main .floatingArea {

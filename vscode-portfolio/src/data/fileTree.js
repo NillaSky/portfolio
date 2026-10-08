@@ -18,19 +18,11 @@ export const fileTree = [
         type: 'folder',
         open: true,
         children: [
+          { id: 'exp-overview', name: '_overview.jsx', type: 'file', icon: 'react', route: '/experience' },
+          { id: 'kt-op', name: 'KT_Operation.jsx', type: 'file', icon: 'react', route: '/experience/kt-op' },
           { id: 'kt', name: 'KT_MVNO.jsx', type: 'file', icon: 'react', route: '/experience/kt' },
-          { id: 'skt', name: 'SKT_Tworld.jsx', type: 'file', icon: 'react', route: '/experience/skt' },
           { id: 'amore', name: 'AmoreMall.jsx', type: 'file', icon: 'react', route: '/experience/amore' },
-        ],
-      },
-      {
-        id: 'skills',
-        name: 'skills',
-        type: 'folder',
-        open: false,
-        children: [
-          { id: 'frontend', name: 'frontend.js', type: 'file', icon: 'javascript', route: '/skills' },
-          { id: 'tools', name: 'tools.json', type: 'file', icon: 'json', route: '/skills#tools' },
+          { id: 'skt', name: 'SKT_Tworld.jsx', type: 'file', icon: 'react', route: '/experience/skt' },
         ],
       },
       {
@@ -39,14 +31,13 @@ export const fileTree = [
         type: 'folder',
         open: false,
         children: [
-          { id: 'proj-kt', name: 'KT_portal.html', type: 'file', icon: 'html', route: '/projects' },
-          { id: 'proj-skt', name: 'SKT_tworld.html', type: 'file', icon: 'html', route: '/projects' },
-          { id: 'proj-amore', name: 'AmoreMall.html', type: 'file', icon: 'html', route: '/projects' },
+          { id: 'proj-secure', name: 'secure_report_demo.html', type: 'file', icon: 'html', route: '/projects/secure-report' },
+          { id: 'proj-guide', name: 'component_guide.html', type: 'file', icon: 'html', route: '/projects/component-guide' },
           { id: 'proj-a11y', name: 'a11y_checklist.html', type: 'file', icon: 'html', route: '/projects/a11y' },
+          { id: 'guide', name: 'PORTFOLIO_GUIDE.html', type: 'file', icon: 'html', route: '/guide' },
         ],
       },
       { id: 'contact', name: 'contact.vue', type: 'file', icon: 'vue', route: '/contact' },
-      { id: 'guide', name: 'PORTFOLIO_GUIDE.html', type: 'file', icon: 'html', route: '/guide' },
     ],
   },
 ]

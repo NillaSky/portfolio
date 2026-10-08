@@ -96,7 +96,6 @@ function TreeNode({ node, depth = 0, onFileClick, activeRoute, openFolders, onTo
 export default function Sidebar({ activeSection, onFileClick, activeRoute, openFolders, onToggleFolder }) {
   const sectionTitles = {
     explorer: 'EXPLORER',
-    skills: 'SKILLS',
     projects: 'PROJECTS',
     contact: 'CONTACT',
   }

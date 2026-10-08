@@ -7,9 +7,24 @@ export const profile = {
   github: 'https://github.com/nillasky',
   portfolio: 'https://nillasky.github.io/portfolio/',
   intro: '항상 함께 일하고 싶은 동료가 되고 싶습니다.',
+  updated: '2026-10-08',
+  // 연락처 화면의 현재 상태 (채용 담당자가 가장 먼저 보는 정보)
+  status: {
+    state: '이직 준비 중',
+    position: '웹 퍼블리셔 · UI 개발',
+    available: '협의 후 결정',
+  },
+  // 레포 루트의 PDF (배포 주소 기준으로 연결)
+  documents: [
+    { label: '이력서', file: '김석현 이력서.pdf' },
+    { label: '경력기술서', file: '경력기술서_김석현.pdf' },
+  ],
   description:
     '시맨틱한 마크업 구조와 웹 표준 준수를 기본으로, 접근성과 SEO, 유지보수와 재사용성을 고려한 퍼블리싱을 지향합니다. 개발 효율성을 함께 고려하며, 기획·디자인·개발자와의 원활한 협업을 위한 업무 프로세스와 효율화를 항상 고민합니다.',
 }
+
+// 화면 노출용 마스킹 번호 (010-1234-5678 → 010-****-5678)
+export const maskedPhone = profile.phone.replace(/^(\d{2,3})-\d{3,4}-(\d{4})$/, '$1-****-$2')
 
 export const education = {
   school: '고려사이버대학교',
@@ -22,7 +37,7 @@ export const experiences = [
   {
     company: '엘루오씨앤씨',
     dept: '퍼블리싱그룹',
-    role: '과장 / KT MVNO 퍼블리싱 PL',
+    role: '과장 / KT 퍼블리싱',
     period: '2024.11 – 현재',
     highlights: [
       'Git/GitLab 형상 관리 체계 구축으로 코드 충돌 90% 감소',
@@ -31,6 +46,85 @@ export const experiences = [
       'Claude.md 점진적 추가로 코드 일관성 확보 및 품질 편차 제거',
     ],
     skills: ['HTML5', 'CSS3', 'SCSS', 'JavaScript', 'Git', 'GitLab', 'Claude Code', 'MCP', 'Jira', 'Notion'],
+    projects: [
+      {
+        id: 'kt-op',
+        name: 'KT닷컴 운영',
+        role: '퍼블리셔',
+        period: '2026.06 – 현재',
+        summary: '통합검색 개편, 개인정보 보호 리포트 신규 구축, M메인 개편 등 9개 과제 (커밋 약 150건)',
+        timeline: [
+          {
+            date: '2026.06 – 09',
+            tags: ['feature', 'token', 'a11y'],
+            title: '통합검색 개편',
+            detail: '모바일 통합검색 화면을 개편했어요. 시안의 색상 토큰 323개로 다크모드를 구축하고(전체 토큰 1,124개), KWCAG 2.2 검수에서 접근성 결함 31건과 UI/UX 결함 25건을 처리했어요. 브랜치마다 따로 관리되던 토큰 파일의 동기화 규칙도 정립했어요.',
+            mcp: ['Figma', 'chrome-devtools', 'context7'],
+          },
+          {
+            date: '2026.07 – 09',
+            tags: ['feature', 'token', 'a11y'],
+            title: '개인정보 보호 리포트 신규 구축',
+            detail: 'PC/모바일 화면을 새로 만들었어요. 토큰 54개를 쓰고 하드코딩 색은 2개뿐이며, 카드 하나가 로그인·회선·API 상태에 따라 최대 5가지 상태를 갖도록 설계했어요. 선택 목록·모달·팝오버 등 접근성 위젯은 라이브러리 없이 구현했어요.',
+            mcp: ['Figma', 'pdf-reader', 'chrome-devtools'],
+            link: { label: '데모 보기', file: { id: 'proj-secure', name: 'secure_report_demo.html', icon: 'html', route: '/projects/secure-report' } },
+          },
+          {
+            date: '2026.06 – 08',
+            tags: ['feature'],
+            title: 'M메인 개편',
+            detail: '반응형 3단계(768/360/320px) 시안을 기준으로 모바일 메인을 개편하고, 슬라이더 라이브러리 간 DOM 충돌 문제를 해결했어요.',
+            mcp: ['Figma', 'pdf-reader'],
+          },
+        ],
+      },
+      {
+        id: 'kt-mvno',
+        name: 'KT MVNO 마이알뜰폰',
+        role: 'PL (팀원 2명)',
+        period: '2024.11 – 현재',
+        summary: '알뜰폰 고객 포털과 관리자 포털 퍼블리싱',
+        timeline: [
+          {
+            date: '2024.11',
+            tags: ['process'],
+            title: 'Git/GitLab 형상 관리 체계 구축',
+            detail: 'SR 번호 기반 브랜치·커밋·주석 규칙을 정하고, 내부망·외부망을 오가는 CSS 반영 절차를 정리했어요.',
+            mcp: [],
+          },
+          {
+            date: '2025',
+            tags: ['process'],
+            title: 'Dart Sass + PostCSS 빌드 도입',
+            detail: 'SCSS 컴파일과 autoprefixer·cssnano 후처리를 자동화해 크로스 브라우징 이슈를 줄였어요.',
+            mcp: [],
+          },
+          {
+            date: '2025',
+            tags: ['feature'],
+            title: 'data-attribute 기반 공통 UI 체계',
+            detail: 'data-module / data-fn 규칙으로 아코디언·드롭다운·탭·마스킹 입력 등을 공통화하고, 마크업 트리를 바로 보여주는 가이드 페이지를 만들었어요.',
+            mcp: [],
+            link: { label: '가이드 보기', file: { id: 'proj-guide', name: 'component_guide.html', icon: 'html', route: '/projects/component-guide' } },
+          },
+          {
+            date: '2025',
+            tags: ['ai'],
+            title: 'Figma → 구현 → 검증 자동화',
+            detail: 'Figma MCP로 시안을 추출하고, Playwright로 스크린샷을 비교하며 반복 수정하는 워크플로를 CLAUDE.md로 정리했어요.',
+            mcp: ['Figma', 'Playwright', 'Claude Code'],
+          },
+          {
+            date: '2026',
+            tags: ['a11y', 'ai'],
+            title: '접근성 결함 관리 도구 제작',
+            detail: '검수 결함 313건을 페이지·유형·디바이스별로 걸러보고 조치 진행률을 저장하는 도구를 직접 만들었어요.',
+            mcp: [],
+            link: { label: '도구 보기', file: { id: 'proj-a11y', name: 'a11y_checklist.html', icon: 'html', route: '/projects/a11y' } },
+          },
+        ],
+      },
+    ],
   },
   {
     company: '(주)아모레퍼시픽',
@@ -76,40 +170,22 @@ export const experiences = [
   },
 ]
 
-export const skillGroups = [
-  {
-    category: 'Markup & Style',
-    items: [
-      { name: 'HTML5', level: 95 },
-      { name: 'CSS3', level: 95 },
-      { name: 'SCSS', level: 90 },
-    ],
-  },
-  {
-    category: 'JavaScript',
-    items: [
-      { name: 'JavaScript', level: 80 },
-      { name: 'jQuery', level: 85 },
-      { name: 'React', level: 30 },
-      { name: 'Vue 3', level: 30 },
-    ],
-  },
-  {
-    category: 'Tools & Workflow',
-    items: [
-      { name: 'Git / GitLab', level: 85 },
-      { name: 'Claude Code', level: 90 },
-      { name: 'MCP', level: 80 },
-      { name: 'Jira / Notion', level: 85 },
-      { name: 'Figma', level: 75 },
-    ],
-  },
-  {
-    category: 'Accessibility',
-    items: [
-      { name: 'WCAG 2.1', level: 85 },
-      { name: 'Semantic HTML', level: 95 },
-      { name: 'ARIA', level: 80 },
-    ],
-  },
+// 작업 타임라인 분류 태그
+export const timelineTags = {
+  feature: '기능 구현',
+  token: '디자인 토큰',
+  a11y: '접근성',
+  quality: '품질/협업',
+  process: '프로세스',
+  ai: 'AI 워크플로',
+}
+
+// MCP 활용 요약 (실무에서 실제로 쓰는 방식)
+export const mcpUsages = [
+  { name: 'Figma', use: '시안 구조·주석 추출, 색상은 variable_defs로 실제 토큰 값을 재확인' },
+  { name: 'chrome-devtools', use: '실제 렌더링 DOM 추출, getComputedStyle로 라이트/다크 값 검증, 결함 재현' },
+  { name: 'Playwright', use: '구현 화면 스크린샷을 시안과 비교하며 반복 수정' },
+  { name: 'pdf-reader', use: '기획 문서 버전 간 텍스트 대조로 변경점 검증' },
+  { name: 'context7', use: 'ARIA Authoring Practices 패턴 등 최신 문서 확인' },
+  { name: 'Claude Code', use: 'CLAUDE.md·메모리로 프로젝트 규칙을 쌓아 결과물 품질을 일정하게 유지' },
 ]
